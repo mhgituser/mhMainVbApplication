@@ -1,0 +1,7 @@
+Line 126: Class MSDataListLib.DataCombo of control cbofarmerid was not a loaded control class.
+Line 153: Class MSDataListLib.DataCombo of control CBOTRANID was not a loaded control class.
+Line 352: Class MSComCtl2.DTPicker of control txtquestiondate was not a loaded control class.
+Line 509: Class MSComCtl2.DTPicker of control txtfollowupdate was not a loaded control class.
+Line 530: Class MSDataListLib.DataCombo of control cbostaffcode was not a loaded control class.
+Line 683: Class MSComctlLib.ImageList of control IMG was not a loaded control class.
+Line 721: Class MSComctlLib.Toolbar of control TB was not a loaded control class.

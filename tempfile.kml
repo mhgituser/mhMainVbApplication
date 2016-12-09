@@ -1,0 +1,27 @@
+<kml xmlns="http://earth.google.com/kml/2.0">
+<Document>
+<name>tt</name>
+ <Placemark>
+   <name> tt </name>
+  <description><![CDATA[
+    DATE VISITED: 2013-04-11
+    MONITOR: S0332 Sonam Chophel
+    FARMER: Sangay Tshering
+    ]]>
+ </description>
+ <Point>
+   <coordinates>91.35,27.23,2083.6 </coordinates>
+ </Point>
+ <TimeStamp>
+<when>2013-04-11T22:18:36Z</when>
+ </TimeStamp>
+ <Style id="yellow">
+  <IconStyle>
+   <Icon>
+      <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png </href>
+  </Icon>
+ </IconStyle>
+ </Style>
+ </Placemark>
+</Document>
+</kml>

@@ -1,0 +1,251 @@
+<kml xmlns="http://earth.google.com/kml/2.0">
+<Document>
+<name>Corner</name>
+
+
+ <Placemark>
+   <name> Corner 1 </name>
+  <description><![CDATA[
+ Corner 1
+
+
+    ]]>
+ </description>
+ <Point>
+   <coordinates>91.18167,27.25828 </coordinates>
+ </Point>
+ <Style id="yellow">
+  <IconStyle>
+   <Icon>
+      <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png </href>
+  </Icon>
+ </IconStyle>
+ </Style>
+ </Placemark>
+ 
+ <Placemark>
+   <name> Corner 2 </name>
+  <description><![CDATA[
+ Corner 2
+
+
+
+    ]]>
+ </description>
+ <Point>
+   <coordinates>91.18101,27.25829 </coordinates>
+ </Point>
+ <Style id="yellow">
+  <IconStyle>
+   <Icon>
+      <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png </href>
+  </Icon>
+ </IconStyle>
+ </Style>
+ </Placemark>
+ 
+ <Placemark>
+   <name> Corner 3 </name>
+  <description><![CDATA[
+ Corner 3
+
+
+    ]]>
+ </description>
+ <Point>
+   <coordinates>91.18056,27.25865 </coordinates>
+ </Point>
+ <Style id="yellow">
+  <IconStyle>
+   <Icon>
+      <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png </href>
+  </Icon>
+ </IconStyle>
+ </Style>
+ </Placemark>
+ 
+ <Placemark>
+   <name> Corner 4 </name>
+  <description><![CDATA[
+ Corner 4
+
+
+    ]]>
+ </description>
+ <Point>
+   <coordinates>91.17934,27.25891 </coordinates>
+ </Point>
+ <Style id="yellow">
+  <IconStyle>
+   <Icon>
+      <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png </href>
+  </Icon>
+ </IconStyle>
+ </Style>
+ </Placemark>
+ 
+ <Placemark>
+   <name> Corner 5 </name>
+  <description><![CDATA[
+ Corner 5
+
+
+    ]]>
+ </description>
+ <Point>
+   <coordinates>91.1793,27.25905 </coordinates>
+ </Point>
+ <Style id="yellow">
+  <IconStyle>
+   <Icon>
+      <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png </href>
+  </Icon>
+ </IconStyle>
+ </Style>
+ </Placemark>
+ 
+ <Placemark>
+   <name> Corner 6 </name>
+  <description><![CDATA[
+ Corner 6
+
+
+    ]]>
+ </description>
+ <Point>
+   <coordinates>91.17961,27.25926 </coordinates>
+ </Point>
+ <Style id="yellow">
+  <IconStyle>
+   <Icon>
+      <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png </href>
+  </Icon>
+ </IconStyle>
+ </Style>
+ </Placemark>
+ 
+ <Placemark>
+   <name> Corner 7 </name>
+  <description><![CDATA[
+ Corner 7
+
+
+    ]]>
+ </description>
+ <Point>
+   <coordinates>91.17966,27.25985 </coordinates>
+ </Point>
+ <Style id="yellow">
+  <IconStyle>
+   <Icon>
+      <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png </href>
+  </Icon>
+ </IconStyle>
+ </Style>
+ </Placemark>
+ 
+ <Placemark>
+   <name> Corner 8 </name>
+  <description><![CDATA[
+ Corner 8
+
+
+    ]]>
+ </description>
+ <Point>
+   <coordinates>91.17992,27.26014 </coordinates>
+ </Point>
+ <Style id="yellow">
+  <IconStyle>
+   <Icon>
+      <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png </href>
+  </Icon>
+ </IconStyle>
+ </Style>
+ </Placemark>
+ 
+ <Placemark>
+   <name> Corner 9 </name>
+  <description><![CDATA[
+ Corner 9
+
+
+    ]]>
+ </description>
+ <Point>
+   <coordinates>91.18035,27.26033 </coordinates>
+ </Point>
+ <Style id="yellow">
+  <IconStyle>
+   <Icon>
+      <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png </href>
+  </Icon>
+ </IconStyle>
+ </Style>
+ </Placemark>
+ 
+ <Placemark>
+   <name> Corner 10 </name>
+  <description><![CDATA[
+ Corner 10
+
+
+    ]]>
+ </description>
+ <Point>
+   <coordinates>91.18099,27.26028 </coordinates>
+ </Point>
+ <Style id="yellow">
+  <IconStyle>
+   <Icon>
+      <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png </href>
+  </Icon>
+ </IconStyle>
+ </Style>
+ </Placemark>
+ 
+ <Placemark>
+   <name> Corner 11 </name>
+  <description><![CDATA[
+ Corner 11
+
+
+    ]]>
+ </description>
+ <Point>
+   <coordinates>91.18142,27.26015 </coordinates>
+ </Point>
+ <Style id="yellow">
+  <IconStyle>
+   <Icon>
+      <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png </href>
+  </Icon>
+ </IconStyle>
+ </Style>
+ </Placemark>
+ 
+ <Placemark>
+   <name> Corner 12 </name>
+  <description><![CDATA[
+ Corner 12
+
+
+    ]]>
+ </description>
+ <Point>
+   <coordinates>91.18179,27.25888 </coordinates>
+ </Point>
+ <Style id="yellow">
+  <IconStyle>
+   <Icon>
+      <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png </href>
+  </Icon>
+ </IconStyle>
+ </Style>
+ </Placemark>
+ 
+ 
+ 
+ 
+</Document>
+</kml>

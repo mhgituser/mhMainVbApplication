@@ -1,0 +1,6 @@
+Line 391: Class MSDataListLib.DataCombo of control cboItemCode was not a loaded control class.
+Line 409: Class MSDataListLib.DataCombo of control cboCatGrp was not a loaded control class.
+Line 423: Class MSDataListLib.DataCombo of control cboCatGrp was not a loaded control class.
+Line 437: Class MSDataListLib.DataCombo of control txtDesc was not a loaded control class.
+Line 455: Class MSComctlLib.ImageList of control IMG was not a loaded control class.
+Line 493: Class MSComctlLib.Toolbar of control TB was not a loaded control class.

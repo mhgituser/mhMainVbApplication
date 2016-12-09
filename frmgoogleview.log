@@ -1,0 +1,5 @@
+Line 40: Class MSComCtl2.DTPicker of control txtfrmdate was not a loaded control class.
+Line 52: Class MSComCtl2.DTPicker of control txttodate was not a loaded control class.
+Line 120: Class MSDataListLib.DataCombo of control CBOMONITOR was not a loaded control class.
+Line 147: Class MSDataListLib.DataCombo of control CBOFARMER was not a loaded control class.
+Line 174: Class MSDataListLib.DataCombo of control CBOFDCODE was not a loaded control class.

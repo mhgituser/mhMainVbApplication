@@ -1,0 +1,21 @@
+Line 171: Class MSDataListLib.DataCombo of control cbotrnid was not a loaded control class.
+Line 563: Class MSFlexGridLib.MSFlexGrid of control Mygrid was not a loaded control class.
+Line 172: The property name Bindings in cbotrnid is invalid.
+Line 179: The property name _ExtentX in cbotrnid is invalid.
+Line 180: The property name _ExtentY in cbotrnid is invalid.
+Line 181: The property name _Version in cbotrnid is invalid.
+Line 186: The property name ListField in cbotrnid is invalid.
+Line 187: The property name BoundColumn in cbotrnid is invalid.
+Line 188: The property name Text in cbotrnid is invalid.
+Line 570: The property name _ExtentX in Mygrid is invalid.
+Line 571: The property name _ExtentY in Mygrid is invalid.
+Line 572: The property name _Version in Mygrid is invalid.
+Line 573: The property name Rows in Mygrid is invalid.
+Line 574: The property name Cols in Mygrid is invalid.
+Line 575: The property name RowHeightMin in Mygrid is invalid.
+Line 576: The property name ForeColorFixed in Mygrid is invalid.
+Line 577: The property name WordWrap in Mygrid is invalid.
+Line 578: The property name ScrollTrack in Mygrid is invalid.
+Line 579: The property name HighLight in Mygrid is invalid.
+Line 580: The property name AllowUserResizing in Mygrid is invalid.
+Line 582: The property name FormatString in Mygrid is invalid.

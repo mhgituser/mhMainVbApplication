@@ -1,0 +1,55 @@
+#!/bin/sh
+
+## N.B: Modify the VARIABLES and database name as required.
+#Name the script 'rsynccentos.sh' and save in /home/sshuser/cron/
+#cd /home/sshuser/cron/
+#chmod +x rsynccentos.sh
+#./rsynccentos.sh
+
+
+#-----------------------------------------------
+#VARIABLES
+RSYNC=/usr/bin/rsync
+SSH=/usr/bin/ssh
+KEY=~/.ssh/id_rsa
+RUSER=root
+RHOST=206.217.141.114
+RPATH1=/var/www/public_html
+#RPATH2=/home/sshuser/sqldump
+#RPATH3=/etc/httpd/conf
+LPATH1=/var/www
+#LPATH2=/home/sshuser
+#LPATH3=/etc/httpd
+DT=$(date +%d%m%y)
+#END OF VARIABLES
+#-----------------------------------------------
+#
+echo START OF CRON JOB
+#
+#echo Removing old sql files
+#rm -f /home/sshuser/sqldump/*sql
+#echo files removed
+#
+#echo dumping database from remote host and transferring to localhost
+#$SSH -i $KEY $RUSER@$RHOST mysqldump --user=mysqluser --password=mysqlpassword databasename --databases > /home/sshuser/sqldump/databasename.sql
+#echo mysqldump and transfer complete
+#
+echo Start copy of html folder....
+$RSYNC -tav -e "$SSH -i $KEY" $RUSER@$RHOST:$RPATH1 $LPATH1
+echo Copying Completed
+#
+#echo changing directory
+#cd /home/sshuser/sqldump/
+#
+#echo running databasename.sql sql script on localhost server.....
+#mysql --user=mysqluser --password=mysqlpassword databasename < databasename.sql
+#echo database restore complete!
+#
+#echo Archiving todays sqldump folder....
+#tar -cjf /home/sshuser/sqlbackup/sqldump-$DT.tar /home/sshuser/sqldump
+#echo archive completed.
+#
+echo Restarting Services
+service mysqld restart
+service httpd restart
+echo Job Complete.

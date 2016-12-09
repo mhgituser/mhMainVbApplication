@@ -1,0 +1,151 @@
+[Root]
+Most Recent Package=MHV SETUP
+
+
+[Package|MHV SETUP|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=G:\MHV\mhvsetup
+
+[Package|MHV SETUP|Configure DAO ISAMs]
+Applicable=Yes
+Jet 2.x=Yes
+
+[Package|MHV SETUP|Configure DAO ODBC]
+JetWorkspace=Yes
+ODBCDirect=Yes
+
+[Package|MHV SETUP|Files Found]
+
+[Package|MHV SETUP|Files Released]
+
+[Package|MHV SETUP|Missing Dependency Information]
+C:\Users\user\Desktop\package\Support\MSCOMCT2.OCX=
+C:\Windows\System32\msstdfmt.dll=
+C:\Windows\System32\Vsflex7.ocx=
+C:\Users\user\Desktop\package\Support\DBLIST32.OCX=
+C:\Program Files\Common Files\System\ado\msado25.tlb=
+
+[Package|MHV SETUP|Out-of-Date Dependency Information]
+C:\Windows\System32\comdlg32.ocx=
+C:\Windows\System32\MSCOMCTL.OCX=
+
+[Package|MHV SETUP|Files Added]
+
+[Package|MHV SETUP|Files Removed]
+
+[Package|MHV SETUP|Files In Project]
+G:\MHV\prjMHV.exe=Yes
+C:\Windows\System32\msvbvm60.dll=Yes
+C:\Windows\System32\oleaut32.dll=Yes
+C:\Windows\System32\olepro32.dll=Yes
+C:\Windows\System32\asycfilt.dll=Yes
+C:\Windows\System32\stdole2.tlb=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\Program Files\Common Files\System\ado\msado25.tlb=Yes
+C:\Windows\System32\MSCOMCTL.OCX=Yes
+C:\Program Files\Common Files\microsoft shared\DAO\DAO350.DLL=Yes
+C:\Windows\System32\MSJET35.DLL=Yes
+C:\Windows\System32\MSJTER35.DLL=Yes
+C:\Windows\System32\MSJINT35.DLL=Yes
+C:\Windows\System32\vbajet32.dll=Yes
+C:\Windows\System32\expsrv.dll=Yes
+C:\Windows\System32\MSRD2X35.DLL=Yes
+C:\Windows\System32\MSREPL35.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=Yes
+C:\Windows\System32\VB5DB.DLL=Yes
+C:\Windows\System32\DBGRID32.OCX=Yes
+C:\Users\user\Desktop\package\Support\DBLIST32.OCX=Yes
+C:\Windows\System32\Vsflex7.ocx=Yes
+C:\Windows\System32\MSDATGRD.OCX=Yes
+C:\Windows\System32\msstdfmt.dll=Yes
+C:\Windows\System32\MSDATLST.OCX=Yes
+C:\Windows\System32\comdlg32.ocx=Yes
+C:\Windows\System32\MSMASK32.OCX=Yes
+C:\Windows\System32\MSMAPI32.OCX=Yes
+C:\Windows\System32\COMCTL32.OCX=Yes
+C:\Windows\System32\COMCT232.OCX=Yes
+C:\Users\user\Desktop\package\Support\MSCOMCT2.OCX=Yes
+C:\Windows\System32\msrdo20.dll=Yes
+C:\Windows\System32\rdocurs.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\Windows\System32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+
+[Package|MHV SETUP|Configure Registry Files]
+Applicable=No
+
+[Package|MHV SETUP|Configure Remote Servers]
+Applicable=No
+
+[Package|MHV SETUP|Install Locations]
+G:\MHV\prjMHV.exe=$(AppPath)
+C:\Windows\System32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Windows\System32\oleaut32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\olepro32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\asycfilt.dll=$(WinSysPathSysFile)
+C:\Windows\System32\stdole2.tlb=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Common Files\System\ado\msado25.tlb=$(WinSysPath)
+C:\Windows\System32\MSCOMCTL.OCX=$(WinSysPath)
+C:\Program Files\Common Files\microsoft shared\DAO\DAO350.DLL=$(MSDAOPath)
+C:\Windows\System32\MSJET35.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\MSJTER35.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\MSJINT35.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\vbajet32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\expsrv.dll=$(WinSysPathSysFile)
+C:\Windows\System32\MSRD2X35.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\MSREPL35.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\VB5DB.DLL=$(WinSysPath)
+C:\Windows\System32\DBGRID32.OCX=$(WinSysPath)
+C:\Users\user\Desktop\package\Support\DBLIST32.OCX=$(WinSysPath)
+C:\Windows\System32\Vsflex7.ocx=$(WinSysPath)
+C:\Windows\System32\MSDATGRD.OCX=$(WinSysPath)
+C:\Windows\System32\msstdfmt.dll=$(WinSysPath)
+C:\Windows\System32\MSDATLST.OCX=$(WinSysPath)
+C:\Windows\System32\comdlg32.ocx=$(WinSysPath)
+C:\Windows\System32\MSMASK32.OCX=$(WinSysPath)
+C:\Windows\System32\MSMAPI32.OCX=$(WinSysPath)
+C:\Windows\System32\COMCTL32.OCX=$(WinSysPath)
+C:\Windows\System32\COMCT232.OCX=$(WinSysPath)
+C:\Users\user\Desktop\package\Support\MSCOMCT2.OCX=$(WinSysPath)
+C:\Windows\System32\msrdo20.dll=$(WinSysPath)
+C:\Windows\System32\rdocurs.dll=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\Windows\System32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+
+[Package|MHV SETUP|Configure Shared Files]
+Applicable=Yes
+G:\MHV\prjMHV.exe=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+
+[Package|MHV SETUP|Distribution]
+Type=single
+Size=
+Title=MHV SETUP
+
+[Package|MHV SETUP|IconGroups]
+Group0=MHV SETUP
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|MHV SETUP|MHV SETUP]
+Icon1=prjMHV.EXE
+Title1=MHV SETUP
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|MHV SETUP|Package]
+PackageFolder=G:\MHV\mhvsetup
+ProjectFolder=G:\MHV
+ServerSideCab=
+File1=G:\MHV\mhvsetup\setup.exe
+File2=G:\MHV\mhvsetup\Setup.Lst
+File3=G:\MHV\mhvsetup\prjMHV.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz

@@ -1,0 +1,54 @@
+Line 36: Class MSDataListLib.DataCombo of control cboDzongkhag was not a loaded control class.
+Line 64: Class MSDataListLib.DataCombo of control cbogewog was not a loaded control class.
+Line 303: Class MSDataListLib.DataCombo of control cboabsenteeid was not a loaded control class.
+Line 331: Class MSDataListLib.DataCombo of control CBOCARETAKER was not a loaded control class.
+Line 696: Class MSComCtl2.DTPicker of control TXTCONTRACTDATE was not a loaded control class.
+Line 754: Class MSComctlLib.ImageList of control IMG was not a loaded control class.
+Line 796: Class MSComctlLib.Toolbar of control TB was not a loaded control class.
+Line 37: The property name Bindings in cboDzongkhag is invalid.
+Line 44: The property name _ExtentX in cboDzongkhag is invalid.
+Line 45: The property name _ExtentY in cboDzongkhag is invalid.
+Line 46: The property name _Version in cboDzongkhag is invalid.
+Line 51: The property name ListField in cboDzongkhag is invalid.
+Line 52: The property name BoundColumn in cboDzongkhag is invalid.
+Line 53: The property name Text in cboDzongkhag is invalid.
+Line 65: The property name Bindings in cbogewog is invalid.
+Line 72: The property name _ExtentX in cbogewog is invalid.
+Line 73: The property name _ExtentY in cbogewog is invalid.
+Line 74: The property name _Version in cbogewog is invalid.
+Line 79: The property name ListField in cbogewog is invalid.
+Line 80: The property name BoundColumn in cbogewog is invalid.
+Line 81: The property name Text in cbogewog is invalid.
+Line 304: The property name Bindings in cboabsenteeid is invalid.
+Line 311: The property name _ExtentX in cboabsenteeid is invalid.
+Line 312: The property name _ExtentY in cboabsenteeid is invalid.
+Line 313: The property name _Version in cboabsenteeid is invalid.
+Line 318: The property name ListField in cboabsenteeid is invalid.
+Line 319: The property name BoundColumn in cboabsenteeid is invalid.
+Line 320: The property name Text in cboabsenteeid is invalid.
+Line 332: The property name Bindings in CBOCARETAKER is invalid.
+Line 339: The property name _ExtentX in CBOCARETAKER is invalid.
+Line 340: The property name _ExtentY in CBOCARETAKER is invalid.
+Line 341: The property name _Version in CBOCARETAKER is invalid.
+Line 345: The property name ListField in CBOCARETAKER is invalid.
+Line 346: The property name BoundColumn in CBOCARETAKER is invalid.
+Line 347: The property name Text in CBOCARETAKER is invalid.
+Line 702: The property name _ExtentX in TXTCONTRACTDATE is invalid.
+Line 703: The property name _ExtentY in TXTCONTRACTDATE is invalid.
+Line 704: The property name _Version in TXTCONTRACTDATE is invalid.
+Line 714: The property name Format in TXTCONTRACTDATE is invalid.
+Line 715: The property name CurrentDate in TXTCONTRACTDATE is invalid.
+Line 757: The property name _ExtentX in IMG is invalid.
+Line 758: The property name _ExtentY in IMG is invalid.
+Line 760: The property name ImageWidth in IMG is invalid.
+Line 761: The property name ImageHeight in IMG is invalid.
+Line 762: The property name MaskColor in IMG is invalid.
+Line 763: The property name _Version in IMG is invalid.
+Line 794: The property name Images in IMG is invalid.
+Line 803: The property name _ExtentX in TB is invalid.
+Line 804: The property name _ExtentY in TB is invalid.
+Line 805: The property name ButtonWidth in TB is invalid.
+Line 806: The property name ButtonHeight in TB is invalid.
+Line 808: The property name ImageList in TB is invalid.
+Line 809: The property name _Version in TB is invalid.
+Line 871: The property name Buttons in TB is invalid.

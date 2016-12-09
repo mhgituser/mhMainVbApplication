@@ -1,0 +1,12 @@
+Line 30: Class MSComCtl2.DTPicker of control txtPHDate was not a loaded control class.
+Line 87: Class MSComctlLib.StatusBar of control sT1 was not a loaded control class.
+Line 113: Class MSComCtl2.DTPicker of control LBLnOW was not a loaded control class.
+Line 155: Class MSComCtl2.DTPicker of control txtChDate was not a loaded control class.
+Line 387: Class MSFlexGridLib.MSFlexGrid of control ItemGrd was not a loaded control class.
+Line 429: Class MSDataListLib.DataCombo of control CboBillNo was not a loaded control class.
+Line 447: Class MSDataListLib.DataCombo of control CboPO was not a loaded control class.
+Line 467: Class MSDataListLib.DataCombo of control DBcboParty was not a loaded control class.
+Line 485: Class MSDataListLib.DataCombo of control DBPH was not a loaded control class.
+Line 503: Class MSDataListLib.DataCombo of control lblsupl was not a loaded control class.
+Line 521: Class MSComctlLib.ImageList of control IMG was not a loaded control class.
+Line 559: Class MSComctlLib.Toolbar of control TB was not a loaded control class.

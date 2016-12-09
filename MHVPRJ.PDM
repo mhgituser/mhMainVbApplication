@@ -1,0 +1,427 @@
+[Root]
+Most Recent Package=MHV
+
+
+[Package|MHV Standard Setup Package|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=G:\MHV-NEW - MDIPIC\mhvsetup
+
+[Package|MHV Standard Setup Package|Configure DAO ISAMs]
+Applicable=No
+
+[Package|MHV Standard Setup Package|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|MHV Standard Setup Package|Files Found]
+
+[Package|MHV Standard Setup Package|Files Released]
+U2FXLS.DLL=
+U2FWORDW.DLL=
+U2FWKS.DLL=
+U2FTEXT.DLL=
+U2FSEPV.DLL=
+U2FRTF.DLL=
+U2FREC.DLL=
+U2FHTML.DLL=
+U2FDIF.DLL=
+U2FCR.DLL=
+U2DMAPI.DLL=
+CRXLAT32.DLL=
+AcroPDF.dll=
+
+[Package|MHV Standard Setup Package|Missing Dependency Information]
+C:\Windows\System32\Vsflex7u.ocx=
+G:\cpmmdi\Stevemac\VB\Controls\cIcoMenu\Release\cPopMenu.ocx=
+C:\Windows\System32\arviewer.ocx=
+C:\Windows\System32\actrpt.dll=
+G:\MHV-NEW\mhvsetup\Support\MSDATLST.OCX=
+G:\MHV-NEW\mhvsetup\Support\MSCOMCT2.OCX=
+C:\Windows\System32\VSFLEX7.OCX=
+C:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\pdfexpt.dll=
+C:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\ARVIEW2.OCX=
+C:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\arpro2.dll=
+C:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.DLL=
+C:\Program Files\Microsoft Office\Office12\EXCEL.EXE=
+C:\Windows\System32\msstdfmt.dll=
+C:\Program Files\Common Files\System\ado\msado25.tlb=
+
+[Package|MHV Standard Setup Package|Out-of-Date Dependency Information]
+C:\Windows\System32\crystl32.ocx=
+C:\Windows\System32\comdlg32.ocx=
+C:\Windows\System32\richtx32.ocx=
+C:\Windows\System32\MSFLXGRD.OCX=
+C:\Windows\System32\MSCOMCTL.OCX=
+
+[Package|MHV Standard Setup Package|Files Added]
+
+[Package|MHV Standard Setup Package|Files Removed]
+
+[Package|MHV Standard Setup Package|Files In Project]
+G:\MHV-NEW - MDIPIC\MHV.exe=Yes
+C:\Windows\System32\msvbvm60.dll=Yes
+C:\Windows\System32\oleaut32.dll=Yes
+C:\Windows\System32\olepro32.dll=Yes
+C:\Windows\System32\asycfilt.dll=Yes
+C:\Windows\System32\stdole2.tlb=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\Program Files\Common Files\DESIGNER\MSDERUN.DLL=Yes
+C:\Program Files\Common Files\System\ado\msado25.tlb=Yes
+C:\Windows\System32\MSBIND.DLL=Yes
+C:\Windows\System32\msstdfmt.dll=Yes
+C:\Program Files\Microsoft Office\Office12\EXCEL.EXE=Yes
+C:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.DLL=Yes
+C:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\arpro2.dll=Yes
+C:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\ARVIEW2.OCX=Yes
+C:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\pdfexpt.dll=Yes
+C:\Windows\System32\VSFLEX7.OCX=Yes
+G:\MHV-NEW\mhvsetup\Support\MSCOMCT2.OCX=Yes
+C:\Windows\System32\MSCOMCTL.OCX=Yes
+C:\Windows\System32\MSADODC.OCX=Yes
+G:\MHV-NEW\mhvsetup\Support\MSDATLST.OCX=Yes
+C:\Windows\System32\MSFLXGRD.OCX=Yes
+C:\Windows\System32\richtx32.ocx=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\RICHED32.DLL=Yes
+C:\Windows\System32\comdlg32.ocx=Yes
+C:\Windows\System32\MSMAPI32.OCX=Yes
+C:\Windows\System32\COMCTL32.OCX=Yes
+C:\Windows\System32\crystl32.ocx=Yes
+C:\Windows\System32\crpe32.dll=Yes
+C:\Windows\System32\implode.dll=Yes
+C:\Windows\System32\pg32.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\CO2C40EN.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT20.DLL=Yes
+C:\Windows\System32\p2bbnd.dll=Yes
+C:\Windows\System32\p2bdao.dll=Yes
+C:\Windows\System32\p2ctdao.dll=Yes
+C:\Windows\System32\p2irdao.dll=Yes
+C:\Windows\System32\p2sodbc.dll=Yes
+C:\Windows\System32\u2ddisk.dll=Yes
+C:\Windows\System32\actrpt.dll=Yes
+C:\Windows\System32\arviewer.ocx=Yes
+G:\cpmmdi\Stevemac\VB\Controls\cIcoMenu\Release\cPopMenu.ocx=Yes
+C:\Windows\System32\Vsflex7u.ocx=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\Windows\System32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+
+[Package|MHV Standard Setup Package|Configure Registry Files]
+Applicable=No
+
+[Package|MHV Standard Setup Package|Configure Remote Servers]
+Applicable=No
+
+[Package|MHV Standard Setup Package|Install Locations]
+G:\MHV-NEW - MDIPIC\MHV.exe=$(AppPath)
+C:\Windows\System32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Windows\System32\oleaut32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\olepro32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\asycfilt.dll=$(WinSysPathSysFile)
+C:\Windows\System32\stdole2.tlb=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Common Files\DESIGNER\MSDERUN.DLL=$(CommonFiles)\designer
+C:\Program Files\Common Files\System\ado\msado25.tlb=$(WinSysPath)
+C:\Windows\System32\MSBIND.DLL=$(WinSysPath)
+C:\Windows\System32\msstdfmt.dll=$(WinSysPath)
+C:\Program Files\Microsoft Office\Office12\EXCEL.EXE=$(AppPath)
+C:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.DLL=$(AppPath)
+C:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\arpro2.dll=$(WinSysPath)
+C:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\ARVIEW2.OCX=$(WinSysPath)
+C:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\pdfexpt.dll=$(WinSysPath)
+C:\Windows\System32\VSFLEX7.OCX=$(WinSysPath)
+G:\MHV-NEW\mhvsetup\Support\MSCOMCT2.OCX=$(WinSysPath)
+C:\Windows\System32\MSCOMCTL.OCX=$(WinSysPath)
+C:\Windows\System32\MSADODC.OCX=$(WinSysPath)
+G:\MHV-NEW\mhvsetup\Support\MSDATLST.OCX=$(WinSysPath)
+C:\Windows\System32\MSFLXGRD.OCX=$(WinSysPath)
+C:\Windows\System32\richtx32.ocx=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\RICHED32.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\comdlg32.ocx=$(WinSysPath)
+C:\Windows\System32\MSMAPI32.OCX=$(WinSysPath)
+C:\Windows\System32\COMCTL32.OCX=$(WinSysPath)
+C:\Windows\System32\crystl32.ocx=$(WinSysPath)
+C:\Windows\System32\crpe32.dll=$(WinSysPath)
+C:\Windows\System32\implode.dll=$(WinSysPath)
+C:\Windows\System32\pg32.dll=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\CO2C40EN.DLL=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT20.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\p2bbnd.dll=$(WinSysPath)
+C:\Windows\System32\p2bdao.dll=$(WinSysPath)
+C:\Windows\System32\p2ctdao.dll=$(WinSysPath)
+C:\Windows\System32\p2irdao.dll=$(WinSysPath)
+C:\Windows\System32\p2sodbc.dll=$(WinSysPath)
+C:\Windows\System32\u2ddisk.dll=$(WinPath)\Crystal
+C:\Windows\System32\actrpt.dll=$(WinSysPath)
+C:\Windows\System32\arviewer.ocx=$(WinSysPath)
+G:\cpmmdi\Stevemac\VB\Controls\cIcoMenu\Release\cPopMenu.ocx=$(WinSysPath)
+C:\Windows\System32\Vsflex7u.ocx=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\Windows\System32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+
+[Package|MHV Standard Setup Package|Configure Shared Files]
+Applicable=Yes
+G:\MHV-NEW - MDIPIC\MHV.exe=Yes
+C:\Program Files\Microsoft Office\Office12\EXCEL.EXE=Yes
+C:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+
+[Package|MHV Standard Setup Package|Distribution]
+Type=single
+Size=
+Title=MHV
+
+[Package|MHV Standard Setup Package|IconGroups]
+Group0=MHV
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|MHV Standard Setup Package|MHV]
+Icon1=MHV.exe
+Title1=MHV
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|MHV Standard Setup Package|Package]
+PackageFolder=G:\MHV-NEW - MDIPIC\mhvsetup
+ProjectFolder=G:\MHV-NEW - MDIPIC
+ServerSideCab=
+File1=G:\MHV-NEW - MDIPIC\mhvsetup\setup.exe
+File2=G:\MHV-NEW - MDIPIC\mhvsetup\Setup.Lst
+File3=G:\MHV-NEW - MDIPIC\mhvsetup\MHV.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+
+[Package|MHV|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=G:\MHVMAIN\setup
+
+[Package|MHV|Configure DAO ISAMs]
+Applicable=No
+
+[Package|MHV|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|MHV|Files Found]
+
+[Package|MHV|Files Released]
+U2FXLS.DLL=
+U2FWORDW.DLL=
+U2FWKS.DLL=
+U2FTEXT.DLL=
+U2FSEPV.DLL=
+U2FRTF.DLL=
+U2FREC.DLL=
+U2FHTML.DLL=
+U2FDIF.DLL=
+U2FCR.DLL=
+U2DMAPI.DLL=
+CRXLAT32.DLL=
+AcroPDF.dll=
+
+[Package|MHV|Missing Dependency Information]
+C:\Windows\System32\Vsflex7u.ocx=
+G:\cpmmdi\Stevemac\VB\Controls\cIcoMenu\Release\cPopMenu.ocx=
+C:\Windows\System32\arviewer.ocx=
+C:\Windows\System32\actrpt.dll=
+G:\MHV-NEW\mhvsetup\Support\MSDATLST.OCX=
+G:\MHV-NEW\mhvsetup\Support\MSCOMCT2.OCX=
+C:\Windows\System32\VSFLEX7.OCX=
+C:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\pdfexpt.dll=
+C:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\ARVIEW2.OCX=
+C:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\arpro2.dll=
+C:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.DLL=
+C:\Program Files\Microsoft Office\Office12\EXCEL.EXE=
+C:\Windows\System32\msstdfmt.dll=
+C:\Program Files\Common Files\System\ado\msado25.tlb=
+G:\S-CODE\BHM_INV\KuenSetup\Support\crystl32.ocx=
+G:\S-CODE\BFPLCHANGES\BFPLSETUP\Support\COMCTL32.OCX=
+G:\MHV-NEW\mhvsetup\Support\MSMAPI32.OCX=
+G:\MHV-NEW\mhvsetup\Support\comdlg32.ocx=
+G:\MHV-NEW\mhvsetup\Support\richtx32.ocx=
+G:\MHV-NEW\mhvsetup\Support\MSFLXGRD.OCX=
+G:\MHV-NEW\mhvsetup\Support\MSADODC.OCX=
+G:\MHV-NEW\mhvsetup\Support\MSCOMCTL.OCX=
+C:\Users\user\Desktop\package\Support\MSCOMCT2.OCX=
+C:\Program Files\EASendMail\EASendMailObj.dll=
+C:\Program Files\Chilkat Software Inc\Chilkat Mail ActiveX\ChilkatMail2.dll=
+C:\cruflbcs - Copy\cruflBCS.dll=
+C:\Windows\System32\ieframe.dll=
+C:\Windows\System32\mshtml.tlb=
+C:\Windows\System32\cdosys.dll=
+G:\MHV-NEW\mhvsetup\Support\Vsflex7u.ocx=
+G:\MHV-NEW\mhvsetup\Support\arviewer.ocx=
+G:\MHV-NEW\mhvsetup\Support\VSFLEX7.OCX=
+G:\MHV-NEW\mhvsetup\Support\ARVIEW2.OCX=
+
+[Package|MHV|Out-of-Date Dependency Information]
+C:\Windows\System32\crystl32.ocx=
+C:\Windows\System32\comdlg32.ocx=
+C:\Windows\System32\richtx32.ocx=
+C:\Windows\System32\MSFLXGRD.OCX=
+C:\Windows\System32\MSCOMCTL.OCX=
+
+[Package|MHV|Files Added]
+
+[Package|MHV|Files Removed]
+
+[Package|MHV|Files In Project]
+C:\Windows\System32\msvbvm60.dll=Yes
+C:\Windows\System32\oleaut32.dll=Yes
+C:\Windows\System32\olepro32.dll=Yes
+C:\Windows\System32\asycfilt.dll=Yes
+C:\Windows\System32\stdole2.tlb=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\Program Files\Common Files\DESIGNER\MSDERUN.DLL=Yes
+C:\Program Files\Common Files\System\ado\msado25.tlb=Yes
+C:\Windows\System32\MSBIND.DLL=Yes
+C:\Windows\System32\msstdfmt.dll=Yes
+C:\Program Files\Microsoft Office\Office12\EXCEL.EXE=Yes
+C:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.DLL=Yes
+C:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\arpro2.dll=Yes
+C:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\pdfexpt.dll=Yes
+G:\MHV-NEW\mhvsetup\Support\MSDATLST.OCX=Yes
+C:\Windows\System32\actrpt.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\Windows\System32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+G:\MHVMAIN\MHV-NEW\MHV.exe=Yes
+G:\MHV-NEW\mhvsetup\Support\ARVIEW2.OCX=Yes
+G:\MHV-NEW\mhvsetup\Support\VSFLEX7.OCX=Yes
+G:\MHV-NEW\mhvsetup\Support\arviewer.ocx=Yes
+G:\MHV-NEW\mhvsetup\Support\Vsflex7u.ocx=Yes
+C:\Windows\System32\cdosys.dll=Yes
+C:\Windows\System32\mshtml.tlb=Yes
+C:\Windows\System32\ieframe.dll=Yes
+C:\cruflbcs - Copy\cruflBCS.dll=Yes
+C:\Program Files\Chilkat Software Inc\Chilkat Mail ActiveX\ChilkatMail2.dll=Yes
+C:\Program Files\EASendMail\EASendMailObj.dll=Yes
+C:\Users\user\Desktop\package\Support\MSCOMCT2.OCX=Yes
+G:\MHV-NEW\mhvsetup\Support\MSCOMCTL.OCX=Yes
+G:\MHV-NEW\mhvsetup\Support\MSADODC.OCX=Yes
+G:\MHV-NEW\mhvsetup\Support\MSFLXGRD.OCX=Yes
+G:\MHV-NEW\mhvsetup\Support\richtx32.ocx=Yes
+G:\MHV-NEW\mhvsetup\Support\comdlg32.ocx=Yes
+G:\MHV-NEW\mhvsetup\Support\MSMAPI32.OCX=Yes
+G:\S-CODE\BFPLCHANGES\BFPLSETUP\Support\COMCTL32.OCX=Yes
+G:\S-CODE\BHM_INV\KuenSetup\Support\crystl32.ocx=Yes
+C:\Windows\System32\DBLIST32.OCX=Yes
+
+[Package|MHV|Configure Registry Files]
+Applicable=No
+
+[Package|MHV|Configure Remote Servers]
+Applicable=No
+
+[Package|MHV|Install Locations]
+G:\MHV-NEW - MDIPIC\MHV.exe=$(AppPath)
+C:\Windows\System32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Windows\System32\oleaut32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\olepro32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\asycfilt.dll=$(WinSysPathSysFile)
+C:\Windows\System32\stdole2.tlb=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Common Files\DESIGNER\MSDERUN.DLL=$(CommonFiles)\designer
+C:\Program Files\Common Files\System\ado\msado25.tlb=$(WinSysPath)
+C:\Windows\System32\MSBIND.DLL=$(WinSysPath)
+C:\Windows\System32\msstdfmt.dll=$(WinSysPath)
+C:\Program Files\Microsoft Office\Office12\EXCEL.EXE=$(AppPath)
+C:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.DLL=$(AppPath)
+C:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\arpro2.dll=$(WinSysPath)
+C:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\ARVIEW2.OCX=$(WinSysPath)
+C:\Program Files\Common Files\Data Dynamics\ActiveReports Pro\pdfexpt.dll=$(WinSysPath)
+C:\Windows\System32\VSFLEX7.OCX=$(WinSysPath)
+G:\MHV-NEW\mhvsetup\Support\MSCOMCT2.OCX=$(WinSysPath)
+C:\Windows\System32\MSCOMCTL.OCX=$(WinSysPath)
+C:\Windows\System32\MSADODC.OCX=$(WinSysPath)
+G:\MHV-NEW\mhvsetup\Support\MSDATLST.OCX=$(WinSysPath)
+C:\Windows\System32\MSFLXGRD.OCX=$(WinSysPath)
+C:\Windows\System32\richtx32.ocx=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\RICHED32.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\comdlg32.ocx=$(WinSysPath)
+C:\Windows\System32\MSMAPI32.OCX=$(WinSysPath)
+C:\Windows\System32\COMCTL32.OCX=$(WinSysPath)
+C:\Windows\System32\crystl32.ocx=$(WinSysPath)
+C:\Windows\System32\crpe32.dll=$(WinSysPath)
+C:\Windows\System32\implode.dll=$(WinSysPath)
+C:\Windows\System32\pg32.dll=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\CO2C40EN.DLL=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT20.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\p2bbnd.dll=$(WinSysPath)
+C:\Windows\System32\p2bdao.dll=$(WinSysPath)
+C:\Windows\System32\p2ctdao.dll=$(WinSysPath)
+C:\Windows\System32\p2irdao.dll=$(WinSysPath)
+C:\Windows\System32\p2sodbc.dll=$(WinSysPath)
+C:\Windows\System32\u2ddisk.dll=$(WinPath)\Crystal
+C:\Windows\System32\actrpt.dll=$(WinSysPath)
+C:\Windows\System32\arviewer.ocx=$(WinSysPath)
+G:\cpmmdi\Stevemac\VB\Controls\cIcoMenu\Release\cPopMenu.ocx=$(WinSysPath)
+C:\Windows\System32\Vsflex7u.ocx=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\Windows\System32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+G:\MHVMAIN\MHV-NEW\MHV.exe=$(AppPath)
+G:\MHV-NEW\mhvsetup\Support\ARVIEW2.OCX=$(WinSysPath)
+G:\MHV-NEW\mhvsetup\Support\VSFLEX7.OCX=$(WinSysPath)
+G:\MHV-NEW\mhvsetup\Support\arviewer.ocx=$(WinSysPath)
+G:\MHV-NEW\mhvsetup\Support\Vsflex7u.ocx=$(WinSysPath)
+C:\Windows\System32\cdosys.dll=$(WinSysPath)
+C:\Windows\System32\mshtml.tlb=$(WinSysPath)
+C:\Windows\System32\ieframe.dll=$(WinSysPath)
+C:\cruflbcs - Copy\cruflBCS.dll=$(WinSysPath)
+C:\Program Files\Chilkat Software Inc\Chilkat Mail ActiveX\ChilkatMail2.dll=$(WinSysPath)
+C:\Program Files\EASendMail\EASendMailObj.dll=$(WinSysPath)
+C:\Users\user\Desktop\package\Support\MSCOMCT2.OCX=$(WinSysPath)
+G:\MHV-NEW\mhvsetup\Support\MSCOMCTL.OCX=$(WinSysPath)
+G:\MHV-NEW\mhvsetup\Support\MSADODC.OCX=$(WinSysPath)
+G:\MHV-NEW\mhvsetup\Support\MSFLXGRD.OCX=$(WinSysPath)
+G:\MHV-NEW\mhvsetup\Support\richtx32.ocx=$(WinSysPath)
+G:\MHV-NEW\mhvsetup\Support\comdlg32.ocx=$(WinSysPath)
+G:\MHV-NEW\mhvsetup\Support\MSMAPI32.OCX=$(WinSysPath)
+G:\S-CODE\BFPLCHANGES\BFPLSETUP\Support\COMCTL32.OCX=$(WinSysPath)
+G:\S-CODE\BHM_INV\KuenSetup\Support\crystl32.ocx=$(WinSysPath)
+C:\Windows\System32\DBLIST32.OCX=$(WinSysPath)
+
+[Package|MHV|Configure Shared Files]
+Applicable=Yes
+G:\MHV-NEW - MDIPIC\MHV.exe=Yes
+C:\Program Files\Microsoft Office\Office12\EXCEL.EXE=Yes
+C:\Program Files\Microsoft SQL Server\80\Tools\Binn\SQLDMO.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+G:\MHVMAIN\MHV-NEW\MHV.exe=Yes
+
+[Package|MHV|Distribution]
+Type=single
+Size=
+Title=MHV
+
+[Package|MHV|IconGroups]
+Group0=MHV
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|MHV|MHV]
+Icon1=MHV.exe
+Title1=MHV
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|MHV|Package]
+PackageFolder=G:\MHVMAIN\setup
+ProjectFolder=G:\MHVMAIN\MHV-NEW
+ServerSideCab=
+File1=G:\MHVMAIN\setup\setup.exe
+File2=G:\MHVMAIN\setup\Setup.Lst
+File3=G:\MHVMAIN\setup\MHV.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
