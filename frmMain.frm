@@ -29,12 +29,9 @@ Begin VB.MDIForm frmMain
             MinWidth        =   1058
             Text            =   "USER"
             TextSave        =   "USER"
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel2 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
-            TextSave        =   ""
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel3 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
@@ -42,23 +39,17 @@ Begin VB.MDIForm frmMain
             MinWidth        =   1587
             Text            =   "SERVER:"
             TextSave        =   "SERVER:"
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel4 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
-            TextSave        =   ""
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel5 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Text            =   "LOCATION"
             TextSave        =   "LOCATION"
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel6 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
-            TextSave        =   ""
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
       EndProperty

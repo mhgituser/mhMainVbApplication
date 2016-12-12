@@ -385,9 +385,10 @@ Screen.MousePointer = vbHourglass
                              macre = rs!area
                              mcrate = rs!crateno
                              
+                             
                              If mtotalplant >= 175 Then
-                                excel_sheet.cells(i, 30) = 1
-                                excel_sheet.cells(i, 31) = 1
+                                excel_sheet.cells(i, 30) = 1 ' water cane
+                                excel_sheet.cells(i, 31) = 1 'hose pipe
                              Else
                                 excel_sheet.cells(i, 30) = 0
                                 excel_sheet.cells(i, 31) = 0
@@ -398,15 +399,17 @@ Screen.MousePointer = vbHourglass
                              
                              If mtotalplant >= 175 And mcrate >= 5 Then
                                 If macre >= 0.5 Then
-                                   excel_sheet.cells(i, 32) = Round(mtotalplant / 350)
-                                   anet = Round(mtotalplant / 350)
+                                Dim te As Integer
+                                Dim aa As Integer
+                                                                  
+                                   excel_sheet.cells(i, 32) = CInt(Round((mtotalplant / 350) + 0.0000001))  'agronet
                                 Else
-                                   excel_sheet.cells(i, 32) = Round(mcrate / 5)
-                                   anet = Round(mcrate / 5)
+                                   excel_sheet.cells(i, 32) = CInt(Round((mcrate / 5) + 0.0000001)) 'agronet
+                                   
                                 End If
                              Else
                                   
-                                    excel_sheet.cells(i, 32) = 0
+                                    excel_sheet.cells(i, 32) = 0 'agronet
                                    
                              End If
                             
@@ -414,9 +417,9 @@ Screen.MousePointer = vbHourglass
                             
                             If mtotalplant >= 175 And mcrate >= 5 Then
                                 If macre >= 0.5 Then
-                                   excel_sheet.cells(i, 33) = anet * 200
+                                   excel_sheet.cells(i, 33) = Val(excel_sheet.cells(i, 32)) * 200
                                 Else
-                                   excel_sheet.cells(i, 33) = anet * 200
+                                   excel_sheet.cells(i, 33) = Val(excel_sheet.cells(i, 32)) * 200
                                 End If
                              Else
                                     excel_sheet.cells(i, 33) = 0
@@ -516,7 +519,7 @@ Screen.MousePointer = vbHourglass
                                 .Orientation = 0
                                 .AddIndent = False
                                 .IndentLevel = 0
-                                .shrinkToFit = False
+                                .ShrinkToFit = False
                                 .ReadingOrder = xlContext
                                 .MergeCells = True
                             End With
@@ -539,7 +542,7 @@ Screen.MousePointer = vbHourglass
                                 .Orientation = 0
                                 .AddIndent = False
                                 .IndentLevel = 0
-                                .shrinkToFit = False
+                                .ShrinkToFit = False
                                 .ReadingOrder = xlContext
                                 .MergeCells = True
                             End With
@@ -590,7 +593,7 @@ Screen.MousePointer = vbHourglass
                                 .Orientation = 0
                                 .AddIndent = False
                                 .IndentLevel = 0
-                                .shrinkToFit = False
+                                .ShrinkToFit = False
                                 .ReadingOrder = xlContext
                                 .MergeCells = True
                             End With
@@ -613,7 +616,7 @@ Screen.MousePointer = vbHourglass
                                 .Orientation = 0
                                 .AddIndent = False
                                 .IndentLevel = 0
-                                .shrinkToFit = False
+                                .ShrinkToFit = False
                                 .ReadingOrder = xlContext
                                 .MergeCells = True
                             End With
@@ -634,7 +637,7 @@ Screen.MousePointer = vbHourglass
                                 .Orientation = 0
                                 .AddIndent = False
                                 .IndentLevel = 0
-                                .shrinkToFit = False
+                                .ShrinkToFit = False
                                 .ReadingOrder = xlContext
                                 .MergeCells = True
                             End With
@@ -654,7 +657,7 @@ Screen.MousePointer = vbHourglass
                                 .Orientation = 0
                                 .AddIndent = False
                                 .IndentLevel = 0
-                                .shrinkToFit = False
+                                .ShrinkToFit = False
                                 .ReadingOrder = xlContext
                                 .MergeCells = True
                             End With
@@ -674,7 +677,7 @@ Screen.MousePointer = vbHourglass
                                 .Orientation = 0
                                 .AddIndent = False
                                 .IndentLevel = 0
-                                .shrinkToFit = False
+                                .ShrinkToFit = False
                                 .ReadingOrder = xlContext
                                 .MergeCells = True
                             End With
@@ -713,7 +716,7 @@ End With
 
 
 excel_sheet.Columns("A:A").Select
- excel_app.selection.columnWidth = 3.57
+ excel_app.selection.ColumnWidth = 3.57
 With excel_app.selection
 .HorizontalAlignment = xlCenter
 .VerticalAlignment = xlCenter
@@ -723,7 +726,7 @@ End With
 
 
     excel_sheet.Columns("b:d").Select
- excel_app.selection.columnWidth = 14.86
+ excel_app.selection.ColumnWidth = 14.86
 With excel_app.selection
 .HorizontalAlignment = xlCenter
 .VerticalAlignment = xlCenter
@@ -735,7 +738,7 @@ End With
   
 
 excel_sheet.Columns("e:f").Select
- excel_app.selection.columnWidth = 17
+ excel_app.selection.ColumnWidth = 17
 With excel_app.selection
 .HorizontalAlignment = xlCenter
 .VerticalAlignment = xlCenter
@@ -745,7 +748,7 @@ End With
 
 
 excel_sheet.Columns("g:Y").Select
- excel_app.selection.columnWidth = 8
+ excel_app.selection.ColumnWidth = 8
 With excel_app.selection
 .HorizontalAlignment = xlCenter
 .VerticalAlignment = xlCenter
@@ -754,7 +757,7 @@ With excel_app.selection
 End With
 
 excel_sheet.Columns("Z:Z").Select
- excel_app.selection.columnWidth = 7
+ excel_app.selection.ColumnWidth = 7
 With excel_app.selection
 .HorizontalAlignment = xlCenter
 .VerticalAlignment = xlCenter
