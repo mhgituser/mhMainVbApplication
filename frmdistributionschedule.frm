@@ -134,7 +134,7 @@ Begin VB.Form frmdistributionschedule
          Height          =   315
          ItemData        =   "frmdistributionschedule.frx":246A
          Left            =   4920
-         List            =   "frmdistributionschedule.frx":247D
+         List            =   "frmdistributionschedule.frx":2483
          TabIndex        =   22
          Top             =   240
          Width           =   1215
@@ -142,9 +142,9 @@ Begin VB.Form frmdistributionschedule
       Begin VB.ComboBox cbomnth 
          Appearance      =   0  'Flat
          Height          =   315
-         ItemData        =   "frmdistributionschedule.frx":249F
+         ItemData        =   "frmdistributionschedule.frx":24B1
          Left            =   6840
-         List            =   "frmdistributionschedule.frx":24C7
+         List            =   "frmdistributionschedule.frx":24D9
          TabIndex        =   21
          Top             =   240
          Width           =   1335
@@ -162,14 +162,14 @@ Begin VB.Form frmdistributionschedule
          EndProperty
          Height          =   735
          Left            =   8280
-         Picture         =   "frmdistributionschedule.frx":2507
+         Picture         =   "frmdistributionschedule.frx":2519
          Style           =   1  'Graphical
          TabIndex        =   20
          Top             =   600
          Width           =   1215
       End
       Begin MSDataListLib.DataCombo cbotrnid 
-         Bindings        =   "frmdistributionschedule.frx":2DD1
+         Bindings        =   "frmdistributionschedule.frx":2DE3
          DataField       =   "ItemCode"
          Height          =   360
          Left            =   840
@@ -275,7 +275,6 @@ Begin VB.Form frmdistributionschedule
       Left            =   4080
       TabIndex        =   12
       Top             =   840
-      Visible         =   0   'False
       Width           =   975
    End
    Begin VB.TextBox txtindecator 
@@ -327,7 +326,7 @@ Begin VB.Form frmdistributionschedule
       EndProperty
       Height          =   735
       Left            =   10080
-      Picture         =   "frmdistributionschedule.frx":2DE6
+      Picture         =   "frmdistributionschedule.frx":2DF8
       Style           =   1  'Graphical
       TabIndex        =   8
       Top             =   9120
@@ -347,7 +346,7 @@ Begin VB.Form frmdistributionschedule
       EndProperty
       Height          =   735
       Left            =   8400
-      Picture         =   "frmdistributionschedule.frx":3AB0
+      Picture         =   "frmdistributionschedule.frx":3AC2
       Style           =   1  'Graphical
       TabIndex        =   7
       Top             =   9120
@@ -453,9 +452,9 @@ Begin VB.Form frmdistributionschedule
             Strikethrough   =   0   'False
          EndProperty
          Height          =   3660
-         ItemData        =   "frmdistributionschedule.frx":425A
+         ItemData        =   "frmdistributionschedule.frx":426C
          Left            =   3600
-         List            =   "frmdistributionschedule.frx":425C
+         List            =   "frmdistributionschedule.frx":426E
          Style           =   1  'Checkbox
          TabIndex        =   29
          Top             =   600
@@ -508,7 +507,7 @@ Begin VB.Form frmdistributionschedule
          EndProperty
          Height          =   735
          Left            =   1680
-         Picture         =   "frmdistributionschedule.frx":425E
+         Picture         =   "frmdistributionschedule.frx":4270
          Style           =   1  'Graphical
          TabIndex        =   4
          Top             =   5160
@@ -528,7 +527,7 @@ Begin VB.Form frmdistributionschedule
          EndProperty
          Height          =   735
          Left            =   120
-         Picture         =   "frmdistributionschedule.frx":4F28
+         Picture         =   "frmdistributionschedule.frx":4F3A
          Style           =   1  'Graphical
          TabIndex        =   3
          Top             =   5160
@@ -579,7 +578,7 @@ Begin VB.Form frmdistributionschedule
       HighLight       =   0
       AllowUserResizing=   3
       Appearance      =   0
-      FormatString    =   $"frmdistributionschedule.frx":5692
+      FormatString    =   $"frmdistributionschedule.frx":56A4
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial"
          Size            =   8.25
@@ -760,7 +759,7 @@ End Sub
 
 Private Sub cmdload_Click()
 
-mygrid.Rows = 5
+mygrid.rows = 5
 If Operation = "ADD" Then
 Frame1.Visible = True
 txtindecator.Text = ""
@@ -855,7 +854,7 @@ txtdno.Text = Val(mygrid.TextMatrix(1, 1))
 If rs.EOF <> True Then
  Do While rs.EOF <> True
                             If i >= 5 Then
-                            mygrid.Rows = mygrid.Rows + 1
+                            mygrid.rows = mygrid.rows + 1
                             End If
                             mygrid.TextMatrix(i, 0) = rs!sno
                             mygrid.TextMatrix(i, 1) = IIf(rs!distno <> 0, rs!distno, "")
@@ -960,7 +959,7 @@ MHVDB.Execute "insert into tblplantdistributionheader(trnid,mnth,entrydate,distr
              
 'MHVDB.Execute "delete from tblplantdistributiondetail where tranid='" & cbotrnid.Text & "'," _
               & " and mnth='" & yy & "' and year='" & cboyear.Text & "'"
- For i = 1 To mygrid.Rows - 1
+ For i = 1 To mygrid.rows - 1
  If Len(mygrid.TextMatrix(i, 0)) = 0 Then Exit For
  findMonitorFromFarmer mygrid.TextMatrix(i, 5)
 SQLSTR = "insert into tblplantdistributiondetail(trnid,year,mnth,sno,distno," _
@@ -996,7 +995,7 @@ ElseIf Operation = "OPEN" Then
              
 MHVDB.Execute "delete from tblplantdistributiondetail where trnid='" & cbotrnid.Text & "'" _
               & " and mnth='" & cbomnth.ListIndex + 1 & "' and year='" & cboyear.Text & "'"
- For i = 1 To mygrid.Rows - 1
+ For i = 1 To mygrid.rows - 1
  If Len(mygrid.TextMatrix(i, 0)) = 0 Then Exit For
  findMonitorFromFarmer mygrid.TextMatrix(i, 5)
 SQLSTR = "insert into tblplantdistributiondetail(trnid,year,mnth,sno,distno," _
@@ -1284,7 +1283,7 @@ mrnd = 0
                                  Do While mydgt = Mid(rs!idfarmer, 1, 9)
                                  
                                          If i >= 5 Then
-                                         mygrid.Rows = mygrid.Rows + 1
+                                         mygrid.rows = mygrid.rows + 1
                                          End If
                                          mygrid.TextMatrix(i, 0) = i
                                          mygrid.TextMatrix(i, 1) = cnt
@@ -1363,12 +1362,12 @@ mrnd = 0
                                          If rs.EOF Then Exit Do
                                  Loop
                                  cnt = cnt + 1
-                                 mygrid.Rows = mygrid.Rows + 1
+                                 mygrid.rows = mygrid.rows + 1
                                  mygrid.TextMatrix(i, 28) = "S"
                                  mygrid.TextMatrix(i, 0) = i
                                  i = i + 1
                             Loop
-                            mygrid.Rows = mygrid.Rows + 1
+                            mygrid.rows = mygrid.rows + 1
                             mygrid.TextMatrix(i, 28) = "T"
                             mygrid.TextMatrix(i, 0) = i
               
@@ -1396,9 +1395,9 @@ initvariables
 tt = Val(txtdno.Text)
 
 If txtindecator.Text = "" Then
-         myloop = mygrid.Rows - 1
+         myloop = mygrid.rows - 1
     Else
-        myloop = mygrid.Rows - 2
+        myloop = mygrid.rows - 2
 End If
 
 If Val(txtdno.Text) = 0 Then
@@ -1427,7 +1426,6 @@ If (mmod > 17) Then
 mygrid.TextMatrix(i, 11) = ((modval - mmod) / rs!crateno) + 1
 Else
 mygrid.TextMatrix(i, 11) = ((modval - mmod) / rs!crateno)
-
 End If
 ' polinizer is for thimphu
    'Round(((Val(Mygrid.TextMatrix(i, 15)))), 0) / rs!crateno
@@ -2158,7 +2156,7 @@ End Sub
 
 Private Sub removeblanks()
 Dim i As Integer
-For i = 1 To mygrid.Rows - 1
+For i = 1 To mygrid.rows - 1
 'If Len(Mygrid.TextMatrix(i, 1)) = 0 Then Exit For
 If mygrid.row > 0 And Len(mygrid.TextMatrix(i, 1)) = 0 Then
       mygrid.RemoveItem mygrid.row
@@ -2307,7 +2305,7 @@ Dim mdgt As String
 Dim myacre As Double
 Dim i As Integer
 If Operation = "ADD" Then Exit Sub
-If mygrid.col = 2 And mygrid.row <> mygrid.Rows - 1 And mygrid.TextMatrix(mygrid.row, 28) <> "S" Then
+If mygrid.col = 2 And mygrid.row <> mygrid.rows - 1 And mygrid.TextMatrix(mygrid.row, 28) <> "S" Then
 If MsgBox("Do you want add new row for sub total", vbQuestion + vbYesNo) = vbYes Then
 'Mygrid.Rows = Mygrid.Rows + 1
 mygrid.AddItem "", mygrid.row
@@ -2322,7 +2320,7 @@ End If
 'InsertRow Mygrid, Mygrid.row
 End If
 '
-If mygrid.col = 9 And mygrid.row <> mygrid.Rows - 1 And mygrid.TextMatrix(mygrid.row, 28) <> "S" And mygrid.TextMatrix(mygrid.row, 9) > 0 And mygrid.TextMatrix(mygrid.row, 31) > 0 Then
+If mygrid.col = 9 And mygrid.row <> mygrid.rows - 1 And mygrid.TextMatrix(mygrid.row, 28) <> "S" And mygrid.TextMatrix(mygrid.row, 9) > 0 And mygrid.TextMatrix(mygrid.row, 31) > 0 Then
 mdgt = ""
 If MsgBox("Do you want add new row for sub total", vbQuestion + vbYesNo) = vbYes Then
 ' add and fetch things
@@ -2610,9 +2608,9 @@ If Operation = "ADD" Then Exit Sub
             .row = RowToMove
             .col = 0
             .RowSel = RowToMove
-            .ColSel = .Cols - 1
+            .ColSel = .cols - 1
             'copy the whole row's data to a string
-            RowClip$ = .Clip
+            RowClip$ = .clip
             'delete the moved row
             .RemoveItem RowToMove
             'put the moved data to the new row
@@ -2640,7 +2638,7 @@ On Error Resume Next
 Dim s, T, MYROW As Integer
 Text1.Visible = False
 MYROW = mygrid.row
-For s = 1 To mygrid.Rows - 1
+For s = 1 To mygrid.rows - 1
 If mygrid.TextMatrix(mygrid.row, 1) <> mygrid.TextMatrix(MYROW, 27) Then Exit Sub
 mygrid.TextMatrix(MYROW, 26) = Text1.Text
 MYROW = MYROW + 1
@@ -2655,7 +2653,7 @@ On Error Resume Next
 Dim s, T, MYROW As Integer
 Text1.Visible = False
 MYROW = mygrid.row
-For s = 1 To mygrid.Rows - 1
+For s = 1 To mygrid.rows - 1
 If mygrid.TextMatrix(mygrid.row, 1) <> mygrid.TextMatrix(MYROW, 27) Then Exit Sub
 mygrid.TextMatrix(MYROW, 26) = Text1.Text
 MYROW = MYROW + 1
