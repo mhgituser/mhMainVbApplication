@@ -275,6 +275,7 @@ Begin VB.Form frmdistributionschedule
       Left            =   4080
       TabIndex        =   12
       Top             =   840
+      Visible         =   0   'False
       Width           =   975
    End
    Begin VB.TextBox txtindecator 
@@ -2322,7 +2323,7 @@ End If
 '
 If mygrid.col = 9 And mygrid.row <> mygrid.rows - 1 And mygrid.TextMatrix(mygrid.row, 28) <> "S" And mygrid.TextMatrix(mygrid.row, 9) > 0 And mygrid.TextMatrix(mygrid.row, 31) > 0 Then
 mdgt = ""
-If MsgBox("Do you want add new row for sub total", vbQuestion + vbYesNo) = vbYes Then
+If MsgBox("Do you want update the land", vbQuestion + vbYesNo) = vbYes Then
 ' add and fetch things
 
 
@@ -2331,12 +2332,12 @@ If MsgBox("Do you want add new row for sub total", vbQuestion + vbYesNo) = vbYes
                                         mdgt = mygrid.TextMatrix(i, 5)
                                         
                                         
-                SQLSTR = " SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE, " _
+    SQLSTR = " SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE, " _
 & " SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,sum(acre) AS REGLAND,village,phone1 FROM " _
 & " tblfarmer A,tbllandregdetail B WHERE A.status not in('D','R','C') and plantedstatus='N'  " _
 & " and A.IDFARMER=B.farmercode  and substring(idfarmer,10,1)='F' and IDFARMER='" & mdgt & "' group by idfarmer "
               
-              SQLSTR = "SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE,SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,sum(REGLAND) AS REGLAND,village,phone1 FROM tblfarmer A,tbllandreg B WHERE A.status not in('D','R','C')and B.status not in('D','R','C') and plantedstatus='N'  and A.IDFARMER=B.FARMERID and IDFARMER ='" & mdgt & "'"
+        SQLSTR = "SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE,SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,sum(REGLAND) AS REGLAND,village,phone1 FROM tblfarmer A,tbllandreg B WHERE A.status not in('D','R','C')and B.status not in('D','R','C') and plantedstatus='N'  and A.IDFARMER=B.FARMERID and IDFARMER ='" & mdgt & "'"
         SQLSTR = SQLSTR & "  " & "group by idfarmer "
 SQLSTR = SQLSTR & " union  SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE, " _
 & " SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,sum(acre) AS REGLAND,village,phone1 FROM " _
