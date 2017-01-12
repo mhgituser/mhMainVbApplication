@@ -32,6 +32,7 @@ Begin VB.MDIForm frmMain
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel2 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
+            TextSave        =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel3 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
@@ -42,6 +43,7 @@ Begin VB.MDIForm frmMain
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel4 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
+            TextSave        =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel5 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
@@ -50,6 +52,7 @@ Begin VB.MDIForm frmMain
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel6 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
+            TextSave        =   ""
             Object.Tag             =   ""
          EndProperty
       EndProperty
