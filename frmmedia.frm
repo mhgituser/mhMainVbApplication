@@ -862,7 +862,7 @@ rs.Open SQLSTR, ODKDB
 
 Do While rs.EOF <> True
 MHVDB.Execute "update tbldistplanassesment set fieldtottrees='" & rs!totaltrees & "', " _
-& " fielddeadmissing='" & rs!deadmissing & "',fieldstoragetype='F',regdate= '" & Format(rs!End, "yyyy-MM-dd") & "' where idfarmer='" & rs!farmerbarcode & "' "
+& " fielddeadmissing='" & rs!deadmissing & "',fieldstoragetype='F',regdate= '" & Format(rs!end, "yyyy-MM-dd") & "' where idfarmer='" & rs!farmerbarcode & "' "
 rs.MoveNext
 Loop
 
@@ -1213,8 +1213,8 @@ SQLSTR = ""
    rs.Open SQLSTR, ODKDB
    
    Do While rs.EOF <> True
-   ODKDB.Execute "update tblplantheightanalysisrpt set datevisitcurrent='" & Format(rs!End, "yyyy-MM-dd") & "', " _
-   & " recordage='" & DateDiff("d", rs!End, Now) & "',totaltrees='" & rs!tree_count_totaltrees & "'," _
+   ODKDB.Execute "update tblplantheightanalysisrpt set datevisitcurrent='" & Format(rs!end, "yyyy-MM-dd") & "', " _
+   & " recordage='" & DateDiff("d", rs!end, Now) & "',totaltrees='" & rs!tree_count_totaltrees & "'," _
    & " deadmissing='" & rs!tree_count_deadmissing & "',avgheight='" & rs!treeheight & "' where " _
    & " farmercode='" & rs!farmerbarcode & "' and fieldcode='" & rs!FDCODE & "'"
     rs.MoveNext
@@ -1277,7 +1277,7 @@ Set rs = Nothing
 rs.Open "select farmercode,end,lat,lng from tblextensionmortality where lat>0 and lng>0", ODKDB
 Do While rs.EOF <> True
 MHVDB.Execute "update tblfarmer set flat='" & rs!lat & "',flng='" & rs!lng & "'," _
-& " lastvisiteddate='" & Format(rs!End, "yyyy-MM-dd") & "' where idfarmer='" & Mid(rs!farmercode, 1, 14) & "'"
+& " lastvisiteddate='" & Format(rs!end, "yyyy-MM-dd") & "' where idfarmer='" & Mid(rs!farmercode, 1, 14) & "'"
 rs.MoveNext
 Loop
 
@@ -1296,7 +1296,7 @@ Dim rs As New ADODB.Recordset
 Dim rss As New ADODB.Recordset
 
 
-For i = 1 To VSFlexGrid1.Rows - 1
+For i = 1 To VSFlexGrid1.rows - 1
 If Len(VSFlexGrid1.TextMatrix(i, 1)) = 0 Then Exit For
 farmerstr = farmerstr + "'" + Trim(VSFlexGrid1.TextMatrix(i, 1)) + "',"
 
@@ -1334,13 +1334,13 @@ Screen.MousePointer = vbHourglass
     sl = 1
     'excel_app.DisplayFullScreen = True
     excel_app.Visible = True
-    excel_sheet.Cells(3, 1) = "SL.NO."
-    excel_sheet.Cells(3, 2) = "DZONGKHAG"
-    excel_sheet.Cells(3, 3) = "GEWOG"
-    excel_sheet.Cells(3, 4) = "TSHOWOG"
-    excel_sheet.Cells(3, 5) = "FARMER CODE"
-    excel_sheet.Cells(3, 6) = "FARMER NAME"
-    excel_sheet.Cells(3, 7) = "MONITOR"
+    excel_sheet.cells(3, 1) = "SL.NO."
+    excel_sheet.cells(3, 2) = "DZONGKHAG"
+    excel_sheet.cells(3, 3) = "GEWOG"
+    excel_sheet.cells(3, 4) = "TSHOWOG"
+    excel_sheet.cells(3, 5) = "FARMER CODE"
+    excel_sheet.cells(3, 6) = "FARMER NAME"
+    excel_sheet.cells(3, 7) = "MONITOR"
     i = 4
 
 
@@ -1354,26 +1354,26 @@ If rs.EOF <> True Then
 
 Do While rs.EOF <> True
 
-excel_sheet.Cells(i, 1) = sl
+excel_sheet.cells(i, 1) = sl
 FindDZ Mid(rs!farmercode, 1, 3)
-    excel_sheet.Cells(i, 2) = Mid(rs!farmercode, 1, 3) & " " & Dzname
+    excel_sheet.cells(i, 2) = Mid(rs!farmercode, 1, 3) & " " & Dzname
    FindGE Mid(rs!farmercode, 1, 3), Mid(rs!farmercode, 4, 3)
-    excel_sheet.Cells(i, 3) = Mid(rs!farmercode, 4, 3) & " " & GEname
+    excel_sheet.cells(i, 3) = Mid(rs!farmercode, 4, 3) & " " & GEname
     FindTs Mid(rs!farmercode, 1, 3), Mid(rs!farmercode, 4, 3), Mid(rs!farmercode, 7, 3)
-  excel_sheet.Cells(i, 4) = Mid(rs!farmercode, 7, 3) & " " & TsName
+  excel_sheet.cells(i, 4) = Mid(rs!farmercode, 7, 3) & " " & TsName
   
-  excel_sheet.Cells(i, 5) = rs!farmercode
+  excel_sheet.cells(i, 5) = rs!farmercode
   FindFA rs!farmercode, "F"
-  excel_sheet.Cells(i, 6) = rs!farmercode & " " & FAName
+  excel_sheet.cells(i, 6) = rs!farmercode & " " & FAName
   
   
   Set rss = Nothing
 rss.Open "select  monitor from tblfarmer where idfarmer='" & rs!farmercode & "'", MHVDB
 If rss.EOF <> True Then
 FindsTAFF rss!monitor
-excel_sheet.Cells(i, 7) = rss!monitor & " " & sTAFF
+excel_sheet.cells(i, 7) = rss!monitor & " " & sTAFF
 Else
-excel_sheet.Cells(i, 7) = ""
+excel_sheet.cells(i, 7) = ""
 End If
 
 
@@ -1400,13 +1400,13 @@ End If
 
 
 'make up
-   excel_sheet.Range(excel_sheet.Cells(3, 1), _
-    excel_sheet.Cells(i, 7)).Select
-    excel_app.Selection.Columns.AutoFit
+   excel_sheet.Range(excel_sheet.cells(3, 1), _
+    excel_sheet.cells(i, 7)).Select
+    excel_app.selection.Columns.AutoFit
    ' Freeze the header row so it doesn't scroll.
-    excel_sheet.Cells(4, 2).Select
+    excel_sheet.cells(4, 2).Select
     excel_app.ActiveWindow.FreezePanes = True
-    excel_sheet.Cells(1, 1).Select
+    excel_sheet.cells(1, 1).Select
     With excel_sheet
     '.PageSetup.LeftHeader = "MHV"
      excel_sheet.Range("A3:G3").Font.Bold = True
@@ -3153,18 +3153,18 @@ Screen.MousePointer = vbHourglass
     sl = 1
     'excel_app.DisplayFullScreen = True
     excel_app.Visible = True
-    excel_sheet.Cells(3, 1) = "SL.NO."
-    excel_sheet.Cells(3, 2) = "DZONGKHAG"
-    excel_sheet.Cells(3, 3) = "GEWOG"
-    excel_sheet.Cells(3, 4) = "TSHOWOG"
-    excel_sheet.Cells(3, 5) = "FARMER NAME"
-    excel_sheet.Cells(3, 6) = "gnew"
-    excel_sheet.Cells(3, 7) = "gold"
-    excel_sheet.Cells(3, 8) = "gtot"
-    excel_sheet.Cells(3, 9) = "pnew"
-    excel_sheet.Cells(3, 10) = "pold"
-    excel_sheet.Cells(3, 11) = "ptot"
-    excel_sheet.Cells(3, 12) = "tot"
+    excel_sheet.cells(3, 1) = "SL.NO."
+    excel_sheet.cells(3, 2) = "DZONGKHAG"
+    excel_sheet.cells(3, 3) = "GEWOG"
+    excel_sheet.cells(3, 4) = "TSHOWOG"
+    excel_sheet.cells(3, 5) = "FARMER NAME"
+    excel_sheet.cells(3, 6) = "gnew"
+    excel_sheet.cells(3, 7) = "gold"
+    excel_sheet.cells(3, 8) = "gtot"
+    excel_sheet.cells(3, 9) = "pnew"
+    excel_sheet.cells(3, 10) = "pold"
+    excel_sheet.cells(3, 11) = "ptot"
+    excel_sheet.cells(3, 12) = "tot"
     i = 4
 
 
@@ -3188,10 +3188,10 @@ rs.Open "SELECT farmerid, SUM( regland ) regland, plantedstatus" _
     FindGE Mid(rs!farmerid, 1, 3), Mid(rs!farmerid, 4, 3)
     FindTs Mid(rs!farmerid, 1, 3), Mid(rs!farmerid, 4, 3), Mid(rs!farmerid, 7, 3)
     FindFA rs!farmerid, "F"
-    excel_sheet.Cells(i, 2) = Dzname
-    excel_sheet.Cells(i, 3) = GEname
-    excel_sheet.Cells(i, 4) = TsName
-    excel_sheet.Cells(i, 5) = FAName
+    excel_sheet.cells(i, 2) = Dzname
+    excel_sheet.cells(i, 3) = GEname
+    excel_sheet.cells(i, 4) = TsName
+    excel_sheet.cells(i, 5) = FAName
     
     
     Do While farmerstr = rs!farmerid
@@ -3202,10 +3202,10 @@ rs.Open "SELECT farmerid, SUM( regland ) regland, plantedstatus" _
     'old
     If Mid(rs!farmerid, 10, 1) = "G" Then
     ' grf
-    excel_sheet.Cells(i, 7) = rs!regland
+    excel_sheet.cells(i, 7) = rs!regland
     Else
     'private
-    excel_sheet.Cells(i, 10) = rs!regland
+    excel_sheet.cells(i, 10) = rs!regland
     End If
     
     
@@ -3213,10 +3213,10 @@ rs.Open "SELECT farmerid, SUM( regland ) regland, plantedstatus" _
     'new
       If Mid(rs!farmerid, 10, 1) = "G" Then
     ' grf
-    excel_sheet.Cells(i, 6) = rs!regland
+    excel_sheet.cells(i, 6) = rs!regland
     Else
     'private
-    excel_sheet.Cells(i, 9) = rs!regland
+    excel_sheet.cells(i, 9) = rs!regland
     End If
     End If
     
@@ -3235,13 +3235,13 @@ rs.Open "SELECT farmerid, SUM( regland ) regland, plantedstatus" _
 
 
 'make up
-   excel_sheet.Range(excel_sheet.Cells(3, 1), _
-    excel_sheet.Cells(i, 7)).Select
-    excel_app.Selection.Columns.AutoFit
+   excel_sheet.Range(excel_sheet.cells(3, 1), _
+    excel_sheet.cells(i, 7)).Select
+    excel_app.selection.Columns.AutoFit
    ' Freeze the header row so it doesn't scroll.
-    excel_sheet.Cells(4, 2).Select
+    excel_sheet.cells(4, 2).Select
     excel_app.ActiveWindow.FreezePanes = True
-    excel_sheet.Cells(1, 1).Select
+    excel_sheet.cells(1, 1).Select
     With excel_sheet
     '.PageSetup.LeftHeader = "MHV"
      excel_sheet.Range("A3:G3").Font.Bold = True
@@ -4320,8 +4320,15 @@ Set rs = Nothing
 rs.Open "select * from tblmonth where status=1", MHWEBDB
 If rs.EOF <> True Then
 oldmonth = rs!monthno
+
+If rs!monthno = 12 Then
+validmonth = 1
+validyear = rs!myear + 1
+Else
 validmonth = oldmonth + 1
 validyear = rs!myear
+End If
+
 oldyear = rs!myear
 End If
 tchk = Month(Now) - oldmonth
