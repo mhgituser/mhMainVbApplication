@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Begin VB.Form FRMSTATUSUPDATE 
    BorderStyle     =   1  'Fixed Single
@@ -330,7 +330,7 @@ Label2.Caption = "REJECTED"
 Label2.ForeColor = vbRed
 Else
 Label2.Caption = "ERROR"
-TB.Buttons(3).Enabled = False
+TB.buttons(3).Enabled = False
 Label2.ForeColor = vbRed
 End If
 
@@ -369,7 +369,7 @@ cbostatus.BoundColumn = "statusid"
 Set rsst = Nothing
 
 If rsst.State = adStateOpen Then rsst.Close
-rsst.Open "select concat(STAFFCODE , ' ', STAFFNAME) as STAFFNAME,STAFFCODE  from tblmhvstaff where moniter='1' order  by   STAFFCODE", db
+rsst.Open "SELECT concat(STAFFCODE , ' ', STAFFNAME) as STAFFNAME,STAFFCODE from mhv.tblmhvstaff where dept='106' and status not in('D','R','C','T') ORDER BY STAFFCODE", db
 Set cbomonitor.RowSource = rsst
 cbomonitor.ListField = "STAFFNAME"
 cbomonitor.BoundColumn = "STAFFCODE"
@@ -391,7 +391,7 @@ Case "OPEN"
          
          cbofarmerid.Enabled = True
         cbofarmerid.Text = ""
-         TB.Buttons(2).Enabled = True
+         TB.buttons(2).Enabled = True
          cbomonitor.Text = ""
        
        Case "SAVE"
@@ -488,7 +488,7 @@ MsgBox "OPERATION NOT SELECTED."
 End If
 MHVDB.CommitTrans
 showstatus
-TB.Buttons(2).Enabled = False
+TB.buttons(2).Enabled = False
 Exit Sub
 err:
 MsgBox err.Description
