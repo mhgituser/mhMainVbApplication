@@ -60,7 +60,7 @@ Begin VB.Form FRMTEMPRATURERECORDING
          _ExtentX        =   2355
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   81657857
+         Format          =   132317185
          CurrentDate     =   41479
       End
       Begin MSComCtl2.DTPicker txttodate 
@@ -72,7 +72,7 @@ Begin VB.Form FRMTEMPRATURERECORDING
          _ExtentX        =   2355
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   81657857
+         Format          =   132317185
          CurrentDate     =   41479
       End
       Begin VB.Label Label15 
@@ -332,7 +332,7 @@ Begin VB.Form FRMTEMPRATURERECORDING
          _ExtentX        =   2355
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   81657857
+         Format          =   118751233
          CurrentDate     =   41479
       End
       Begin MSDataListLib.DataCombo cbotrnid 
@@ -897,7 +897,7 @@ Select Case Button.Key
        Case "ADD"
             
         cbotrnid.Enabled = False
-        TB.Buttons(3).Enabled = True
+        TB.buttons(3).Enabled = True
         Operation = "ADD"
         CLEARCONTROLL
         Dim rs As New ADODB.Recordset
@@ -912,7 +912,7 @@ Select Case Button.Key
         Operation = "OPEN"
         CLEARCONTROLL
         cbotrnid.Enabled = True
-        TB.Buttons(3).Enabled = True
+        TB.buttons(3).Enabled = True
              
        Case "SAVE"
         MNU_SAVE
@@ -989,7 +989,7 @@ updatemhvlog Now, MUSER, LogRemarks, ""
 Else
 MsgBox "OPERATION NOT SELECTED."
 End If
- TB.Buttons(3).Enabled = False
+ TB.buttons(3).Enabled = False
 MHVDB.CommitTrans
 FillGrid txtfrmdate.Value, txttodate.Value
 Exit Sub
@@ -1004,42 +1004,42 @@ On Error GoTo err
 Dim rs As New ADODB.Recordset
 Dim i As Integer
 Set rs = Nothing
-mygrid.Clear
-mygrid.Rows = 1
-mygrid.FormatString = "^Sl.No.|^Trn. Id|^Date|^Time|^Facility|^Therm1 Deg. C|^Therm1 RH|^Therm2 Deg. C|^Therm2 RH|^Plastic Position|^Shade Closed %|^Staff|^Comments|^"
-mygrid.ColWidth(0) = 645
-mygrid.ColWidth(1) = 975
-mygrid.ColWidth(2) = 1200
-mygrid.ColWidth(3) = 915
-mygrid.ColWidth(4) = 1110
-mygrid.ColWidth(5) = 1200
-mygrid.ColWidth(6) = 1275
-mygrid.ColWidth(7) = 1455
-mygrid.ColWidth(8) = 1395
-mygrid.ColWidth(9) = 1395
-mygrid.ColWidth(10) = 1440
-mygrid.ColWidth(11) = 1605
-mygrid.ColWidth(12) = 960
-mygrid.ColWidth(13) = 135
+Mygrid.Clear
+Mygrid.rows = 1
+Mygrid.FormatString = "^Sl.No.|^Trn. Id|^Date|^Time|^Facility|^Therm1 Deg. C|^Therm1 RH|^Therm2 Deg. C|^Therm2 RH|^Plastic Position|^Shade Closed %|^Staff|^Comments|^"
+Mygrid.ColWidth(0) = 645
+Mygrid.ColWidth(1) = 975
+Mygrid.ColWidth(2) = 1200
+Mygrid.ColWidth(3) = 915
+Mygrid.ColWidth(4) = 1110
+Mygrid.ColWidth(5) = 1200
+Mygrid.ColWidth(6) = 1275
+Mygrid.ColWidth(7) = 1455
+Mygrid.ColWidth(8) = 1395
+Mygrid.ColWidth(9) = 1395
+Mygrid.ColWidth(10) = 1440
+Mygrid.ColWidth(11) = 1605
+Mygrid.ColWidth(12) = 960
+Mygrid.ColWidth(13) = 135
 rs.Open "select * from tblqmstempreturerecording where entrydate>='" & Format(txtfrmdate.Value, "yyyy-MM-dd") & "' and entrydate<='" & Format(txttodate.Value, "yyyy-MM-dd") & "' order by trnid", MHVDB, adOpenForwardOnly, adLockOptimistic
 i = 1
 Do While rs.EOF <> True
-mygrid.Rows = mygrid.Rows + 1
-mygrid.TextMatrix(i, 0) = i
+Mygrid.rows = Mygrid.rows + 1
+Mygrid.TextMatrix(i, 0) = i
 
-mygrid.TextMatrix(i, 1) = rs!trnid
-mygrid.TextMatrix(i, 2) = Format(rs!entrydate, "dd/MM/yyyy")
+Mygrid.TextMatrix(i, 1) = rs!trnid
+Mygrid.TextMatrix(i, 2) = Format(rs!entrydate, "dd/MM/yyyy")
 FindqmsTime rs!shortTime
-mygrid.TextMatrix(i, 3) = qmsTime
-mygrid.TextMatrix(i, 4) = rs!facilityid
-mygrid.TextMatrix(i, 5) = rs!therm1degree
-mygrid.TextMatrix(i, 6) = rs!therm1rh
-mygrid.TextMatrix(i, 7) = rs!therm2degree
-mygrid.TextMatrix(i, 8) = rs!therm2rh
-mygrid.TextMatrix(i, 9) = rs!plasticposition
-mygrid.TextMatrix(i, 10) = rs!shadeclosed
-mygrid.TextMatrix(i, 11) = rs!staffid
-mygrid.TextMatrix(i, 12) = rs!Comments
+Mygrid.TextMatrix(i, 3) = qmsTime
+Mygrid.TextMatrix(i, 4) = rs!facilityid
+Mygrid.TextMatrix(i, 5) = rs!therm1degree
+Mygrid.TextMatrix(i, 6) = rs!therm1rh
+Mygrid.TextMatrix(i, 7) = rs!therm2degree
+Mygrid.TextMatrix(i, 8) = rs!therm2rh
+Mygrid.TextMatrix(i, 9) = rs!plasticposition
+Mygrid.TextMatrix(i, 10) = rs!shadeclosed
+Mygrid.TextMatrix(i, 11) = rs!staffid
+Mygrid.TextMatrix(i, 12) = rs!Comments
 
 
 rs.MoveNext

@@ -558,7 +558,7 @@ Begin VB.Form frmplantedlist
       _ExtentX        =   2355
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   108462081
+      Format          =   104988673
       CurrentDate     =   41516
    End
    Begin VB.TextBox txtmonth 
@@ -2355,7 +2355,7 @@ Dim rs As New ADODB.Recordset
 Dim i As Integer
 Set rs = Nothing
 Mygrid.Clear
-Mygrid.Rows = 1
+Mygrid.rows = 1
 Mygrid.FormatString = "^TRN.NO.|^FARMER CODE|^FARMER NAME|^AREA|^TREES|^YEAR"
 Mygrid.ColWidth(0) = 900
 Mygrid.ColWidth(1) = 1800
@@ -2374,7 +2374,7 @@ rs.Open "select * from tblplanted where farmercode='" & Mid(Trim(cbofarmerid.Bou
 End If
 i = 1
 Do While rs.EOF <> True
-Mygrid.Rows = Mygrid.Rows + 1
+Mygrid.rows = Mygrid.rows + 1
 Mygrid.TextMatrix(i, 0) = rs!trnid
 
 Mygrid.TextMatrix(i, 1) = rs!farmercode
@@ -2629,7 +2629,7 @@ End Sub
 Private Sub findtot()
 Dim i As Integer
 mytot = 0
-For i = 1 To Mygrid.Rows - 1
+For i = 1 To Mygrid.rows - 1
 If Len(mygrid1.TextMatrix(i, 0)) = 0 Then Exit For
 mytot = mytot + Val(mygrid1.TextMatrix(i, 4))
 
@@ -2651,7 +2651,7 @@ Select Case Button.Key
 Case "ADD"
 
       
-        TB.Buttons(3).Enabled = True
+        TB.buttons(3).Enabled = True
        Operation = "ADD"
        CLEARCONTROLL
        cbotrnid.Enabled = False
@@ -2672,7 +2672,7 @@ Case "ADD"
          CLEARCONTROLL
          cbotrnid.Enabled = True
          
-         TB.Buttons(3).Enabled = True
+         TB.buttons(3).Enabled = True
        'getDno ("OPEN")
        Case "SAVE"
       
@@ -2864,7 +2864,7 @@ MHVDB.RollbackTrans
 Exit Sub
 End If
 
-For i = 1 To ItemGrd.Rows - 1
+For i = 1 To ItemGrd.rows - 1
 If Len(ItemGrd.TextMatrix(i, 2)) = 0 Then Exit For
 If Val(ItemGrd.TextMatrix(i, 5)) > 0 Then
 MHVDB.Execute "insert into tblplanteddetail(trnid,year,mnth,varietyid,noofcrates,cratedetail,crateqty) values( " _
@@ -2893,11 +2893,11 @@ End If
 End If
 trnid = ""
 MHVDB.Execute "update tblplantdistributiondetail set challanentered='Y' WHERE distno='" & cbodeliveryno.BoundText & "' and year='" & txtyear.Text & "' and farmercode='" & Mid(Trim(cbofarmerid.BoundText), 1, 14) & "'"
-MHVDB.Execute "UPDATE mhv.tblregistrationsettings SET updatetable ='Yes' WHERE tblid ='3'"
-MHVDB.Execute "UPDATE mhv.tblregistrationsettings SET updatetable ='Yes' WHERE tblid ='4'"
-MHVDB.Execute "UPDATE mhv.tblregistrationsettings SET updatetable ='Yes' WHERE tblid ='7'"
+'MHVDB.Execute "UPDATE mhv.tblregistrationsettings SET updatetable ='Yes' WHERE tblid ='3'"
+'MHVDB.Execute "UPDATE mhv.tblregistrationsettings SET updatetable ='Yes' WHERE tblid ='4'"
+'MHVDB.Execute "UPDATE mhv.tblregistrationsettings SET updatetable ='Yes' WHERE tblid ='7'"
 MHVDB.CommitTrans
-TB.Buttons(3).Enabled = False
+TB.buttons(3).Enabled = False
 FillGrid "N"
 fillsummary
 
@@ -3051,7 +3051,7 @@ End Sub
 Private Sub getsum()
 Dim i As Integer
 chqty = 0
-For i = 1 To ItemGrd.Rows - 1
+For i = 1 To ItemGrd.rows - 1
 If Len(ItemGrd.TextMatrix(i, 2)) = 0 Then Exit For
 chqty = chqty + Val(ItemGrd.TextMatrix(i, 5))
 
@@ -3099,7 +3099,7 @@ End If
          i = 1
         
         Do Until rs.EOF
-        fgrid.Rows = fgrid.Rows + 1
+        fgrid.rows = fgrid.rows + 1
        
         fgrid.TextMatrix(i, 0) = i
          fgrid.TextMatrix(i, 1) = rs!farmername
@@ -3117,7 +3117,7 @@ End If
 End Sub
 Private Sub cleargrid()
         fgrid.Clear
-        fgrid.Rows = 1
+        fgrid.rows = 1
         fgrid.FormatString = "^Sl.No.|^Farmer|^Trn.Id|^Dist. No.|^"
         fgrid.ColWidth(0) = 615
         fgrid.ColWidth(1) = 2535
