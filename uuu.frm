@@ -626,7 +626,7 @@ Begin VB.Form frmCrateBatchTransaction
          _ExtentX        =   2355
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   106561537
+         Format          =   100990977
          CurrentDate     =   41479
       End
       Begin MSDataListLib.DataCombo cbostaff 
@@ -1026,7 +1026,7 @@ txtyr.Text = Mid(cbotrnid.Text, Len(cbotrnid.Text) - 4, 5)
 txtyr.Text = Trim(txtyr.Text)
 cbotrnid.Text = cbotrnid.BoundText
 
-TB.Buttons(3).Enabled = True
+TB.buttons(3).Enabled = True
 
 Dim rs As New ADODB.Recordset
 Set rs = Nothing
@@ -1039,7 +1039,9 @@ txtsendtofield.Text = rs!sendtofieldqty
 
 txtdsheetqty.Text = rs!dsheetqty
 txttocrate.Text = rs!cratecount
-
+txtloc.Text = rs!location
+cbovehicle.Text = rs!vehicleno
+txtdriver.Text = rs!DriverName
 End If
 
 
@@ -1084,23 +1086,23 @@ Dim j As Integer
 j = 0
 i = 1
 totdsheet = 0
-Mygrid.Clear
-Mygrid.FormatString = "^SL.NO.|^PLANT VARIETY|^QTY.|"
-Mygrid.ColWidth(0) = 750
-Mygrid.ColWidth(1) = 1665
-Mygrid.ColWidth(2) = 840
-Mygrid.ColWidth(3) = 555
+mygrid.Clear
+mygrid.FormatString = "^SL.NO.|^PLANT VARIETY|^QTY.|"
+mygrid.ColWidth(0) = 750
+mygrid.ColWidth(1) = 1665
+mygrid.ColWidth(2) = 840
+mygrid.ColWidth(3) = 555
 
 If Len(cbotrnid.Text) = 0 Then Exit Sub
 
 
-Mygrid.rows = 1
+mygrid.rows = 1
 Set rs = Nothing
 rs.Open "Select * from tblqmsplantvariety where status<>'C' and varietyid in (1,2,4,7,12)", MHVDB
 Do While rs.EOF <> True
-Mygrid.rows = Mygrid.rows + 1
-Mygrid.TextMatrix(i, 0) = i
-Mygrid.TextMatrix(i, 1) = "V" & i
+mygrid.rows = mygrid.rows + 1
+mygrid.TextMatrix(i, 0) = i
+mygrid.TextMatrix(i, 1) = "V" & i
 i = i + 1
 rs.MoveNext
 Loop
@@ -1117,19 +1119,19 @@ Set rs = Nothing
 'End Select
 rs.Open "SELECT SUM( bcrate*bcratefactor ) AS V1, SUM( ecrate*ecratefactor ) AS V2, SUM( bno*bnofactor ) AS V3, SUM( plno *plnofactor) AS P1, SUM( crate*cratefactor) AS V4 FROM  `tblplantdistributiondetail` WHERE  distno='" & cbotrnid.BoundText & "' and year='" & Val(txtyr.Text) & "' and subtotindicator='' and status not in ('C','F') and distno>0 and trnid in (select trnid from tblplantdistributionheader where status='ON') GROUP BY distno", MHVDB
 
-For i = 1 To Mygrid.rows - 1
-If Len(Mygrid.TextMatrix(i, 1)) = 0 Then Exit For
+For i = 1 To mygrid.rows - 1
+If Len(mygrid.TextMatrix(i, 1)) = 0 Then Exit For
 For j = 0 To 4
 
-If Trim(Mygrid.TextMatrix(i, 1)) = rs.Fields(j).name Then
+If Trim(mygrid.TextMatrix(i, 1)) = rs.Fields(j).name Then
 'Mygrid.Rows = Mygrid.Rows + 1
 If rs.EOF <> True Then
-Mygrid.TextMatrix(i, 1) = rs.Fields(j).name
-Mygrid.TextMatrix(i, 2) = IIf(IsNull(rs.Fields(j).Value), "", rs.Fields(j).Value)
-Mygrid.ColAlignment(2) = flexAlignRightTop
+mygrid.TextMatrix(i, 1) = rs.Fields(j).name
+mygrid.TextMatrix(i, 2) = IIf(IsNull(rs.Fields(j).Value), "", rs.Fields(j).Value)
+mygrid.ColAlignment(2) = flexAlignRightTop
 totdsheet = totdsheet + rs.Fields(j).Value
 Else
- TB.Buttons(3).Enabled = False
+ TB.buttons(3).Enabled = False
 End If
 End If
 
@@ -1157,14 +1159,14 @@ If Val(ItemGrd.TextMatrix(CurrRow, 4)) = crtcnt Then
    ItemGrd.TextMatrix(CurrRow, 5) = ""
  ItemGrd.TextMatrix(CurrRow, 5) = Dzstr
 frmCrateBatchTransaction.Width = 7770
-TB.Buttons(3).Enabled = True
+TB.buttons(3).Enabled = True
  ItemGrd.Enabled = True
  Else
  MsgBox "Crate count does not match."
  'ItemGrd.TextMatrix(CurrRow, 5) = ""
  loadcrate
  frmCrateBatchTransaction.Width = 7770
- TB.Buttons(3).Enabled = True
+ TB.buttons(3).Enabled = True
   ItemGrd.Enabled = True
  End If
  
@@ -1173,7 +1175,7 @@ TB.Buttons(3).Enabled = True
 Else
    MsgBox "CRATE NOT SELECTED !!!"
    frmCrateBatchTransaction.Width = 7770
-   TB.Buttons(3).Enabled = True
+   TB.buttons(3).Enabled = True
      ItemGrd.Enabled = True
    Exit Sub
 End If
@@ -1419,12 +1421,12 @@ Select Case MCOL
       If ItemGrd.col = 5 And Val(ItemGrd.TextMatrix(CurrRow, 4)) > 0 And Len(ItemGrd.TextMatrix(CurrRow, 5)) = 0 Then
             loadcrate
             frmCrateBatchTransaction.Width = 15525
-            TB.Buttons(3).Enabled = False
+            TB.buttons(3).Enabled = False
             ItemGrd.Enabled = False
             
             Else
             frmCrateBatchTransaction.Width = 7770
-            TB.Buttons(3).Enabled = True
+            TB.buttons(3).Enabled = True
             txtselected.Visible = True
             txtselected.Text = ItemGrd.TextMatrix(CurrRow, 5)
             End If
@@ -1491,7 +1493,7 @@ CurrRow = mrow
 If ItemGrd.col = 5 And Val(ItemGrd.TextMatrix(CurrRow, 4)) > 0 And Len(ItemGrd.TextMatrix(CurrRow, 5)) > 0 Then
             loadcrate
             frmCrateBatchTransaction.Width = 15525
-            TB.Buttons(3).Enabled = False
+            TB.buttons(3).Enabled = False
             ItemGrd.Enabled = False
             End If
             
@@ -1533,17 +1535,17 @@ Select Case Button.Key
        populatedno "ADD"
        CLEARCONTROLL
        cbotrnid.Enabled = True
-       TB.Buttons(3).Enabled = True
+       TB.buttons(3).Enabled = True
        Case "OPEN"
        Operation = "OPEN"
        populatedno "OPEN"
        CLEARCONTROLL
        cbotrnid.Enabled = True
-       TB.Buttons(3).Enabled = False
+       TB.buttons(3).Enabled = True
        
        Case "SAVE"
        MNU_SAVE
-        TB.Buttons(3).Enabled = False
+        TB.buttons(3).Enabled = False
         'FillGrid
        
        Case "DELETE"
@@ -1677,8 +1679,6 @@ End If
  
 MHVDB.Execute "delete from tblqmsplanttransaction where distributionno='" & cbotrnid.BoundText & "' and distyear='" & Val(txtyr.Text) & "' " _
 & "and verificationtype='2' and transactiontype='4'"
-
-
 
 For i = 1 To ItemGrd.rows - 1
 If Len(Trim(ItemGrd.TextMatrix(i, 1))) = 0 Then Exit For
