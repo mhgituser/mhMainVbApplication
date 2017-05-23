@@ -20,7 +20,7 @@ Begin VB.Form frmmedia
       Width           =   615
    End
    Begin VB.CommandButton Command40 
-      Caption         =   "update pollin"
+      Caption         =   "update faremerbarcode"
       Height          =   495
       Left            =   4560
       TabIndex        =   41
@@ -3305,7 +3305,7 @@ db.Open OdkCnnString
 
 db.Execute "delete from mtemp"
 SQLSTR = ""
-   SQLSTR = "insert into mtemp SELECT _URI, dcode, gcode, tcode,fcode,FARMERTYPE FROM tblpolination_core where farmerbarcode=''"
+   SQLSTR = "insert into mtemp SELECT _URI, dcode, gcode, tcode,fcode,FARMERTYPE FROM tbleconomicsurvey_core where farmerbarcode=''"
   db.Execute SQLSTR
   Set rss = Nothing
   
@@ -3320,13 +3320,13 @@ SQLSTR = ""
   mfcode = mdcode & mgcode & mtcode & mfcode
   Set rsF = Nothing
   'updateStr = "update tblfieldqc_core set farmerbarcode='" & mfcode & "' where dcode='" & rss!dcode & "' and gcode='" & rss!gcode & "' and tcode='" & rss!tcode & "' and fcode='" & rss!fcode & "' and  _URI='" & rss![_uri] & "'"
-   updateStr = "update tblpolination_core set farmerbarcode='" & mfcode & "',dcode=substring(farmerbarcode,1,3),gcode=substring(farmerbarcode,1,6),tcode=substring(farmerbarcode,1,9) where   _URI='" & rss![_uri] & "'"
+   updateStr = "update tbleconomicsurvey_core set farmerbarcode='" & mfcode & "',dcode=substring(farmerbarcode,1,3),gcode=substring(farmerbarcode,1,6),tcode=substring(farmerbarcode,1,9) where   _URI='" & rss![_uri] & "'"
   ' MsgBox updateStr
     db.Execute updateStr
   frcode = frcode & mfcode & ","
   rss.MoveNext
   Loop
-db.Execute "update tblpolination_core set dcode=substring(farmerbarcode,1,3),gcode=substring(farmerbarcode,1,6),tcode=substring(farmerbarcode,1,9) "
+'db.Execute "update tblpolination_core set dcode=substring(farmerbarcode,1,3),gcode=substring(farmerbarcode,1,6),tcode=substring(farmerbarcode,1,9) "
 MsgBox "completed"
 
 
