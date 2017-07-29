@@ -1384,8 +1384,9 @@ End If
     '    MHVDB.Execute "insert into mhv.tblpolinizer(farmercode,plantqty,myear,pvariety,originalplantqty,flag) select a.farmercode,noofcrate,mindistyear,3,noofcrate,1 from mhv.tblpolinizerjune a LEFT JOIN mhv.tblpollenizeranalysis b ON a.farmercode=b.farmercode"
     '## end
     ' add flag condition for code below
+    'and SUBSTRING(IDFARMER,1,3)IN  " & Dzstr * extracting with flag =0 is enough
     
-        SQLSTR = "SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE,SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,0 AS REGLAND,village,phone1,sum(plantqty) polinizercrate FROM tblfarmer A,tblpolinizer B WHERE A.IDFARMER=B.farmercode and B.flag=0 and SUBSTRING(IDFARMER,1,3)IN  " & Dzstr
+        SQLSTR = "SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE,SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,0 AS REGLAND,village,phone1,sum(plantqty) polinizercrate FROM tblfarmer A,tblpolinizer B WHERE A.IDFARMER=B.farmercode and B.flag=0 "
         SQLSTR = SQLSTR & "  " & "group by idfarmer "
 MHVDB.Execute "delete from  tbldistpreparetion"
      MHVDB.Execute "insert into tbldistpreparetion(dzcode,gecode,tscode,idfarmer,farmername,regland,village,phone1,polinizercrate) " & SQLSTR
