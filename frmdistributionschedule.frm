@@ -1453,7 +1453,7 @@ mrnd = 0
                                                        Mygrid.TextMatrix(i, 12) = rs!totfillindemand
                                                     End If
                                          Set rs1 = Nothing
-                                        rs1.Open "select group_concat(id) refilltrnno,sum(b) as b,sum(e) as e,sum(p1) as p1, sum(n) as n from refillin where farmercode='" & rs!idfarmer & "' and  status='ON'   group by farmercode", MHVDB
+                                        rs1.Open "select group_concat(a.id) refilltrnno,sum(b) as b,sum(e) as e,sum(p1) as p1, sum(n) as n from refillin a, refillinheader b where a.headerid=b.id and farmercode='" & rs!idfarmer & "' and  isfinalized='Yes'   group by farmercode", MHVDB
                                          'rs1.Open "select sum(regland)*(420*.1*.5) as b,sum(regland)*(420*.1*.5) as e,sum(regland)*(420*.06) as p1, sum(regland)*(420*.1) as n from tbllandreg where farmerid='" & rs!idfarmer & "' group by farmerid ", MHVDB
                                          
                                          
