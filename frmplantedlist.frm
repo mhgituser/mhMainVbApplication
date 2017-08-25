@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{D76D7128-4A96-11D3-BD95-D296DC2DD072}#1.0#0"; "VSFLEX7.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
 Begin VB.Form frmplantedlist 
@@ -558,7 +558,7 @@ Begin VB.Form frmplantedlist
       _ExtentX        =   2355
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   104988673
+      Format          =   102170625
       CurrentDate     =   41516
    End
    Begin VB.TextBox txtmonth 
@@ -1347,7 +1347,7 @@ Begin VB.Form frmplantedlist
          _ExtentX        =   12726
          _ExtentY        =   6456
          _Version        =   393216
-         Rows            =   21
+         Rows            =   210
          Cols            =   7
          RowHeightMin    =   315
          ForeColorFixed  =   -2147483635
