@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{D76D7120-4A96-11D3-BD95-D296DC2DD072}#1.0#0"; "Vsflex7u.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Begin VB.Form FRMPLANTBATCH 
    BorderStyle     =   1  'Fixed Single
@@ -290,7 +290,7 @@ Begin VB.Form FRMPLANTBATCH
          _ExtentX        =   2990
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   111017985
+         Format          =   102694913
          CurrentDate     =   41477
       End
       Begin MSDataListLib.DataCombo cbotrnid 
@@ -753,7 +753,7 @@ Private Sub FillGridComboVariety()
     End Sub
 
 Private Sub mygrid_Click()
-If mygrid.col = 1 And Len(mygrid.TextMatrix(mygrid.row - 1, 4)) > 0 Then
+If mygrid.col = 1 And (Len(mygrid.TextMatrix(mygrid.row - 1, 4)) > 0 Or mygrid.TextMatrix(mygrid.row - 1, 10) = "SUCK") Then
 mygrid.Editable = flexEDKbdMouse
 FillGridComboVariety
 ElseIf mygrid.col = 3 And Len(mygrid.TextMatrix(mygrid.row, 2)) > 0 Then
