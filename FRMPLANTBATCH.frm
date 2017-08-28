@@ -290,7 +290,7 @@ Begin VB.Form FRMPLANTBATCH
          _ExtentX        =   2990
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   102694913
+         Format          =   102170625
          CurrentDate     =   41477
       End
       Begin MSDataListLib.DataCombo cbotrnid 
@@ -611,20 +611,31 @@ Set rs = Nothing
 mygrid.Clear
 'mygrid.FormatString = "^Sl.No.|^Plant Variety|^Batch No.|^Tissue Culture|^B/L Shipment Size|^Healthy Plant|^Weak Plant|^Under Size|^Over Size|^ Damaged|^TC source|"
 mygrid.FormatString = pbStringFormat
+'mygrid.ColWidth(0) = 570
+'mygrid.ColWidth(1) = 1380
+'mygrid.ColWidth(2) = 1005
+'mygrid.ColWidth(3) = 1350
+'mygrid.ColWidth(4) = 1710
+'mygrid.ColWidth(5) = 1350
+'mygrid.ColWidth(6) = 1155
+'mygrid.ColWidth(7) = 1080
+'mygrid.ColWidth(8) = 1005
+'mygrid.ColWidth(9) = 1320
+'mygrid.ColWidth(10) = 1155
+'mygrid.ColWidth(11) = 120
+
 mygrid.ColWidth(0) = 570
 mygrid.ColWidth(1) = 1380
 mygrid.ColWidth(2) = 1005
 mygrid.ColWidth(3) = 1350
 mygrid.ColWidth(4) = 1710
 mygrid.ColWidth(5) = 1350
-mygrid.ColWidth(6) = 1155
+mygrid.ColWidth(6) = 1000
 mygrid.ColWidth(7) = 1080
-mygrid.ColWidth(8) = 1005
-mygrid.ColWidth(9) = 1320
-mygrid.ColWidth(10) = 1155
-mygrid.ColWidth(11) = 120
-
-
+mygrid.ColWidth(8) = 900
+mygrid.ColWidth(9) = 1100
+mygrid.ColWidth(10) = 1000
+mygrid.ColWidth(11) = 50
 
 rs.Open "select * from tblqmsplantbatchdetail where trnid='" & trnid & "' order by trnid", MHVDB
 i = 1
