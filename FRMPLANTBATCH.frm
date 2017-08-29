@@ -290,7 +290,7 @@ Begin VB.Form FRMPLANTBATCH
          _ExtentX        =   2990
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   102170625
+         Format          =   101842945
          CurrentDate     =   41477
       End
       Begin MSDataListLib.DataCombo cbotrnid 
@@ -773,7 +773,7 @@ FillGridComboTC
 ElseIf (mygrid.col = 4 Or mygrid.col = 5 Or mygrid.col = 6 Or mygrid.col = 7 Or mygrid.col = 8 Or mygrid.col = 9) And Len(mygrid.TextMatrix(mygrid.row, 3)) > 0 Then
 mygrid.ComboList = ""
 mygrid.Editable = flexEDKbdMouse
-ElseIf (mygrid.col = 10 And Len(mygrid.TextMatrix(mygrid.row - 1, 2)) > 0 And Len(mygrid.TextMatrix(mygrid.row - 1, 4)) > 0) Then
+ElseIf (mygrid.col = 10 And Len(mygrid.TextMatrix(mygrid.row - 1, 2)) > 0) Then
 mygrid.Editable = flexEDKbdMouse
 FillGridComboTCsource
 Else
@@ -792,7 +792,14 @@ Dim j As Integer
 If mygrid.col = 1 And Len(mygrid.TextMatrix(mygrid.row, 1)) > 0 And Val(mygrid.TextMatrix(mygrid.row, 2)) = 0 And Operation = "ADD" Then
 mygrid.TextMatrix(mygrid.row, 2) = maxPlantBatch
 maxPlantBatch = maxPlantBatch + 1
+ElseIf mygrid.col = 1 And Len(mygrid.TextMatrix(mygrid.row, 1)) > 0 And Val(mygrid.TextMatrix(mygrid.row, 2)) = 0 And Operation = "OPEN" Then
+mygrid.TextMatrix(mygrid.row, 2) = maxPlantBatch
+maxPlantBatch = maxPlantBatch + 1
+Else
+'MsgBox ("invalid operation")
+'Exit Sub
 End If
+
 
 If Trim(mygrid.TextMatrix(mygrid.row, 1)) = "" And Operation = "ADD" Then
 mygrid.RemoveItem (mygrid.row)
@@ -846,6 +853,14 @@ Select Case Button.Key
         Case "OPEN"
         Operation = "OPEN"
         boxOperation = "OPEN"
+        
+        Set rsPb = Nothing
+        rsPb.Open "Select max(plantbatch) as max from tblqmsplantbatchdetail", MHVDB
+        If rsPb.EOF <> True Then
+        maxPlantBatch = rsPb!max + 1
+        maxPlantBatchloop = rsPb!max + 1
+        
+        End If
         cbotrnid.Text = ""
         CLEARCONTROLL
         cbotrnid.Enabled = True
