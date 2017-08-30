@@ -290,7 +290,7 @@ Begin VB.Form FRMPLANTBATCH
          _ExtentX        =   2990
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   101842945
+         Format          =   102563841
          CurrentDate     =   41477
       End
       Begin MSDataListLib.DataCombo cbotrnid 
@@ -917,12 +917,12 @@ MHVDB.Execute "delete from tblqmsplantbatchdetail where trnid='" & cbotrnid.Boun
 For i = 1 To mygrid.rows - 1
 If Len(mygrid.TextMatrix(i, 1)) = 0 Then Exit For
 MHVDB.Execute "insert into tblqmsplantbatchdetail (trnid,entrydate,plantvariety,plantbatch,planttype," _
-            & "shipmentsize,healthyplant,weakplant,undersize,oversize,icedamaged,location,tcsid) values" _
+            & "shipmentsize,healthyplant,weakplant,undersize,oversize,icedamaged,location,tcsource) values" _
             & "('" & cbotrnid.BoundText & "','" & Format(txtentrydate.Value, "yyyy-MM-dd") & "', " _
             & " '" & Mid(mygrid.TextMatrix(i, 1), 1, 3) & "','" & mygrid.TextMatrix(i, 2) & "','" & Mid(mygrid.TextMatrix(i, 3), 1, 3) & "'" _
             & ",'" & Val(mygrid.TextMatrix(i, 4)) & "','" & Val(mygrid.TextMatrix(i, 5)) & "'" _
             & ",'" & Val(mygrid.TextMatrix(i, 6)) & "','" & Val(mygrid.TextMatrix(i, 7)) & "'" _
-            & ",'" & Val(mygrid.TextMatrix(i, 8)) & "','" & Val(mygrid.TextMatrix(i, 9)) & "','" & Mlocation & "','" & Mid(mygrid.TextMatrix(i, 10), 1, 4) & "')"
+            & ",'" & Val(mygrid.TextMatrix(i, 8)) & "','" & Val(mygrid.TextMatrix(i, 9)) & "','" & Mlocation & "','" & Mid(mygrid.TextMatrix(i, 10), 1, 10) & "')"
 
 Next
 
