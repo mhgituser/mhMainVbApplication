@@ -216,7 +216,7 @@ Begin VB.Form FRMPLANTBATCH
          GridLines       =   1
          GridLinesFixed  =   2
          GridLineWidth   =   1
-         Rows            =   50
+         Rows            =   70
          Cols            =   11
          FixedRows       =   1
          FixedCols       =   1
@@ -290,7 +290,7 @@ Begin VB.Form FRMPLANTBATCH
          _ExtentX        =   2990
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   102563841
+         Format          =   101908481
          CurrentDate     =   41477
       End
       Begin MSDataListLib.DataCombo cbotrnid 
