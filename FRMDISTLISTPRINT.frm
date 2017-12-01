@@ -317,6 +317,7 @@ Screen.MousePointer = vbHourglass
     excel_sheet.cells(3, 31) = UCase("Hose Pipe")
     excel_sheet.cells(3, 32) = UCase("Agro Net")
     excel_sheet.cells(3, 33) = UCase("Urea")
+    excel_sheet.cells(3, 34) = UCase("Note")
    
     
     i = 4
@@ -344,7 +345,7 @@ Screen.MousePointer = vbHourglass
                               Set rs1 = Nothing
                               rs1.Open "select * from tblfarmer where idfarmer='" & rs!farmercode & "'", MHVDB
                               If rs1.EOF <> True Then
-                             excel_sheet.cells(i, 6) = rs1!farmername
+                             excel_sheet.cells(i, 6) = rs1!FARMERNAME
                              
                                  myphone = IIf(IsNull(rs1!phone1), "", rs1!phone1) & "," & IIf(IsNull(rs1!phone2), "", rs1!phone2)
                                  If Len(myphone) > 0 Then
@@ -424,7 +425,7 @@ Screen.MousePointer = vbHourglass
                              Else
                                     excel_sheet.cells(i, 33) = 0
                             End If
-                            
+                            excel_sheet.cells(3, 34) = rs!note
  '' end
                              
                              
@@ -519,7 +520,7 @@ Screen.MousePointer = vbHourglass
                                 .Orientation = 0
                                 .AddIndent = False
                                 .IndentLevel = 0
-                                .ShrinkToFit = False
+                                .shrinkToFit = False
                                 .ReadingOrder = xlContext
                                 .MergeCells = True
                             End With
@@ -542,7 +543,7 @@ Screen.MousePointer = vbHourglass
                                 .Orientation = 0
                                 .AddIndent = False
                                 .IndentLevel = 0
-                                .ShrinkToFit = False
+                                .shrinkToFit = False
                                 .ReadingOrder = xlContext
                                 .MergeCells = True
                             End With
@@ -593,7 +594,7 @@ Screen.MousePointer = vbHourglass
                                 .Orientation = 0
                                 .AddIndent = False
                                 .IndentLevel = 0
-                                .ShrinkToFit = False
+                                .shrinkToFit = False
                                 .ReadingOrder = xlContext
                                 .MergeCells = True
                             End With
@@ -616,7 +617,7 @@ Screen.MousePointer = vbHourglass
                                 .Orientation = 0
                                 .AddIndent = False
                                 .IndentLevel = 0
-                                .ShrinkToFit = False
+                                .shrinkToFit = False
                                 .ReadingOrder = xlContext
                                 .MergeCells = True
                             End With
@@ -637,7 +638,7 @@ Screen.MousePointer = vbHourglass
                                 .Orientation = 0
                                 .AddIndent = False
                                 .IndentLevel = 0
-                                .ShrinkToFit = False
+                                .shrinkToFit = False
                                 .ReadingOrder = xlContext
                                 .MergeCells = True
                             End With
@@ -657,7 +658,7 @@ Screen.MousePointer = vbHourglass
                                 .Orientation = 0
                                 .AddIndent = False
                                 .IndentLevel = 0
-                                .ShrinkToFit = False
+                                .shrinkToFit = False
                                 .ReadingOrder = xlContext
                                 .MergeCells = True
                             End With
@@ -677,7 +678,7 @@ Screen.MousePointer = vbHourglass
                                 .Orientation = 0
                                 .AddIndent = False
                                 .IndentLevel = 0
-                                .ShrinkToFit = False
+                                .shrinkToFit = False
                                 .ReadingOrder = xlContext
                                 .MergeCells = True
                             End With
@@ -716,7 +717,7 @@ End With
 
 
 excel_sheet.Columns("A:A").Select
- excel_app.selection.ColumnWidth = 3.57
+ excel_app.selection.columnWidth = 3.57
 With excel_app.selection
 .HorizontalAlignment = xlCenter
 .VerticalAlignment = xlCenter
@@ -726,7 +727,7 @@ End With
 
 
     excel_sheet.Columns("b:d").Select
- excel_app.selection.ColumnWidth = 14.86
+ excel_app.selection.columnWidth = 14.86
 With excel_app.selection
 .HorizontalAlignment = xlCenter
 .VerticalAlignment = xlCenter
@@ -738,7 +739,7 @@ End With
   
 
 excel_sheet.Columns("e:f").Select
- excel_app.selection.ColumnWidth = 17
+ excel_app.selection.columnWidth = 17
 With excel_app.selection
 .HorizontalAlignment = xlCenter
 .VerticalAlignment = xlCenter
@@ -748,7 +749,7 @@ End With
 
 
 excel_sheet.Columns("g:Y").Select
- excel_app.selection.ColumnWidth = 8
+ excel_app.selection.columnWidth = 8
 With excel_app.selection
 .HorizontalAlignment = xlCenter
 .VerticalAlignment = xlCenter
@@ -757,7 +758,7 @@ With excel_app.selection
 End With
 
 excel_sheet.Columns("Z:Z").Select
- excel_app.selection.ColumnWidth = 7
+ excel_app.selection.columnWidth = 7
 With excel_app.selection
 .HorizontalAlignment = xlCenter
 .VerticalAlignment = xlCenter
