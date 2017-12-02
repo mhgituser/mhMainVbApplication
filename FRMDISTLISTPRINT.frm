@@ -425,7 +425,7 @@ Screen.MousePointer = vbHourglass
                              Else
                                     excel_sheet.cells(i, 33) = 0
                             End If
-                            excel_sheet.cells(3, 34) = rs!note
+                            excel_sheet.cells(i, 34) = rs!note
  '' end
                              
                              
