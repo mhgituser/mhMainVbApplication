@@ -95,7 +95,7 @@ Public chkred As Boolean
 Public KmlFileNameas As String
 Public MUSER As String
 
-Public Const pbStringFormat = "^Sl.No.|^Plant Variety|^Batch No.|^Tissue Culture|^B/L Shipment Size|^Healthy Plant|^Weak Plant|^Under Size|^Over Size|^Ice Damaged|^TC source|"
+Public Const pbStringFormat = "^Sl.No.|^Plant Variety|^Batch No.|^Plant Type|^B/L Shipment Size|^Healthy Plant|^Weak Plant|^Under Size|^Over Size|^Ice Damaged|^TC source|"
 
 Public Dzname, GEname, TsName, sTAFF, FATYPEINF, FAName, rOLEnAME, Mstatus, ActName As String
 Public SysYear As Integer

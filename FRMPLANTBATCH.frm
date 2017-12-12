@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{D76D7120-4A96-11D3-BD95-D296DC2DD072}#1.0#0"; "Vsflex7u.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Begin VB.Form FRMPLANTBATCH 
    BorderStyle     =   1  'Fixed Single
@@ -216,7 +216,7 @@ Begin VB.Form FRMPLANTBATCH
          GridLines       =   1
          GridLinesFixed  =   2
          GridLineWidth   =   1
-         Rows            =   50
+         Rows            =   100
          Cols            =   11
          FixedRows       =   1
          FixedCols       =   1
@@ -290,7 +290,7 @@ Begin VB.Form FRMPLANTBATCH
          _ExtentX        =   2990
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   111017985
+         Format          =   102957057
          CurrentDate     =   41477
       End
       Begin MSDataListLib.DataCombo cbotrnid 
@@ -585,14 +585,14 @@ weakplant = 0
 oversize = 0
 undersize = 0
 icedamaged = 0
-For i = 1 To mygrid.rows - 1
-If Len(mygrid.TextMatrix(i, 1)) = 0 Then Exit For
-totplant = totplant + Val(mygrid.TextMatrix(i, 4))
-healthyplant = healthyplant + Val(mygrid.TextMatrix(i, 5))
-weakplant = weakplant + Val(mygrid.TextMatrix(i, 6))
-undersize = undersize + Val(mygrid.TextMatrix(i, 7))
-oversize = oversize + Val(mygrid.TextMatrix(i, 8))
-icedamaged = icedamaged + Val(mygrid.TextMatrix(i, 9))
+For i = 1 To myGrid.rows - 1
+If Len(myGrid.TextMatrix(i, 1)) = 0 Then Exit For
+totplant = totplant + Val(myGrid.TextMatrix(i, 4))
+healthyplant = healthyplant + Val(myGrid.TextMatrix(i, 5))
+weakplant = weakplant + Val(myGrid.TextMatrix(i, 6))
+undersize = undersize + Val(myGrid.TextMatrix(i, 7))
+oversize = oversize + Val(myGrid.TextMatrix(i, 8))
+icedamaged = icedamaged + Val(myGrid.TextMatrix(i, 9))
 Next
 txttotalplant.Text = Format(totplant, "#,##,##")
 txthealthyplant.Text = IIf(Format(healthyplant, "#,##,##") = 0, "", Format(healthyplant, "#,##,##"))
@@ -608,40 +608,51 @@ Dim rs As New ADODB.Recordset
 Dim i As Integer
 Set rs = Nothing
 
-mygrid.Clear
+myGrid.Clear
 'mygrid.FormatString = "^Sl.No.|^Plant Variety|^Batch No.|^Tissue Culture|^B/L Shipment Size|^Healthy Plant|^Weak Plant|^Under Size|^Over Size|^ Damaged|^TC source|"
-mygrid.FormatString = pbStringFormat
-mygrid.ColWidth(0) = 570
-mygrid.ColWidth(1) = 1380
-mygrid.ColWidth(2) = 1005
-mygrid.ColWidth(3) = 1350
-mygrid.ColWidth(4) = 1710
-mygrid.ColWidth(5) = 1350
-mygrid.ColWidth(6) = 1155
-mygrid.ColWidth(7) = 1080
-mygrid.ColWidth(8) = 1005
-mygrid.ColWidth(9) = 1320
-mygrid.ColWidth(10) = 1155
-mygrid.ColWidth(11) = 120
+myGrid.FormatString = pbStringFormat
+'mygrid.ColWidth(0) = 570
+'mygrid.ColWidth(1) = 1380
+'mygrid.ColWidth(2) = 1005
+'mygrid.ColWidth(3) = 1350
+'mygrid.ColWidth(4) = 1710
+'mygrid.ColWidth(5) = 1350
+'mygrid.ColWidth(6) = 1155
+'mygrid.ColWidth(7) = 1080
+'mygrid.ColWidth(8) = 1005
+'mygrid.ColWidth(9) = 1320
+'mygrid.ColWidth(10) = 1155
+'mygrid.ColWidth(11) = 120
 
-
+myGrid.ColWidth(0) = 570
+myGrid.ColWidth(1) = 1380
+myGrid.ColWidth(2) = 1005
+myGrid.ColWidth(3) = 1350
+myGrid.ColWidth(4) = 1710
+myGrid.ColWidth(5) = 1350
+myGrid.ColWidth(6) = 1000
+myGrid.ColWidth(7) = 1080
+myGrid.ColWidth(8) = 900
+myGrid.ColWidth(9) = 1100
+myGrid.ColWidth(10) = 1000
+myGrid.ColWidth(11) = 50
 
 rs.Open "select * from tblqmsplantbatchdetail where trnid='" & trnid & "' order by trnid", MHVDB
 i = 1
 Do While rs.EOF <> True
-mygrid.TextMatrix(i, 0) = i
+myGrid.TextMatrix(i, 0) = i
 FindqmsPlantVariety (Right("0000" & rs!plantvariety, 3))
-mygrid.TextMatrix(i, 1) = Right("0000" & rs!plantvariety, 3) & " " & qmsPlantVariety
-mygrid.TextMatrix(i, 2) = rs!plantBatch
+myGrid.TextMatrix(i, 1) = Right("0000" & rs!plantvariety, 3) & " " & qmsPlantVariety
+myGrid.TextMatrix(i, 2) = rs!plantBatch
 FindqmsPlanttype rs!planttype
-mygrid.TextMatrix(i, 3) = rs!planttype & " " & qmsPlantType
-mygrid.TextMatrix(i, 4) = IIf(rs!shipmentsize = 0, "", rs!shipmentsize)
-mygrid.TextMatrix(i, 5) = IIf(rs!healthyplant = 0, "", rs!healthyplant)
-mygrid.TextMatrix(i, 6) = IIf(rs!weakplant = 0, "", rs!weakplant)
-mygrid.TextMatrix(i, 7) = IIf(rs!undersize = 0, "", rs!undersize)
-mygrid.TextMatrix(i, 8) = IIf(rs!oversize = 0, "", rs!oversize)
-mygrid.TextMatrix(i, 9) = IIf(rs!icedamaged = 0, "", rs!icedamaged)
-mygrid.TextMatrix(i, 10) = IIf(rs!tcsource = 0, "", rs!tcsource)
+myGrid.TextMatrix(i, 3) = rs!planttype & " " & qmsPlantType
+myGrid.TextMatrix(i, 4) = IIf(rs!shipmentsize = 0, "", rs!shipmentsize)
+myGrid.TextMatrix(i, 5) = IIf(rs!healthyplant = 0, "", rs!healthyplant)
+myGrid.TextMatrix(i, 6) = IIf(rs!weakplant = 0, "", rs!weakplant)
+myGrid.TextMatrix(i, 7) = IIf(rs!undersize = 0, "", rs!undersize)
+myGrid.TextMatrix(i, 8) = IIf(rs!oversize = 0, "", rs!oversize)
+myGrid.TextMatrix(i, 9) = IIf(rs!icedamaged = 0, "", rs!icedamaged)
+myGrid.TextMatrix(i, 10) = IIf(rs!tcsource = 0, "", rs!tcsource)
 
 
 i = i + 1
@@ -721,7 +732,7 @@ Private Sub FillGridComboVariety()
                Loop
             End If
             RstTemp.Close
-       mygrid.ComboList = StrComboList
+       myGrid.ComboList = StrComboList
 
 
 
@@ -746,28 +757,28 @@ Private Sub FillGridComboVariety()
                Loop
             End If
             RstTemp.Close
-       mygrid.ComboList = StrComboList
+       myGrid.ComboList = StrComboList
 
 
 
     End Sub
 
 Private Sub mygrid_Click()
-If mygrid.col = 1 And Len(mygrid.TextMatrix(mygrid.row - 1, 4)) > 0 Then
-mygrid.Editable = flexEDKbdMouse
+If myGrid.col = 1 And (Len(myGrid.TextMatrix(myGrid.row - 1, 4)) > 0 Or myGrid.TextMatrix(myGrid.row - 1, 10) = "SUCK") Then
+myGrid.Editable = flexEDKbdMouse
 FillGridComboVariety
-ElseIf mygrid.col = 3 And Len(mygrid.TextMatrix(mygrid.row, 2)) > 0 Then
-mygrid.Editable = flexEDKbdMouse
+ElseIf myGrid.col = 3 And Len(myGrid.TextMatrix(myGrid.row, 2)) > 0 Then
+myGrid.Editable = flexEDKbdMouse
 FillGridComboTC
-ElseIf (mygrid.col = 4 Or mygrid.col = 5 Or mygrid.col = 6 Or mygrid.col = 7 Or mygrid.col = 8 Or mygrid.col = 9) And Len(mygrid.TextMatrix(mygrid.row, 3)) > 0 Then
-mygrid.ComboList = ""
-mygrid.Editable = flexEDKbdMouse
-ElseIf (mygrid.col = 10 And Len(mygrid.TextMatrix(mygrid.row - 1, 2)) > 0 And Len(mygrid.TextMatrix(mygrid.row - 1, 4)) > 0) Then
-mygrid.Editable = flexEDKbdMouse
+ElseIf (myGrid.col = 4 Or myGrid.col = 5 Or myGrid.col = 6 Or myGrid.col = 7 Or myGrid.col = 8 Or myGrid.col = 9) And Len(myGrid.TextMatrix(myGrid.row, 3)) > 0 Then
+myGrid.ComboList = ""
+myGrid.Editable = flexEDKbdMouse
+ElseIf (myGrid.col = 10 And Len(myGrid.TextMatrix(myGrid.row - 1, 2)) > 0) Then
+myGrid.Editable = flexEDKbdMouse
 FillGridComboTCsource
 Else
-mygrid.ComboList = ""
-mygrid.Editable = flexEDNone
+myGrid.ComboList = ""
+myGrid.Editable = flexEDNone
 End If
 
 addcells
@@ -778,29 +789,36 @@ Private Sub Mygrid_LeaveCell()
 Dim i As Integer
 Dim j As Integer
 
-If mygrid.col = 1 And Len(mygrid.TextMatrix(mygrid.row, 1)) > 0 And Val(mygrid.TextMatrix(mygrid.row, 2)) = 0 And Operation = "ADD" Then
-mygrid.TextMatrix(mygrid.row, 2) = maxPlantBatch
+If myGrid.col = 1 And Len(myGrid.TextMatrix(myGrid.row, 1)) > 0 And Val(myGrid.TextMatrix(myGrid.row, 2)) = 0 And Operation = "ADD" Then
+myGrid.TextMatrix(myGrid.row, 2) = maxPlantBatch
 maxPlantBatch = maxPlantBatch + 1
+ElseIf myGrid.col = 1 And Len(myGrid.TextMatrix(myGrid.row, 1)) > 0 And Val(myGrid.TextMatrix(myGrid.row, 2)) = 0 And Operation = "OPEN" Then
+myGrid.TextMatrix(myGrid.row, 2) = maxPlantBatch
+maxPlantBatch = maxPlantBatch + 1
+Else
+'MsgBox ("invalid operation")
+'Exit Sub
 End If
 
-If Trim(mygrid.TextMatrix(mygrid.row, 1)) = "" And Operation = "ADD" Then
-mygrid.RemoveItem (mygrid.row)
+
+If Trim(myGrid.TextMatrix(myGrid.row, 1)) = "" And Operation = "ADD" Then
+myGrid.RemoveItem (myGrid.row)
 j = maxPlantBatchloop
-mygrid.rows = mygrid.rows + 1
-For i = 1 To mygrid.rows - 1
-If Len(mygrid.TextMatrix(i, 1)) = 0 Then Exit For
-mygrid.TextMatrix(i, 0) = i
-mygrid.TextMatrix(i, 2) = j
+myGrid.rows = myGrid.rows + 1
+For i = 1 To myGrid.rows - 1
+If Len(myGrid.TextMatrix(i, 1)) = 0 Then Exit For
+myGrid.TextMatrix(i, 0) = i
+myGrid.TextMatrix(i, 2) = j
 j = j + 1
 Next
 End If
 
-If Trim(mygrid.TextMatrix(mygrid.row, 1)) = "" And Operation = "OPEN" Then
-mygrid.RemoveItem (mygrid.row)
-mygrid.rows = mygrid.rows + 1
-For i = 1 To mygrid.rows - 1
-If Len(mygrid.TextMatrix(i, 1)) = 0 Then Exit For
-mygrid.TextMatrix(i, 0) = i
+If Trim(myGrid.TextMatrix(myGrid.row, 1)) = "" And Operation = "OPEN" Then
+myGrid.RemoveItem (myGrid.row)
+myGrid.rows = myGrid.rows + 1
+For i = 1 To myGrid.rows - 1
+If Len(myGrid.TextMatrix(i, 1)) = 0 Then Exit For
+myGrid.TextMatrix(i, 0) = i
 Next
 End If
 
@@ -835,6 +853,14 @@ Select Case Button.Key
         Case "OPEN"
         Operation = "OPEN"
         boxOperation = "OPEN"
+        
+        Set rsPb = Nothing
+        rsPb.Open "Select max(plantbatch) as max from tblqmsplantbatchdetail", MHVDB
+        If rsPb.EOF <> True Then
+        maxPlantBatch = rsPb!max + 1
+        maxPlantBatchloop = rsPb!max + 1
+        
+        End If
         cbotrnid.Text = ""
         CLEARCONTROLL
         cbotrnid.Enabled = True
@@ -888,15 +914,15 @@ MHVDB.RollbackTrans
 Exit Sub
 End If
 MHVDB.Execute "delete from tblqmsplantbatchdetail where trnid='" & cbotrnid.BoundText & "'"
-For i = 1 To mygrid.rows - 1
-If Len(mygrid.TextMatrix(i, 1)) = 0 Then Exit For
+For i = 1 To myGrid.rows - 1
+If Len(myGrid.TextMatrix(i, 1)) = 0 Then Exit For
 MHVDB.Execute "insert into tblqmsplantbatchdetail (trnid,entrydate,plantvariety,plantbatch,planttype," _
-            & "shipmentsize,healthyplant,weakplant,undersize,oversize,icedamaged,location,tcsid) values" _
+            & "shipmentsize,healthyplant,weakplant,undersize,oversize,icedamaged,location,tcsource) values" _
             & "('" & cbotrnid.BoundText & "','" & Format(txtentrydate.Value, "yyyy-MM-dd") & "', " _
-            & " '" & Mid(mygrid.TextMatrix(i, 1), 1, 3) & "','" & mygrid.TextMatrix(i, 2) & "','" & Mid(mygrid.TextMatrix(i, 3), 1, 3) & "'" _
-            & ",'" & Val(mygrid.TextMatrix(i, 4)) & "','" & Val(mygrid.TextMatrix(i, 5)) & "'" _
-            & ",'" & Val(mygrid.TextMatrix(i, 6)) & "','" & Val(mygrid.TextMatrix(i, 7)) & "'" _
-            & ",'" & Val(mygrid.TextMatrix(i, 8)) & "','" & Val(mygrid.TextMatrix(i, 9)) & "','" & Mlocation & "','" & Mid(mygrid.TextMatrix(i, 10), 1, 4) & "')"
+            & " '" & Mid(myGrid.TextMatrix(i, 1), 1, 3) & "','" & myGrid.TextMatrix(i, 2) & "','" & Mid(myGrid.TextMatrix(i, 3), 1, 3) & "'" _
+            & ",'" & Val(myGrid.TextMatrix(i, 4)) & "','" & Val(myGrid.TextMatrix(i, 5)) & "'" _
+            & ",'" & Val(myGrid.TextMatrix(i, 6)) & "','" & Val(myGrid.TextMatrix(i, 7)) & "'" _
+            & ",'" & Val(myGrid.TextMatrix(i, 8)) & "','" & Val(myGrid.TextMatrix(i, 9)) & "','" & Mlocation & "','" & Mid(myGrid.TextMatrix(i, 10), 1, 10) & "')"
 
 Next
 
@@ -912,21 +938,21 @@ MHVDB.RollbackTrans
 End Sub
 
 Private Sub CLEARCONTROLL()
-mygrid.Clear
+myGrid.Clear
 'mygrid.FormatString = "^Sl.No.|^Plant Variety|^Batch No.|^Tissue Culture|^B/L Shipment Size|^Healthy Plant|^Weak Plant|^Under Size|^Over Size|^Ice Damaged|^"
-mygrid.FormatString = pbStringFormat
-mygrid.ColWidth(0) = 570
-mygrid.ColWidth(1) = 1380
-mygrid.ColWidth(2) = 1005
-mygrid.ColWidth(3) = 1350
-mygrid.ColWidth(4) = 1710
-mygrid.ColWidth(5) = 1350
-mygrid.ColWidth(6) = 1000
-mygrid.ColWidth(7) = 1080
-mygrid.ColWidth(8) = 900
-mygrid.ColWidth(9) = 1100
-mygrid.ColWidth(10) = 1000
-mygrid.ColWidth(11) = 50
+myGrid.FormatString = pbStringFormat
+myGrid.ColWidth(0) = 570
+myGrid.ColWidth(1) = 1380
+myGrid.ColWidth(2) = 1005
+myGrid.ColWidth(3) = 1350
+myGrid.ColWidth(4) = 1710
+myGrid.ColWidth(5) = 1350
+myGrid.ColWidth(6) = 1000
+myGrid.ColWidth(7) = 1080
+myGrid.ColWidth(8) = 900
+myGrid.ColWidth(9) = 1100
+myGrid.ColWidth(10) = 1000
+myGrid.ColWidth(11) = 50
 
 cbostaffid.Text = ""
 txtnoofboxes.Text = ""
@@ -947,7 +973,7 @@ Private Sub FillGridComboTCsource()
                Loop
             End If
             RstTemp.Close
-       mygrid.ComboList = StrComboList
+       myGrid.ComboList = StrComboList
 End Sub
 
 

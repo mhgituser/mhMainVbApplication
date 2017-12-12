@@ -16,9 +16,9 @@ Begin VB.MDIForm frmMain
       Height          =   375
       Left            =   0
       TabIndex        =   0
-      Top             =   7605
-      Width           =   11280
-      _ExtentX        =   19897
+      Top             =   10275
+      Width           =   20250
+      _ExtentX        =   35719
       _ExtentY        =   661
       SimpleText      =   ""
       _Version        =   327682
@@ -29,10 +29,12 @@ Begin VB.MDIForm frmMain
             MinWidth        =   1058
             Text            =   "USER"
             TextSave        =   "USER"
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel2 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             TextSave        =   ""
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel3 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
@@ -40,19 +42,23 @@ Begin VB.MDIForm frmMain
             MinWidth        =   1587
             Text            =   "SERVER:"
             TextSave        =   "SERVER:"
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel4 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             TextSave        =   ""
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel5 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             Text            =   "LOCATION"
             TextSave        =   "LOCATION"
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel6 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
             TextSave        =   ""
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
       EndProperty
@@ -752,9 +758,9 @@ Attribute VB_Exposed = False
 
 
 Private Sub MDIForm_Load()
-sb.Panels(2) = UCase(MUSER)
-sb.Panels(4) = UCase(Mserver)
-sb.Panels(6) = UCase(Mlocation)
+SB.Panels(2) = UCase(MUSER)
+SB.Panels(4) = UCase(Mserver)
+SB.Panels(6) = UCase(Mlocation)
 mbypass = False
 Mcaretaker = ""
 If UCase(MUSER) <> "ADMIN" Then

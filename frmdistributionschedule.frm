@@ -354,12 +354,46 @@ Begin VB.Form frmdistributionschedule
       Width           =   1575
    End
    Begin VB.Frame Frame1 
-      Height          =   4935
+      Height          =   5295
       Left            =   0
       TabIndex        =   2
       Top             =   2400
       Visible         =   0   'False
       Width           =   9855
+      Begin VB.CheckBox chkrefill 
+         Caption         =   "Refillin"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   1920
+         TabIndex        =   40
+         Top             =   4800
+         Width           =   1335
+      End
+      Begin VB.CheckBox chkPolinizer 
+         Caption         =   "Polinizer"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   1920
+         TabIndex        =   39
+         Top             =   4560
+         Width           =   1455
+      End
       Begin VB.CommandButton Command9 
          Caption         =   "Select All"
          BeginProperty Font 
@@ -422,7 +456,7 @@ Begin VB.Form frmdistributionschedule
          Height          =   255
          Left            =   1920
          TabIndex        =   32
-         Top             =   4440
+         Top             =   4320
          Width           =   1455
       End
       Begin VB.CheckBox chkgrf 
@@ -439,7 +473,7 @@ Begin VB.Form frmdistributionschedule
          Height          =   255
          Left            =   1920
          TabIndex        =   31
-         Top             =   4200
+         Top             =   4080
          Width           =   1455
       End
       Begin VB.ListBox LSTPR 
@@ -475,7 +509,7 @@ Begin VB.Form frmdistributionschedule
          Height          =   255
          Left            =   1920
          TabIndex        =   28
-         Top             =   3960
+         Top             =   3840
          Width           =   1455
       End
       Begin VB.ListBox DZLIST 
@@ -666,16 +700,88 @@ chkcf.Value = 0
 End If
 End Sub
 
+Private Sub chkPolinizer_Click()
+If chkPolinizer.Value = 0 Then
+chkgrf.Value = 0
+chkcf.Value = 0
+chkpriority.Value = 0
+End If
+Dzstr = ""
+If chkPolinizer.Value = 1 Then
+Frame1.Width = 9855
+For i = 0 To DZLIST.ListCount - 1
+    If DZLIST.Selected(i) Then
+       Dzstr = Dzstr + "'" + Trim(Mid(DZLIST.List(i), InStr(1, DZLIST.List(i), "|") + 1)) + "',"
+       Mcat = DZLIST.List(i)
+       j = j + 1
+    End If
+    If RepName = "5" Then
+       If j > 1 Then
+          MsgBox "SELECT ATLEAST ONE DZONGKHAG TO VIEW THIS REPORT."
+          Exit Sub
+       End If
+    End If
+Next
+If Len(Dzstr) > 0 Then
+   Dzstr = "(" + Left(Dzstr, Len(Dzstr) - 1) + ")"
+ 
+Else
+Frame1.Width = 3495
+chkpriority.Value = 0
+LSTPR.Clear
+   MsgBox "DZONGKHAG NOT SELECTED !!!"
+   Exit Sub
+End If
+
+
+Dim rs As New ADODB.Recordset
+
+Set rs = Nothing
+LSTPR.Clear
+
+If chkunplanned.Value = 0 Then
+txtfcode.Visible = False
+txtcratecnt.Visible = False
+'rs.Open "select substring(dgt,1,3) dzongkhagid,substring(dgt,4,3) gewogid,substring(dgt,7,3) tshewogid  from  dgt where dgt in(select substring(farmercode,1,9) from tblplanted where year='2013') order by id ", MHVDB, adOpenStatic
+rs.Open "select * from tbltshewog where dzongkhagid in " & Dzstr & "order by dzongkhagid,gewogid,tshewogid ", MHVDB, adOpenStatic
+
+Else
+txtfcode.Visible = True
+txtcratecnt.Visible = True
+rs.Open "select a.* from tblfarmer a,tblpolinizer b where a.IDFARMER=b.farmercode and substring(idfarmer,1,3) in " & Dzstr & "order by idfarmer ", MHVDB
+End If
+With rs
+Do While Not .EOF
+If chkunplanned.Value = 0 Then
+FindDZ rs!dzongkhagid
+FindGE rs!dzongkhagid, rs!gewogid
+FindTs rs!dzongkhagid, rs!gewogid, rs!tshewogid
+LSTPR.AddItem rs!dzongkhagid & " " & Trim(Dzname) + " |" + rs!gewogid & " " & Trim(GEname) + " |" + rs!tshewogid & " " & Trim(TsName) 'Trim(!DZONGKHAGNAME) + " | " + !DZONGKHAGCODE
+Else
+LSTPR.AddItem Trim(rs!farmername) + " | " + rs!idfarmer
+
+End If
+   .MoveNext
+Loop
+End With
+
+
+Else
+Frame1.Width = 3495
+End If
+
+
+End Sub
+
 Private Sub chkpriority_Click()
 If chkpriority.Value = 0 Then
 chkgrf.Value = 0
 chkcf.Value = 0
-
+chkPolinizer.Value = 0
 End If
 Dzstr = ""
 If chkpriority.Value = 1 Then
 Frame1.Width = 9855
-
 For i = 0 To DZLIST.ListCount - 1
     If DZLIST.Selected(i) Then
        Dzstr = Dzstr + "'" + Trim(Mid(DZLIST.List(i), InStr(1, DZLIST.List(i), "|") + 1)) + "',"
@@ -772,10 +878,6 @@ cmdsave.Enabled = True
 
 addgrid
 
-
-
-
-
 ElseIf Operation = "OPEN" Then
 txtindecator.Text = "S"
 Frame1.Visible = False
@@ -786,13 +888,7 @@ loadgridfromdb
 
 cmdsave.Enabled = True
 
-
-
-
-
-
 Else
-
 End If
 
 End Sub
@@ -1097,7 +1193,7 @@ Dim s As Integer
 Dim SQLSTR As String
 
 Set rs1 = Nothing
-rs1.Open "select max(distno) as maxid from tblplantdistributiondetail where subtotindicator=''", MHVDB
+rs1.Open "select max(distno) as maxid from tblplantdistributiondetail", MHVDB
 maxDistNo = IIf(IsNull(rs1!MaxId), 0, rs1!MaxId) + 1
 txtdno.Text = maxDistNo
 Set rs1 = Nothing
@@ -1201,7 +1297,7 @@ mygrid.FormatString = "S/N|^D\N|Dzongkhag|^Gewog       |^Tshowog    |^Farmer Cod
 
 
 
-If chkpriority.Value = 0 Then
+If chkpriority.Value = 0 And chkPolinizer.Value = 0 And chkrefill.Value = 0 Then
     If chkgrf.Value = 0 And chkcf.Value = 0 Then
             SQLSTR = "SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE,SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,REGLAND AS REGLAND,village,phone1 FROM tblfarmer A,tbllandreg B WHERE A.status='A' and plantedstatus='N' and A.IDFARMER=B.FARMERID AND substring(idfarmer,10,1)='F' and SUBSTRING(IDFARMER,1,3)IN  " & Dzstr
             SQLSTR = SQLSTR & "  " & "group by idfarmer ORDER BY SUBSTRING(IDFARMER,1,9),IDFARMER"
@@ -1219,23 +1315,12 @@ If chkpriority.Value = 0 Then
     End If
     Else
         myfamercount = 0
-        If chkgrf.Value = 0 And chkcf.Value = 0 Then
+        If chkgrf.Value = 0 And chkcf.Value = 0 And chkPolinizer.Value = 0 Then
         SQLSTR = ""
         If chkunplanned = 1 Then
          SQLSTR = "SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE,SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,REGLAND AS REGLAND,village,phone1 FROM tblfarmer A,tbllandreg B WHERE A.status='A' and A.IDFARMER=B.FARMERID AND (IDFARMER)IN  " & Dzstr
             SQLSTR = SQLSTR & "  " & "group by idfarmer ORDER BY SUBSTRING(IDFARMER,1,9) ,IDFARMER "
 
-Else
-
-        SQLSTR = "SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE,SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,sum(REGLAND) AS REGLAND,village,phone1 FROM tblfarmer A,tbllandreg B WHERE A.status not in('D','R','C')and B.status not in('D','R','C') and plantedstatus='N'  and A.IDFARMER=B.FARMERID and substring(idfarmer,10,1)='F' and SUBSTRING(IDFARMER,1,9)IN  " & Dzstr
-        SQLSTR = SQLSTR & "  " & "group by idfarmer "
-SQLSTR = SQLSTR & " union  SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE, " _
-& " SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,sum(acre) AS REGLAND,village,phone1 FROM " _
-& " tblfarmer A,tbllandregdetail B WHERE A.status not in('D','R','C') and plantedstatus='N'  " _
-& " and A.IDFARMER=B.farmercode  and substring(idfarmer,10,1)='F' and SUBSTRING(IDFARMER,1,9)IN  " & Dzstr & " group by idfarmer order by " _
-& " FIELD(SUBSTRING(IDFARMER,1,9), " & morderstr & ")"
-
-MHVDB.Execute "delete from  tbldistpreparetion"
 
        MHVDB.Execute "insert into tbldistpreparetion " & SQLSTR
        SQLSTR = ""
@@ -1250,6 +1335,40 @@ MHVDB.Execute "delete from  tbldistpreparetion"
 MHVDB.Execute SQLSTR
   SQLSTR = "SELECT * from tbldistpreparetion order by  FIELD(SUBSTRING(IDFARMER,1,9), " & morderstr & ") "
 
+ElseIf chkrefill.Value = 1 Then
+      MHVDB.Execute "delete from  tbldistpreparetion"
+      SQLSTR = "insert into tbldistpreparetion(dzcode,gecode,tscode,idfarmer,farmername,regland,village,phone1,refillplant,totfillindemand)" _
+           & " select substring(farmercode,1,3) dzcode,substring(farmercode,4,3) gecode,substring(farmercode,7,3) tscode,farmercode,farmername,0 regland,village,phone1,totplants,totfillin from " _
+           & "mhv.vrefillin a,mhv.tblfarmer b where idfarmer=farmercode and SUBSTRING(IDFARMER,1,3) IN  " & Dzstr & " and a.status='ON' and a.isfinalized='Yes'"
+           MHVDB.Execute SQLSTR
+      SQLSTR = "SELECT * from tbldistpreparetion order by  FIELD(SUBSTRING(IDFARMER,1,9), " & morderstr & ") "
+
+Else
+
+        SQLSTR = "SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE,SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,sum(REGLAND) AS REGLAND,village,phone1 FROM tblfarmer A,tbllandreg B WHERE A.status not in('D','R','C')and B.status not in('D','R','C') and plantedstatus='N'  and A.IDFARMER=B.FARMERID and substring(idfarmer,10,1)='F' and SUBSTRING(IDFARMER,1,9)IN  " & Dzstr
+        SQLSTR = SQLSTR & "  " & "group by idfarmer "
+SQLSTR = SQLSTR & " union  SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE, " _
+& " SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,sum(acre) AS REGLAND,village,phone1 FROM " _
+& " tblfarmer A,tbllandregdetail B WHERE A.status not in('D','R','C') and plantedstatus='N'  " _
+& " and A.IDFARMER=B.farmercode  and substring(idfarmer,10,1)='F' and SUBSTRING(IDFARMER,1,9)IN  " & Dzstr & " group by idfarmer order by " _
+& " FIELD(SUBSTRING(IDFARMER,1,9), " & morderstr & ")"
+
+MHVDB.Execute "delete from  tbldistpreparetion"
+
+       MHVDB.Execute "insert into tbldistpreparetion(dzcode,gecode,tscode,idfarmer,farmername,regland,village,phone1) " & SQLSTR
+       SQLSTR = ""
+       'SQLSTR = "SELECT SUBSTRING(farmercode,1,3) AS DZCODE,SUBSTRING(farmercode,4,3) AS GECODE,SUBSTRING(farmercode,7,3) AS TSCODE,farmercode,FARMERNAME,0 AS REGLAND,village,phone1 FROM tblfarmer A,refillin B WHERE A.status='A' and A.IDFARMER=B.farmercode and substring(farmercode,10,1)='F' and SUBSTRING(farmercode,1,9)IN  " & Dzstr & " and farmercode not in(select idfarmer from tbldistpreparetion)"
+        '    SQLSTR = SQLSTR & "  " & "group by farmercode order by  FIELD(SUBSTRING(farmercode,1,9), " & morderstr & ") "
+       'MHVDB.Execute "insert into tbldistpreparetion " & SQLSTR
+      '            SQLSTR = "SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE,SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,REGLAND AS REGLAND,village,phone1 FROM tblfarmer A,tbllandreg B WHERE A.status='A' and A.IDFARMER=B.FARMERID AND substring(idfarmer,10,1)='F' and SUBSTRING(IDFARMER,1,9)IN  " & Dzstr
+'            SQLSTR = SQLSTR & "  " & "group by idfarmer ORDER BY SUBSTRING(IDFARMER,1,9) ,IDFARMER "
+  SQLSTR = "insert into tbldistpreparetion(dzcode,gecode,tscode,idfarmer,farmername,regland,village,phone1)" _
+           & " select substring(farmercode,1,3) dzcode,substring(farmercode,4,3) gecode,substring(farmercode,7,3) tscode,farmercode,farmername,0 regland,village,phone1 from " _
+& "vrefillin a,tblfarmer b where idfarmer=farmercode and a.status='ON' and farmercode not in(select idfarmer from tbldistpreparetion)"
+MHVDB.Execute SQLSTR
+  SQLSTR = "SELECT * from tbldistpreparetion order by  FIELD(SUBSTRING(IDFARMER,1,9), " & morderstr & ") "
+  
+
 End If
         
         
@@ -1258,8 +1377,28 @@ End If
         
         ElseIf chkgrf.Value = 1 Then
         
-            SQLSTR = "SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE,SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,REGLAND AS REGLAND,village,phone1 FROM tblfarmer A,tbllandreg B WHERE A.status='A' and A.IDFARMER=B.FARMERID AND substring(idfarmer,10,1)='G' and  SUBSTRING(IDFARMER,1,9)IN  " & Dzstr
+            SQLSTR = "SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE,SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,REGLAND AS REGLAND,village,phone1,sum(plantqty)polinizercrate  FROM tblfarmer A,tbllandreg B WHERE A.status='A' and A.IDFARMER=B.FARMERID AND substring(idfarmer,10,1)='G' and  SUBSTRING(IDFARMER,1,9)IN  " & Dzstr
             SQLSTR = SQLSTR & "  " & "group by idfarmer ORDER BY SUBSTRING(IDFARMER,1,9) ,IDFARMER "
+        ElseIf chkPolinizer.Value = 1 Then
+        
+    'added by kinzang ## begin
+    '    MHVDB.Execute "insert into mhv.tblpolinizer(farmercode,plantqty,myear,pvariety,originalplantqty,flag) select a.farmercode,noofcrate,mindistyear,3,noofcrate,1 from mhv.tblpolinizerjune a LEFT JOIN mhv.tblpollenizeranalysis b ON a.farmercode=b.farmercode"
+    '## end
+    ' add flag condition for code below
+    'and SUBSTRING(IDFARMER,1,3)IN  " & Dzstr * extracting with flag =0 is enough
+    
+        SQLSTR = "SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE,SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,0 AS REGLAND,village,phone1,sum(plantqty) polinizercrate FROM tblfarmer A,tblpolinizer B WHERE A.IDFARMER=B.farmercode and B.flag=0 "
+        SQLSTR = SQLSTR & "  " & "group by idfarmer "
+MHVDB.Execute "delete from  tbldistpreparetion"
+     MHVDB.Execute "insert into tbldistpreparetion(dzcode,gecode,tscode,idfarmer,farmername,regland,village,phone1,polinizercrate) " & SQLSTR
+       SQLSTR = ""
+       'SQLSTR = "SELECT SUBSTRING(farmercode,1,3) AS DZCODE,SUBSTRING(farmercode,4,3) AS GECODE,SUBSTRING(farmercode,7,3) AS TSCODE,farmercode,FARMERNAME,0 AS REGLAND,village,phone1 FROM tblfarmer A,refillin B WHERE A.status='A' and A.IDFARMER=B.farmercode and substring(farmercode,10,1)='F' and SUBSTRING(farmercode,1,9)IN  " & Dzstr & " and farmercode not in(select idfarmer from tbldistpreparetion)"
+        '    SQLSTR = SQLSTR & "  " & "group by farmercode order by  FIELD(SUBSTRING(farmercode,1,9), " & morderstr & ") "
+       'MHVDB.Execute "insert into tbldistpreparetion " & SQLSTR
+      '            SQLSTR = "SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE,SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,REGLAND AS REGLAND,village,phone1 FROM tblfarmer A,tbllandreg B WHERE A.status='A' and A.IDFARMER=B.FARMERID AND substring(idfarmer,10,1)='F' and SUBSTRING(IDFARMER,1,9)IN  " & Dzstr
+'            SQLSTR = SQLSTR & "  " & "group by idfarmer ORDER BY SUBSTRING(IDFARMER,1,9) ,IDFARMER "
+
+  SQLSTR = "SELECT * from tbldistpreparetion order by  FIELD(SUBSTRING(IDFARMER,1,9), " & morderstr & ") "
     
     Else
       SQLSTR = "SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE,SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,REGLAND AS REGLAND,village,phone1 FROM tblfarmer A,tbllandreg B WHERE A.status='A' and A.IDFARMER=B.FARMERID AND substring(idfarmer,10,1)='C' and  SUBSTRING(IDFARMER,1,9)IN  " & Dzstr
@@ -1299,12 +1438,27 @@ mrnd = 0
                                          mygrid.TextMatrix(i, 7) = IIf(IsNull(rs!phone1), "", rs!phone1)
                                          mygrid.TextMatrix(i, 8) = rs!VILLAGE
                                          mygrid.TextMatrix(i, 9) = Format(IIf(IsNull(rs!regland), 0#, rs!regland), "####0.00")
+                                         
+                                                                                         If chkPolinizer.Value = 1 Then
+                                                                                                       mygrid.TextMatrix(i, 10) = Round(rs!polinizercrate * 35, 0)
+                                                       mygrid.TextMatrix(i, 11) = Round(rs!polinizercrate, 2) '(Val(Mygrid.TextMatrix(i, 10)) - (Val(Mygrid.TextMatrix(i, 10)) Mod 35)) / RS2!crateno '- rs1!p1 - rs1!n 'Round(btype + Val(mygrid.TextMatrix(i, 13)) / RS2!crateno, mrnd)
+                                                       mygrid.TextMatrix(i, 12) = Round(btype, mrnd)
+                                                       mygrid.TextMatrix(i, 13) = Round(Val(mygrid.TextMatrix(i, 13)), mrnd)
+                                                      ' mygrid.TextMatrix(i, 12) = Round(btype / RS2!crateno, mrnd)
+                                                      ' mygrid.TextMatrix(i, 13) = Round(Val(mygrid.TextMatrix(i, 13)) / RS2!crateno, mrnd)
+                                                       
+                                                       'End If
+                                                       End If
+                                                    If chkrefill.Value = 1 Then
+                                                       mygrid.TextMatrix(i, 10) = rs!totfillindemand
+                                                       mygrid.TextMatrix(i, 12) = rs!totfillindemand
+                                                    End If
                                          Set rs1 = Nothing
-                                        rs1.Open "select group_concat(id) refilltrnno,sum(b) as b,sum(e) as e,sum(p1) as p1, sum(n) as n from refillin where farmercode='" & rs!idfarmer & "' and  status='ON'   group by farmercode", MHVDB
+                                        rs1.Open "select group_concat(a.id) refilltrnno,sum(b) as b,sum(e) as e,sum(p1) as p1, sum(n) as n from refillin a, refillinheader b where a.headerid=b.id and farmercode='" & rs!idfarmer & "' and  isfinalized='Yes'   group by farmercode", MHVDB
                                          'rs1.Open "select sum(regland)*(420*.1*.5) as b,sum(regland)*(420*.1*.5) as e,sum(regland)*(420*.06) as p1, sum(regland)*(420*.1) as n from tbllandreg where farmerid='" & rs!idfarmer & "' group by farmerid ", MHVDB
                                          
                                          
-                                         If rs1.EOF <> True Then
+                                         If rs1.EOF <> True And chkrefill.Value = 0 Then
                                                 btype = Round(rs1!b, mrnd)
                                                 etype = Round(rs1!e, mrnd)
                                                 Set RS2 = Nothing
@@ -1343,11 +1497,26 @@ mrnd = 0
                                                       ' mygrid.TextMatrix(i, 13) = Round(Val(mygrid.TextMatrix(i, 13)) / RS2!crateno, mrnd)
                                                        
                                                        'End If
+            
+                                                        mygrid.TextMatrix(i, 13) = etype
+                                                       mygrid.TextMatrix(i, 10) = rs!polinizercrate
+                                                       mygrid.TextMatrix(i, 11) = (Val(mygrid.TextMatrix(i, 10)) - (Val(mygrid.TextMatrix(i, 10)) Mod 35)) / RS2!crateno '- rs1!p1 - rs1!n 'Round(btype + Val(mygrid.TextMatrix(i, 13)) / RS2!crateno, mrnd)
+                                                       mygrid.TextMatrix(i, 12) = Round(btype, mrnd)
+                                                       mygrid.TextMatrix(i, 13) = Round(Val(mygrid.TextMatrix(i, 13)), mrnd)
+                                                      ' mygrid.TextMatrix(i, 12) = Round(btype / RS2!crateno, mrnd)
+                                                      ' mygrid.TextMatrix(i, 13) = Round(Val(mygrid.TextMatrix(i, 13)) / RS2!crateno, mrnd)
                                                        
+                                                       'End If
+            
+            
+         
                                                        
                                                        
                                                        
                                                 End If
+                                                
+
+                                                
                                                 mygrid.TextMatrix(i, 15) = Round(rs1!p1, mrnd) '
                                                 mygrid.TextMatrix(i, 16) = Round(rs1!n, 0) 'Round(rs1!n / RS2!crateno, 0)
                                                 polycont = polycont + Round(rs1!p1, mrnd) + Round(rs1!n, mrnd)
@@ -1381,7 +1550,8 @@ Dim tempcalc As Double
 Dim schk As Integer
 Dim myloop As Integer
 Dim compareme As Double
-Dim mmod, modval As Integer
+Dim mmod As Integer
+Dim modval As Double
 Dim rs As New ADODB.Recordset
 Set rs = Nothing
 
@@ -1420,17 +1590,24 @@ mygrid.TextMatrix(i, 1) = tt
 If Operation = "ADD" Then
 mygrid.TextMatrix(i, 10) = Val(mygrid.TextMatrix(i, 10)) + Round(((Val(mygrid.TextMatrix(i, 9)) * rs!totalplant)), 0)
 mygrid.TextMatrix(i, 15) = Round(((Val(mygrid.TextMatrix(i, 9)) * rs!totalplant) * rs!ncrate), 0)
+If chkPolinizer.Value = 0 Then
 mygrid.TextMatrix(i, 11) = mygrid.TextMatrix(i, 10) 'Round((Val(mygrid.TextMatrix(i, 10)) - Val(mygrid.TextMatrix(i, 15)) - Val(mygrid.TextMatrix(i, 16))), 0) ' Val(mygrid.TextMatrix(i, 11)) + Round((Val(mygrid.TextMatrix(i, 10)) - Val(mygrid.TextMatrix(i, 15)) - Val(mygrid.TextMatrix(i, 16))) / rs!crateno, 0)
+
 modval = mygrid.TextMatrix(i, 11)
 mmod = modval Mod rs!crateno
+
+
 If (mmod > 17) Then
 mygrid.TextMatrix(i, 11) = ((modval - mmod) / rs!crateno) + 1
 Else
 mygrid.TextMatrix(i, 11) = ((modval - mmod) / rs!crateno)
 End If
+End If
+
 ' polinizer is for thimphu
    'Round(((Val(Mygrid.TextMatrix(i, 15)))), 0) / rs!crateno
  mygrid.TextMatrix(i, 15) = Round(Val(mygrid.TextMatrix(i, 15)) / rs!crateno, 0)
+ If chkPolinizer.Value = 0 And chkrefill.Value = 0 Then
 If mygrid.TextMatrix(i, 29) <> "O" Then
 If Operation = "ADD" Then
 
@@ -1449,7 +1626,7 @@ End If
 Else
 mygrid.TextMatrix(i, 12) = Round(((Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 30))) * rs!bcrate), 0)   'Round(((Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 30))) * rs!crateno * rs!bcrate) / rs!crateno, 0)
 End If
-
+End If
 Else
 If Val(mygrid.TextMatrix(i, 9)) = 0 Then
 mygrid.TextMatrix(i, 12) = Round(((Val(mygrid.TextMatrix(i, 12)))) / rs!crateno, 0) 'Round(((Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 30))) * rs!bcrate), 0)
@@ -1471,18 +1648,31 @@ End If
 End If
 
 
-
-
 If Mid(mygrid.TextMatrix(i, 5), 10, 1) <> "G" Or Mid(mygrid.TextMatrix(i, 5), 10, 1) <> "C" Then
         If mygrid.TextMatrix(i, 29) <> "O" Then
             If Operation = "ADD" Then
+           If chkPolinizer.Value = 0 Then
             mygrid.TextMatrix(i, 13) = mygrid.TextMatrix(i, 11) - mygrid.TextMatrix(i, 12) - mygrid.TextMatrix(i, 15)  ' Round((mygrid.TextMatrix(i, 11) * rs!ecrate), 0)  'Val(mygrid.TextMatrix(i, 11)) * rs!crateno - rs!crateno - Val(mygrid.TextMatrix(i, 12) * rs!crateno)Round((mygrid.TextMatrix(i, 11) * rs!crateno * rs!ecrate) / rs!crateno, 0) 'Val(mygrid.TextMatrix(i, 11)) * rs!crateno - rs!crateno - Val(mygrid.TextMatrix(i, 12) * rs!crateno)
             Else
-            mygrid.TextMatrix(i, 13) = Round(((Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 30))) * rs!crateno * rs!ecrate) / rs!crateno, 0) 'Val(mygrid.TextMatrix(i, 11)) * rs!crateno - rs!crateno - Val(mygrid.TextMatrix(i, 12) * rs!crateno)
+            mygrid.TextMatrix(i, 14) = Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 12)) - Val(mygrid.TextMatrix(i, 15))  ' Round((mygrid.TextMatrix(i, 11) * rs!ecrate), 0)  'Val(mygrid.TextMatrix(i, 11)) * rs!crateno - rs!crateno - Val(mygrid.TextMatrix(i, 12) * rs!crateno)Round((mygrid.TextMatrix(i, 11) * rs!crateno * rs!ecrate) / rs!crateno, 0) 'Val(mygrid.TextMatrix(i, 11)) * rs!crateno - rs!crateno - Val(mygrid.TextMatrix(i, 12) * rs!crateno)
+            End If
+            
+            Else
+            
+                If chkPolinizer.Value = 0 Then
+           mygrid.TextMatrix(i, 13) = Round(((Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 30))) * rs!crateno * rs!ecrate) / rs!crateno, 0) 'Val(mygrid.TextMatrix(i, 11)) * rs!crateno - rs!crateno - Val(mygrid.TextMatrix(i, 12) * rs!crateno)
+            Else
+            mygrid.TextMatrix(i, 14) = Round(((Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 30))) * rs!crateno * rs!ecrate) / rs!crateno, 0) 'Val(mygrid.TextMatrix(i, 11)) * rs!crateno - rs!crateno - Val(mygrid.TextMatrix(i, 12) * rs!crateno)
+            End If
             End If
         Else
 If Val(mygrid.TextMatrix(i, 9)) = 0 Then
-mygrid.TextMatrix(i, 13) = Round(((Val(mygrid.TextMatrix(i, 13)))), 0) / rs!crateno 'Round(((Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 30))) * rs!bcrate), 0)
+ If chkPolinizer.Value = 0 Then
+ mygrid.TextMatrix(i, 13) = Round(((Val(mygrid.TextMatrix(i, 13)))), 0) / rs!crateno 'Round(((Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 30))) * rs!bcrate), 0)
+ Else
+ mygrid.TextMatrix(i, 14) = Round(((Val(mygrid.TextMatrix(i, 14)))), 0) / rs!crateno 'Round(((Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 30))) * rs!bcrate), 0)
+ End If
+
 Else
 mygrid.TextMatrix(i, 13) = mygrid.TextMatrix(i, 11) - mygrid.TextMatrix(i, 12) - mygrid.TextMatrix(i, 15) 'mygrid.TextMatrix(i, 13) + Round(((Val(mygrid.TextMatrix(i, 9)) * rs!totalplant) * rs!ecrate), 0) 'Round(((Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 30))) * rs!bcrate), 0)
 
@@ -1494,7 +1684,11 @@ End If
 
 End If
 
-
+If chkrefill.Value = 1 Then
+mygrid.TextMatrix(i, 11) = 0
+mygrid.TextMatrix(i, 12) = mygrid.TextMatrix(i, 10)
+mygrid.TextMatrix(i, 13) = 0
+End If
       
         
         If Mid(mygrid.TextMatrix(i, 5), 10, 1) = "G" Or Mid(mygrid.TextMatrix(i, 5), 10, 1) = "C" Then
@@ -1514,6 +1708,19 @@ End If
 '                mygrid.TextMatrix(i, 24) = Round((mygrid.TextMatrix(i, 23) * rs!amountnu), 0)
         'Else
         If Operation = "ADD" Then
+                
+If chkrefill.Value = 1 Then
+mygrid.TextMatrix(i, 17) = Round((((Val(mygrid.TextMatrix(i, 10))) + Val(mygrid.TextMatrix(i, 16))) * rs!ssp), 2)
+                mygrid.TextMatrix(i, 18) = Round((((Val(mygrid.TextMatrix(i, 10))) + Val(mygrid.TextMatrix(i, 16))) * rs!mop), 2)
+                mygrid.TextMatrix(i, 19) = Round((((Val(mygrid.TextMatrix(i, 10))) + Val(mygrid.TextMatrix(i, 16))) * rs!urea), 2)
+                mygrid.TextMatrix(i, 20) = Round((((Val(mygrid.TextMatrix(i, 10))) + Val(mygrid.TextMatrix(i, 16))) * rs!dolomite), 2)
+                mygrid.TextMatrix(i, 21) = Round(Val(mygrid.TextMatrix(i, 17)) + Val(mygrid.TextMatrix(i, 18)) + Val(mygrid.TextMatrix(i, 19)) + Val(mygrid.TextMatrix(i, 20)), 0)
+                mygrid.TextMatrix(i, 22) = Round(Val(mygrid.TextMatrix(i, 17) * rs!sspperkg) + Val(mygrid.TextMatrix(i, 18) * rs!mopperkg) + Val(mygrid.TextMatrix(i, 19) * rs!ureaperkg) + Val(mygrid.TextMatrix(i, 20) * rs!dolomiteperkg), 0)
+                mygrid.TextMatrix(i, 23) = Round((((Val(mygrid.TextMatrix(i, 10))) + Val(mygrid.TextMatrix(i, 16))) * rs!kg), 0)
+                mygrid.TextMatrix(i, 24) = Round((mygrid.TextMatrix(i, 23) * rs!amountnu), 0)
+             
+Else
+                
                 mygrid.TextMatrix(i, 17) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!ssp), 2)
                 mygrid.TextMatrix(i, 18) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!mop), 2)
                 mygrid.TextMatrix(i, 19) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!urea), 2)
@@ -1522,7 +1729,7 @@ End If
                 mygrid.TextMatrix(i, 22) = Round(Val(mygrid.TextMatrix(i, 17) * rs!sspperkg) + Val(mygrid.TextMatrix(i, 18) * rs!mopperkg) + Val(mygrid.TextMatrix(i, 19) * rs!ureaperkg) + Val(mygrid.TextMatrix(i, 20) * rs!dolomiteperkg), 0)
                 mygrid.TextMatrix(i, 23) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!kg), 0)
                 mygrid.TextMatrix(i, 24) = Round((mygrid.TextMatrix(i, 23) * rs!amountnu), 0)
-             
+             End If
                 If Val(mygrid.TextMatrix(i, 23)) < 0 Then
                 mygrid.TextMatrix(i, 23) = 0
                 mygrid.TextMatrix(i, 24) = 0
@@ -1639,12 +1846,19 @@ Private Sub formatsubtot(i As Integer)
                 mygrid.CellBackColor = vbRed
                 mygrid.CellFontBold = True
 
+If (chkrefill.Value = 1) Then
+mygrid.TextMatrix(i, 11) = Int(subtotplant / 35) + 1
+                mygrid.col = 11
+                mygrid.row = i
+                mygrid.CellBackColor = vbRed
+                mygrid.CellFontBold = True
+Else
                 mygrid.TextMatrix(i, 11) = subtotcrateno
                 mygrid.col = 11
                 mygrid.row = i
                 mygrid.CellBackColor = vbRed
                 mygrid.CellFontBold = True
-
+End If
 
                 mygrid.TextMatrix(i, 12) = subtotbcrate
                 mygrid.col = 12
@@ -2204,6 +2418,9 @@ For i = 0 To LSTPR.ListCount - 1
 Next
 End Sub
 
+
+
+
 Private Sub Form_Load()
 Dim RSTR As New ADODB.Recordset
 maxDistNo = 0
@@ -2545,9 +2762,6 @@ If KeyCode = vbKeyDelete And Shift = 2 Then
       Beep
       Beep
    End If
-   
-   
-   
 End If
 End Sub
 
