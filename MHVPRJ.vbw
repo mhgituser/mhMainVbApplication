@@ -1,6 +1,6 @@
 MHVMODULE = 70, 38, 963, 606, 
 FRMLOGIN = 141, 25, 951, 609, C, 202, 137, 1035, 629, C
-frmMain = 117, 79, 950, 571, , 104, 104, 937, 596, C
+frmMain = 117, 79, 950, 571, Z, 104, 104, 937, 596, C
 frmDzongkhag = 0, 0, 0, 0, C, 182, 182, 1022, 678, C
 frmgewog = 0, 0, 0, 0, C, 208, 208, 1048, 704, C
 frmtshowog = 0, 0, 0, 0, C, 234, 234, 1074, 730, C
@@ -95,7 +95,7 @@ frmCrateBatchTransaction = 200, 200, 953, 625, C, 78, 78, 918, 574, C
 frmbacktonursery = 25, 25, 778, 450, C, 104, 104, 944, 600, C
 frmdashboardnursery = 0, 0, 0, 0, C, 130, 130, 970, 626, C
 frmdatadownload = 0, 0, 0, 0, C, 156, 156, 996, 652, C
-frmhardreport = 26, 26, 859, 518, Z, 52, 52, 885, 544, C
+frmhardreport = 26, 26, 859, 518, , 52, 52, 885, 544, C
 frmodkdashboard = 0, 0, 0, 0, C, 208, 208, 1048, 704, C
 frmnethoopservival = 0, 0, 0, 0, C, 234, 234, 1074, 730, C
 frmdashbordtrn = 0, 0, 0, 0, C, 0, 0, 840, 496, C
