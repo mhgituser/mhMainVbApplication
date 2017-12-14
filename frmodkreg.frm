@@ -119,7 +119,7 @@ Begin VB.Form frmodkreg
          _ExtentX        =   2355
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   110297089
+         Format          =   131268609
          CurrentDate     =   41362
       End
       Begin MSComCtl2.DTPicker txttodate 
@@ -131,7 +131,7 @@ Begin VB.Form frmodkreg
          _ExtentX        =   2355
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   110297089
+         Format          =   131268609
          CurrentDate     =   41362
       End
       Begin VB.Label Label1 
@@ -236,7 +236,7 @@ Dim SQLSTR As String
 
 SQLSTR = ""
 SLNO = 1
-If optall.Value = True Then
+If OPTALL.Value = True Then
 SQLSTR = "select staffbarcode, sum(regarea) as regarea,sum(AADDITIONAL_ACRE) as addland FROM farmer_registration4_core group by staffbarcode"
 ElseIf OPTSEL.Value = True Then
 SQLSTR = "select staffbarcode, sum(regarea) as regarea,sum(AADDITIONAL_ACRE) as addland FROM farmer_registration4_core where SUBSTRING(" & CBODATE.Text & ",1,10)>='" & Format(txtfrmdate.Value, "yyyy-MM-dd") & "' and SUBSTRING(" & CBODATE.Text & ",1,10)<='" & Format(txttodate.Value, "yyyy-MM-dd") & "' group by staffbarcode  "
@@ -441,7 +441,7 @@ fcode = ""
 mregland = 0
 
 
-If optall.Value = True Then
+If OPTALL.Value = True Then
 If OPTADV.Value = True Then
 SQLSTR = "select * FROM farmer_registration3_core order by regdate"
 ElseIf OPTADVOLD.Value = True Then
@@ -961,7 +961,7 @@ Dim SQLSTR As String
 
 SQLSTR = ""
 SLNO = 1
-If optall.Value = True Then
+If OPTALL.Value = True Then
 SQLSTR = "select * FROM farmer_registration3_core order by regdate"
 ElseIf OPTSEL.Value = True Then
 SQLSTR = "select * FROM farmer_registration3_core where SUBSTRING(" & CBODATE.Text & ",1,10)>='" & Format(txtfrmdate.Value, "yyyy-MM-dd") & "' and SUBSTRING(" & CBODATE.Text & ",1,10)<='" & Format(txttodate.Value, "yyyy-MM-dd") & "' ORDER BY " & CBODATE.Text & "  "
@@ -973,7 +973,7 @@ End If
 On Error Resume Next
 
 
-If optall.Value = True Then
+If OPTALL.Value = True Then
 Mindex = 30
 End If
 
@@ -999,7 +999,7 @@ Screen.MousePointer = vbHourglass
     excel_app.Visible = False
     ' excel_app.Visible = True
     excel_sheet.cells(3, 1) = "SL.NO."
-   If optall.Value = True Then
+   If OPTALL.Value = True Then
     excel_sheet.cells(3, 2) = "DATE" & "(REGDATE)"
     Else
     excel_sheet.cells(3, 2) = "DATE" & "(" & CBODATE.Text & ")"

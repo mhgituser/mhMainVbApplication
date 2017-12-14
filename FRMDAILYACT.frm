@@ -112,7 +112,7 @@ Begin VB.Form FRMDAILYACT
          _ExtentX        =   2355
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   109903873
+         Format          =   131268609
          CurrentDate     =   41362
       End
       Begin VB.ComboBox CBODATE 
@@ -143,7 +143,7 @@ Begin VB.Form FRMDAILYACT
          _ExtentX        =   2355
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   109903873
+         Format          =   131268609
          CurrentDate     =   41362
       End
       Begin VB.Label Label3 
@@ -546,14 +546,14 @@ MsgBox "Please Select The Date Type."
 Exit Sub
 End If
 
-If optall.Value = True Then
+If OPTALL.Value = True Then
 Mindex = 34
 End If
 Dim SQLSTR As String
 mchk = True
 SQLSTR = ""
 SLNO = 1
-If optall.Value = True Then
+If OPTALL.Value = True Then
 If Len(cbostaffcode.Text) = 0 Then
 SQLSTR = "select * from dailyacthub9_core order by end"
 Else
@@ -596,7 +596,7 @@ Screen.MousePointer = vbHourglass
     excel_app.Visible = False
     ' excel_app.Visible = True
     excel_sheet.cells(3, 1) = "SL.NO."
-    If optall.Value = True Then
+    If OPTALL.Value = True Then
     excel_sheet.cells(3, 2) = "DATE" & "(END)"
     Else
     excel_sheet.cells(3, 2) = "DATE" & "(" & CBODATE.Text & ")"

@@ -173,7 +173,7 @@ Begin VB.Form FRMALLFIELDS
          _ExtentX        =   2355
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   109903873
+         Format          =   131268609
          CurrentDate     =   41362
       End
       Begin MSComCtl2.DTPicker txttodate 
@@ -185,7 +185,7 @@ Begin VB.Form FRMALLFIELDS
          _ExtentX        =   2355
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   109903873
+         Format          =   131268609
          CurrentDate     =   41362
       End
       Begin VB.Label Label1 
@@ -340,7 +340,7 @@ FRMALLFIELDS.Width = 5640
 CHKSUMMARY.Enabled = True
 End If
 optmoist.Value = True
-txtvalue.Text = 30
+TXTVALUE.Text = 30
 End Sub
 
 Private Sub CHKSUMMARY_Click()
@@ -378,8 +378,8 @@ End If
 Else
 
 
-If optfield.Value = True Then
-If optall.Value = True Then
+If OPTFIELD.Value = True Then
+If OPTALL.Value = True Then
 FIELDALL
 Else
 FIELDSEL
@@ -387,8 +387,8 @@ End If
 
 
 
-ElseIf optstorage.Value = True Then
-If optall.Value = True Then
+ElseIf OPTSTORAGE.Value = True Then
+If OPTALL.Value = True Then
 storageallsum
 Else
 storageselsum
@@ -396,7 +396,7 @@ End If
 
 
 Else
-If optall.Value = True Then
+If OPTALL.Value = True Then
 'STORAGEFIELDALL
 Else
 'STORAGEFIELDSEL
@@ -431,7 +431,7 @@ mfcode = ""
 frcount = 0
 db.Open OdkCnnString
                       
-If optall.Value = True And OPTALLFIELDS.Value = True Then
+If OPTALL.Value = True And OPTALLFIELDS.Value = True Then
 Mindex = 51
 End If
 
@@ -577,7 +577,7 @@ mfcode = ""
 frcount = 0
 db.Open OdkCnnString
                         
-If optall.Value = True And OPTALLFIELDS.Value = True Then
+If OPTALL.Value = True And OPTALLFIELDS.Value = True Then
 Mindex = 51
 End If
 
@@ -629,14 +629,14 @@ SQLSTR = ""
   rsF.Open "select * from tbltemp where farmercode='" & mfcode & "'", db
   If rsF.EOF <> True Then
     
-  If rsF!End > rss!End Then
-  db.Execute "update tbltemp set end='" & Format(rsF!End, "yyyy-MM-dd") & "' , totaltrees='" & rss!totaltrees & "',deadmissing='" & rss!dtrees & "',nutrient='" & rss!ndtrees & "',waterlog='" & rss!wlogged & "',leafpest='" & rss!pdamage & "',stempest='" & rss!ddamage & "',animaldamage='" & rss!adamage & "' where farmercode='" & mfcode & "'  "
+  If rsF!end > rss!end Then
+  db.Execute "update tbltemp set end='" & Format(rsF!end, "yyyy-MM-dd") & "' , totaltrees='" & rss!totaltrees & "',deadmissing='" & rss!dtrees & "',nutrient='" & rss!ndtrees & "',waterlog='" & rss!wlogged & "',leafpest='" & rss!pdamage & "',stempest='" & rss!ddamage & "',animaldamage='" & rss!adamage & "' where farmercode='" & mfcode & "'  "
   End If
     
     
   Else
   'db.Execute "update tbltemp set var1='" & RSS!End & "' , var7='" & RSS!totaltrees & "' where var6='" & mfcode & "' and fs='F' and fdcode='" & RSS!fdcode & "' "
-  db.Execute "insert into  tbltemp(end,dcode,gcode,tcode,fcode,farmercode,totaltrees,deadmissing,nutrient,waterlog,leafpest,stempest,animaldamage)values('" & Format(rss!End, "yyyy-MM-dd") & "','" & rss!dcode & "','" & rss!gcode & "','" & rss!tcode & "','" & rss!fcode & "','" & mfcode & "','" & rss!totaltrees & "','" & rss!dtrees & "','" & rss!ndtrees & "','" & rss!wlogged & "','" & rss!pdamage & "','" & rss!ddamage & "','" & rss!adamage & "') "
+  db.Execute "insert into  tbltemp(end,dcode,gcode,tcode,fcode,farmercode,totaltrees,deadmissing,nutrient,waterlog,leafpest,stempest,animaldamage)values('" & Format(rss!end, "yyyy-MM-dd") & "','" & rss!dcode & "','" & rss!gcode & "','" & rss!tcode & "','" & rss!fcode & "','" & mfcode & "','" & rss!totaltrees & "','" & rss!dtrees & "','" & rss!ndtrees & "','" & rss!wlogged & "','" & rss!pdamage & "','" & rss!ddamage & "','" & rss!adamage & "') "
   
   End If
   
@@ -777,7 +777,7 @@ mtcode = ""
 mfcode = ""
 db.Open OdkCnnString
                         
-If optall.Value = True And OPTALLFIELDS.Value = True Then
+If OPTALL.Value = True And OPTALLFIELDS.Value = True Then
 Mindex = 51
 End If
 
@@ -818,14 +818,14 @@ SQLSTR = ""
   rsF.Open "select * from tbltemp where farmercode='" & mfcode & "' and fdcode='" & rss!FDCODE & "'", db
   If rsF.EOF <> True Then
     
-  If rsF!End > rss!End Then
-  db.Execute "update tbltemp set end='" & Format(rsF!End, "yyyy-MM-dd") & "' , totaltrees='" & rss!totaltrees & "',area='" & rss!area & "',slowgrowing='" & rss!slowgrowing & "',dor='" & rss!dor & "',deadmissing='" & rss!deadmissing & "',activegrowing='" & rss!activegrowing & "',shock='" & rss!shock & "',nutrient='" & rss!nutrient & "',waterlog='" & rss!waterlog & "',leafpest='" & rss!leafpest & "',activepest='" & rss!activepest & "',stempest='" & rss!stempest & "',rootpest='" & rss!rootpest & "',animaldamage='" & rss!animaldamage & "' where var6='" & mfcode & "' and fs='F' and fdcode='" & rss!FDCODE & "' "
+  If rsF!end > rss!end Then
+  db.Execute "update tbltemp set end='" & Format(rsF!end, "yyyy-MM-dd") & "' , totaltrees='" & rss!totaltrees & "',area='" & rss!area & "',slowgrowing='" & rss!slowgrowing & "',dor='" & rss!dor & "',deadmissing='" & rss!deadmissing & "',activegrowing='" & rss!activegrowing & "',shock='" & rss!shock & "',nutrient='" & rss!nutrient & "',waterlog='" & rss!waterlog & "',leafpest='" & rss!leafpest & "',activepest='" & rss!activepest & "',stempest='" & rss!stempest & "',rootpest='" & rss!rootpest & "',animaldamage='" & rss!animaldamage & "' where var6='" & mfcode & "' and fs='F' and fdcode='" & rss!FDCODE & "' "
   End If
     
     
   Else
   'db.Execute "update tbltemp set var1='" & RSS!End & "' , var7='" & RSS!totaltrees & "' where var6='" & mfcode & "' and fs='F' and fdcode='" & RSS!fdcode & "' "
-  db.Execute "insert into  tbltemp(end,dcode,gcode,tcode,fcode,farmercode,totaltrees,fs,fdcode,area,slowgrowing,dor,deadmissing,activegrowing,shock,nutrient,waterlog,leafpest,activepest,stempest,rootpest,animaldamage)values('" & Format(rss!End, "yyyy-MM-dd") & "','" & rss!dcode & "','" & rss!gcode & "','" & rss!tcode & "','" & rss!fcode & "','" & mfcode & "','" & rss!totaltrees & "','F','" & rss!FDCODE & "','" & rss!area & "','" & rss!slowgrowing & "','" & rss!dor & "','" & rss!deadmissing & "','" & rss!activegrowing & "','" & rss!shock & "','" & rss!nutrient & "','" & rss!waterlog & "','" & rss!leafpest & "','" & rss!activepest & "','" & rss!stempest & "','" & rss!rootpest & "','" & rss!animaldamage & "') "
+  db.Execute "insert into  tbltemp(end,dcode,gcode,tcode,fcode,farmercode,totaltrees,fs,fdcode,area,slowgrowing,dor,deadmissing,activegrowing,shock,nutrient,waterlog,leafpest,activepest,stempest,rootpest,animaldamage)values('" & Format(rss!end, "yyyy-MM-dd") & "','" & rss!dcode & "','" & rss!gcode & "','" & rss!tcode & "','" & rss!fcode & "','" & mfcode & "','" & rss!totaltrees & "','F','" & rss!FDCODE & "','" & rss!area & "','" & rss!slowgrowing & "','" & rss!dor & "','" & rss!deadmissing & "','" & rss!activegrowing & "','" & rss!shock & "','" & rss!nutrient & "','" & rss!waterlog & "','" & rss!leafpest & "','" & rss!activepest & "','" & rss!stempest & "','" & rss!rootpest & "','" & rss!animaldamage & "') "
   
   End If
   
@@ -976,7 +976,7 @@ mtcode = ""
 mfcode = ""
 db.Open OdkCnnString
                        
-If optall.Value = True And OPTALLFIELDS.Value = True Then
+If OPTALL.Value = True And OPTALLFIELDS.Value = True Then
 Mindex = 51
 End If
 
@@ -1017,14 +1017,14 @@ SQLSTR = ""
   rsF.Open "select * from tbltemp where farmercode='" & mfcode & "' and fdcode='" & rss!FDCODE & "'", db
   If rsF.EOF <> True Then
     
-  If rsF!End > rss!End Then
-  db.Execute "update tbltemp set end='" & Format(rsF!End, "yyyy-MM-dd") & "' , totaltrees='" & rss!totaltrees & "',area='" & rss!area & "',slowgrowing='" & rss!slowgrowing & "',dor='" & rss!dor & "',deadmissing='" & rss!deadmissing & "',activegrowing='" & rss!activegrowing & "',shock='" & rss!shock & "',nutrient='" & rss!nutrient & "',waterlog='" & rss!waterlog & "',leafpest='" & rss!leafpest & "',activepest='" & rss!activepest & "',stempest='" & rss!stempest & "',rootpest='" & rss!rootpest & "',animaldamage='" & rss!animaldamage & "' where farmercode='" & mfcode & "' and fs='F' and fdcode='" & rss!FDCODE & "' "
+  If rsF!end > rss!end Then
+  db.Execute "update tbltemp set end='" & Format(rsF!end, "yyyy-MM-dd") & "' , totaltrees='" & rss!totaltrees & "',area='" & rss!area & "',slowgrowing='" & rss!slowgrowing & "',dor='" & rss!dor & "',deadmissing='" & rss!deadmissing & "',activegrowing='" & rss!activegrowing & "',shock='" & rss!shock & "',nutrient='" & rss!nutrient & "',waterlog='" & rss!waterlog & "',leafpest='" & rss!leafpest & "',activepest='" & rss!activepest & "',stempest='" & rss!stempest & "',rootpest='" & rss!rootpest & "',animaldamage='" & rss!animaldamage & "' where farmercode='" & mfcode & "' and fs='F' and fdcode='" & rss!FDCODE & "' "
   End If
     
     
   Else
   'db.Execute "update tbltemp set var1='" & RSS!End & "' , var7='" & RSS!totaltrees & "' where var6='" & mfcode & "' and fs='F' and fdcode='" & RSS!fdcode & "' "
-  db.Execute "insert into  tbltemp(end,dcode,gcode,tcode,fcode,farmercode,totaltrees,fs,fdcode,area,slowgrowing,dor,deadmissing,activegrowing,shock,nutrient,waterlog,leafpest,activepest,stempest,rootpest,animaldamage)values('" & Format(rss!End, "yyyy-MM-dd") & "','" & rss!dcode & "','" & rss!gcode & "','" & rss!tcode & "','" & rss!fcode & "','" & mfcode & "','" & rss!totaltrees & "','F','" & rss!FDCODE & "','" & rss!area & "','" & rss!slowgrowing & "','" & rss!dor & "','" & rss!deadmissing & "','" & rss!activegrowing & "','" & rss!shock & "','" & rss!nutrient & "','" & rss!waterlog & "','" & rss!leafpest & "','" & rss!activepest & "','" & rss!stempest & "','" & rss!rootpest & "','" & rss!animaldamage & "') "
+  db.Execute "insert into  tbltemp(end,dcode,gcode,tcode,fcode,farmercode,totaltrees,fs,fdcode,area,slowgrowing,dor,deadmissing,activegrowing,shock,nutrient,waterlog,leafpest,activepest,stempest,rootpest,animaldamage)values('" & Format(rss!end, "yyyy-MM-dd") & "','" & rss!dcode & "','" & rss!gcode & "','" & rss!tcode & "','" & rss!fcode & "','" & mfcode & "','" & rss!totaltrees & "','F','" & rss!FDCODE & "','" & rss!area & "','" & rss!slowgrowing & "','" & rss!dor & "','" & rss!deadmissing & "','" & rss!activegrowing & "','" & rss!shock & "','" & rss!nutrient & "','" & rss!waterlog & "','" & rss!leafpest & "','" & rss!activepest & "','" & rss!stempest & "','" & rss!rootpest & "','" & rss!animaldamage & "') "
   
   End If
   
@@ -1290,7 +1290,7 @@ Screen.MousePointer = vbHourglass
     'excel_app.Visible = False
     excel_app.Visible = True
     excel_sheet.cells(3, 1) = "SL.NO."
-    If optall.Value = True And OPTALLSTORAGE.Value = True Then
+    If OPTALL.Value = True And OPTALLSTORAGE.Value = True Then
     excel_sheet.cells(3, 2) = "DATE" & "(END)"
     Else
     excel_sheet.cells(3, 2) = "DATE" & "(" & CBODATE.Text & ")"
@@ -1692,7 +1692,7 @@ mfcode = ""
 db.Open OdkCnnString
                      
 db.Execute "delete from tbltemp"
-If optall.Value = True And OPTALLFIELDS.Value = True Then
+If OPTALL.Value = True And OPTALLFIELDS.Value = True Then
 Mindex = 51
 End If
 
@@ -1704,7 +1704,7 @@ SLNO = 1
 
 SQLSTR = ""
 
-If optall.Value = True Then
+If OPTALL.Value = True Then
 
 SQLSTR = "insert into tbltemp (end,id,dcode,gcode,tcode,farmercode,treesreceived,fdcode,totaltrees," _
          & "goodmoisture,poormoisture,totaltally,deadmissing,slowgrowing,dor,activegrowing,shock,nutrient," _
@@ -1734,7 +1734,7 @@ SQLSTR = "insert into tbltemp (end,id,dcode,gcode,tcode,farmercode,treesreceived
   SQLSTR = ""
   
   
-  If optall.Value = True Then
+  If OPTALL.Value = True Then
   SQLSTR = " select end as end,id,dcode," _
          & "gcode,tcode,fcode,farmerbarcode,treesreceived,fdcode,totaltrees,goodmoisture,poormoisture,totaltally," _
          & "deadmissing,slowgrowing,dor,activegrowing,shock,nutrient,waterlog,leafpest,activepest,stempest," _
@@ -1771,7 +1771,7 @@ SQLSTR = "insert into tbltemp (end,id,dcode,gcode,tcode,farmercode,treesreceived
   rsF.Open "select * from tbltemp where farmercode='" & mfcode & "' and fdcode='" & rss!FDCODE & "'", db
   If rsF.EOF <> True Then
     
-  If rss!End > rsF!End Then
+  If rss!end > rsF!end Then
 '  db.Execute "update tbltemp set end='" & Format(rss!End, "yyyy-MM-dd") & "' , totaltrees='" & rss!totaltrees & "',id='" & rss!id & "',treesreceived='" & rss!treesreceived & "'," _
 '            & "goodmoisture='" & rss!goodmoisture & "',poormoisture='" & rss!poormoisture & "'," _
 '            & "totaltally='" & rss!totaltally & "',deadmissing='" & rss!deadmissing & "',slowgrowing='" & rss!slowgrowing & "' ," _
@@ -1787,7 +1787,7 @@ SQLSTR = "insert into tbltemp (end,id,dcode,gcode,tcode,farmercode,treesreceived
   'db.Execute "update tbltemp set var1='" & RSS!End & "' , var7='" & RSS!totaltrees & "' where var6='" & mfcode & "' and fs='F' and fdcode='" & RSS!fdcode & "' "
   db.Execute "insert into tbltemp (end,id,dcode,gcode,tcode,farmercode,treesreceived,fdcode,totaltrees," _
          & "goodmoisture,poormoisture,totaltally,deadmissing,slowgrowing,dor,activegrowing,shock,nutrient," _
-         & "waterlog,leafpest,activepest,stempest,rootpest,animaldamage,monitorcomments) values( '" & Format(rss!End, "yyyy-MM-dd") & "','" & rss!id & "'," _
+         & "waterlog,leafpest,activepest,stempest,rootpest,animaldamage,monitorcomments) values( '" & Format(rss!end, "yyyy-MM-dd") & "','" & rss!id & "'," _
          & "'" & rss!dcode & "'," _
          & "'" & rss!gcode & "','" & rss!tcode & "','" & mfcode & "','" & rss!treesreceived & "','" & rss!FDCODE & "'," _
          & "'" & rss!totaltrees & "','" & rss!goodmoisture & "','" & rss!poormoisture & "','" & rss!totaltally & "'," _
@@ -1809,22 +1809,22 @@ SQLSTR = "insert into tbltemp (end,id,dcode,gcode,tcode,farmercode,treesreceived
 ' need to rectify the query later
 
 
-If optall.Value = True Then
+If OPTALL.Value = True Then
 If CHKMOREOPTION.Value = 0 Then
 SQLSTR = "select * from tbltemp"
 Else
 If optmoist.Value = True Then
 
-SQLSTR = "select * from tbltemp where (poormoisture/totaltally)*100>'" & Val(txtvalue.Text) & "' order by end"
+SQLSTR = "select * from tbltemp where (poormoisture/totaltally)*100>'" & Val(TXTVALUE.Text) & "' order by end"
 ElseIf optrootpest.Value = True Then
-SQLSTR = "select * from tbltemp where (rootpest/totaltrees)*100>'" & Val(txtvalue.Text) & "' order by end"
+SQLSTR = "select * from tbltemp where (rootpest/totaltrees)*100>'" & Val(TXTVALUE.Text) & "' order by end"
 ElseIf OPTSTEMPEST.Value = True Then
-SQLSTR = "select * from tbltemp where (stempest/totaltrees)*100>'" & Val(txtvalue.Text) & "' order by end"
+SQLSTR = "select * from tbltemp where (stempest/totaltrees)*100>'" & Val(TXTVALUE.Text) & "' order by end"
 ElseIf OPTLEAFPEST.Value = True Then
 
-SQLSTR = "select * from tbltemp where (leafpest/totaltrees)*100>'" & Val(txtvalue.Text) & "' order by end"
+SQLSTR = "select * from tbltemp where (leafpest/totaltrees)*100>'" & Val(TXTVALUE.Text) & "' order by end"
 Else
-SQLSTR = "select * from tbltemp where (deadmissing/totaltrees)*100>'" & Val(txtvalue.Text) & "' order by end"
+SQLSTR = "select * from tbltemp where (deadmissing/totaltrees)*100>'" & Val(TXTVALUE.Text) & "' order by end"
 End If
 End If
 Else
@@ -1835,16 +1835,16 @@ Else
 
 If optmoist.Value = True Then
 
-SQLSTR = "select * from tbltemp where end='" & Format(txtfrmdate.Value, "yyyy-MM-dd") & "' and end<='" & Format(txttodate.Value, "yyyy-MM-dd") & "' and (poormoisture/totaltally)*100>'" & Val(txtvalue.Text) & "' ORDER BY end"
+SQLSTR = "select * from tbltemp where end='" & Format(txtfrmdate.Value, "yyyy-MM-dd") & "' and end<='" & Format(txttodate.Value, "yyyy-MM-dd") & "' and (poormoisture/totaltally)*100>'" & Val(TXTVALUE.Text) & "' ORDER BY end"
 ElseIf optrootpest.Value = True Then
-SQLSTR = "select * from tbltemp where end>='" & Format(txtfrmdate.Value, "yyyy-MM-dd") & "' and end<='" & Format(txttodate.Value, "yyyy-MM-dd") & "' and (rootpest/totaltrees)*100>'" & Val(txtvalue.Text) & "' ORDER BY end"
+SQLSTR = "select * from tbltemp where end>='" & Format(txtfrmdate.Value, "yyyy-MM-dd") & "' and end<='" & Format(txttodate.Value, "yyyy-MM-dd") & "' and (rootpest/totaltrees)*100>'" & Val(TXTVALUE.Text) & "' ORDER BY end"
 ElseIf OPTSTEMPEST.Value = True Then
-SQLSTR = "select * from tbltemp where end>='" & Format(txtfrmdate.Value, "yyyy-MM-dd") & "' and end<='" & Format(txttodate.Value, "yyyy-MM-dd") & "' and (stempest/totaltrees)*100>'" & Val(txtvalue.Text) & "' ORDER BY end"
+SQLSTR = "select * from tbltemp where end>='" & Format(txtfrmdate.Value, "yyyy-MM-dd") & "' and end<='" & Format(txttodate.Value, "yyyy-MM-dd") & "' and (stempest/totaltrees)*100>'" & Val(TXTVALUE.Text) & "' ORDER BY end"
 ElseIf OPTLEAFPEST.Value = True Then
-SQLSTR = "select * from tbltemp where end>='" & Format(txtfrmdate.Value, "yyyy-MM-dd") & "' and end<='" & Format(txttodate.Value, "yyyy-MM-dd") & "' and (leafpest/totaltrees)*100>'" & Val(txtvalue.Text) & "' ORDER BY end"
+SQLSTR = "select * from tbltemp where end>='" & Format(txtfrmdate.Value, "yyyy-MM-dd") & "' and end<='" & Format(txttodate.Value, "yyyy-MM-dd") & "' and (leafpest/totaltrees)*100>'" & Val(TXTVALUE.Text) & "' ORDER BY end"
 Else
 
-SQLSTR = "select * from tbltemp where end>='" & Format(txtfrmdate.Value, "yyyy-MM-dd") & "' and end<='" & Format(txttodate.Value, "yyyy-MM-dd") & "' and (deadmissing/totaltrees)*100>'" & Val(txtvalue.Text) & "' ORDER BY end"
+SQLSTR = "select * from tbltemp where end>='" & Format(txtfrmdate.Value, "yyyy-MM-dd") & "' and end<='" & Format(txttodate.Value, "yyyy-MM-dd") & "' and (deadmissing/totaltrees)*100>'" & Val(TXTVALUE.Text) & "' ORDER BY end"
 End If
 
 End If
@@ -1880,7 +1880,7 @@ Screen.MousePointer = vbHourglass
     excel_app.Visible = False
     excel_sheet.cells(3, 1) = "SL.NO."
     
-    If optall.Value = True And OPTALLFIELDS.Value = True Then
+    If OPTALL.Value = True And OPTALLFIELDS.Value = True Then
     excel_sheet.cells(3, 2) = "DATE" & "(END)"
     Else
     excel_sheet.cells(3, 2) = "DATE" & "(" & CBODATE.Text & ")"
@@ -1921,7 +1921,7 @@ rs.Open SQLSTR, db
   
 
 excel_sheet.cells(i, 1) = SLNO
-excel_sheet.cells(i, 2) = "'" & rs!End  'rs.Fields(Mindex)
+excel_sheet.cells(i, 2) = "'" & rs!end  'rs.Fields(Mindex)
 excel_sheet.cells(i, 3) = rs!id
 'If rs!farmerbarcode = "" Then
 '
@@ -2238,23 +2238,23 @@ populatedate "storagehub6_core", 17
 End Sub
 
 Private Sub optdead_Click()
-txtvalue.Text = 20
+TXTVALUE.Text = 20
 End Sub
 
 Private Sub OPTLEAFPEST_Click()
-txtvalue.Text = 5
+TXTVALUE.Text = 5
 End Sub
 
 Private Sub optmoist_Click()
-txtvalue.Text = 30
+TXTVALUE.Text = 30
 End Sub
 
 Private Sub optpestdamage_Click()
-txtvalue.Text = 5
+TXTVALUE.Text = 5
 End Sub
 
 Private Sub optrootpest_Click()
-txtvalue.Text = 5
+TXTVALUE.Text = 5
 End Sub
 
 Private Sub OPTSEL_Click()
@@ -2276,7 +2276,7 @@ Private Sub OPTSUMMARY_Click()
 End Sub
 
 Private Sub OPTSTEMPEST_Click()
-txtvalue.Text = 5
+TXTVALUE.Text = 5
 End Sub
 
 Private Sub TXTVALUE_KeyPress(KeyAscii As Integer)

@@ -311,7 +311,7 @@ Begin VB.Form frmprac
       NoFolders       =   0   'False
       Transparent     =   0   'False
       ViewID          =   "{0057D0E0-3573-11CF-AE69-08002B2E1262}"
-      Location        =   "http:///"
+      Location        =   ""
    End
    Begin VB.CommandButton Command1 
       Caption         =   "Command1"
@@ -449,7 +449,7 @@ Begin VB.Form frmprac
       _ExtentX        =   2355
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   111149057
+      Format          =   130940929
       CurrentDate     =   41362
    End
    Begin MSComCtl2.DTPicker txttodate 
@@ -461,7 +461,7 @@ Begin VB.Form frmprac
       _ExtentX        =   2355
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   111149057
+      Format          =   130940929
       CurrentDate     =   41362
    End
    Begin MSComCtl2.DTPicker DTPicker1 
@@ -473,7 +473,7 @@ Begin VB.Form frmprac
       _ExtentX        =   2355
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   111149057
+      Format          =   130940929
       CurrentDate     =   41362
    End
    Begin MSComCtl2.DTPicker DTPicker2 
@@ -485,7 +485,7 @@ Begin VB.Form frmprac
       _ExtentX        =   2355
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   111149057
+      Format          =   130940929
       CurrentDate     =   41362
    End
    Begin VSFlex7Ctl.VSFlexGrid mygrid1 
@@ -1221,10 +1221,10 @@ Screen.MousePointer = vbHourglass
     excel_sheet.cells(3, 4) = ProperCase("TSHOWOG")
     excel_sheet.cells(3, 5) = ProperCase("FARMER NAME")
     MCOL = 6
-    For m = 1 To mygrid.rows - 1
-    If Len(mygrid.TextMatrix(m, 0)) = 0 Then Exit For
-    If Len(mygrid.TextMatrix(m, 1)) <> 0 Then
-    excel_sheet.cells(3, MCOL) = mygrid.TextMatrix(m, 0) & " % To " & mygrid.TextMatrix(m, 1) & " %"
+    For m = 1 To Mygrid.rows - 1
+    If Len(Mygrid.TextMatrix(m, 0)) = 0 Then Exit For
+    If Len(Mygrid.TextMatrix(m, 1)) <> 0 Then
+    excel_sheet.cells(3, MCOL) = Mygrid.TextMatrix(m, 0) & " % To " & Mygrid.TextMatrix(m, 1) & " %"
     If MCOL = 6 Or MCOL = 9 Or MCOL = 12 Then
     excel_sheet.Range(excel_sheet.cells(3, MCOL), _
                              excel_sheet.cells(3, MCOL + 2)).Select
@@ -1258,7 +1258,7 @@ Screen.MousePointer = vbHourglass
                                 .MergeCells = True
                             End With
                            
-                            excel_sheet.cells(3, MCOL) = ">= Then " & mygrid.TextMatrix(m, 0) & " %"
+                            excel_sheet.cells(3, MCOL) = ">= Then " & Mygrid.TextMatrix(m, 0) & " %"
       End If
     MCOL = MCOL + 3
     Next
@@ -1311,10 +1311,10 @@ Dim md, mg, mt As String
 Do While mdgt = Mid(rs!dgt, 1, 9)
 FindFA rs!farmercode, "F"
     excel_sheet.cells(i, 5) = rs!farmercode & " " & FAName
-      excel_sheet.cells(i, 6) = "'" & rs!End
+      excel_sheet.cells(i, 6) = "'" & rs!end
       
     fcriteria = (rs!mfieldname / rs!totaltrees) * 100
-    If fcriteria >= Val(mygrid.TextMatrix(1, 0)) And fcriteria <= Val(mygrid.TextMatrix(1, 1)) Then
+    If fcriteria >= Val(Mygrid.TextMatrix(1, 0)) And fcriteria <= Val(Mygrid.TextMatrix(1, 1)) Then
     MCOL = 7
      t5 = t5 + rs!totaltrees
       t6 = t6 + rs!mfieldname
@@ -1322,7 +1322,7 @@ FindFA rs!farmercode, "F"
       If rs!cnt > 0 Then
         fdno = fdno + 1
    End If
-    ElseIf fcriteria >= Val(mygrid.TextMatrix(2, 0)) And fcriteria <= Val(mygrid.TextMatrix(2, 1)) Then
+    ElseIf fcriteria >= Val(Mygrid.TextMatrix(2, 0)) And fcriteria <= Val(Mygrid.TextMatrix(2, 1)) Then
      t8 = t8 + rs!totaltrees
       t9 = t9 + rs!mfieldname
       t10 = t10 + rs!cnt
@@ -1330,7 +1330,7 @@ FindFA rs!farmercode, "F"
         fdno = fdno + 1
    End If
     MCOL = 10
-    ElseIf fcriteria >= Val(mygrid.TextMatrix(3, 0)) And fcriteria <= Val(mygrid.TextMatrix(3, 1)) Then
+    ElseIf fcriteria >= Val(Mygrid.TextMatrix(3, 0)) And fcriteria <= Val(Mygrid.TextMatrix(3, 1)) Then
       t11 = t11 + rs!totaltrees
       t12 = t12 + rs!mfieldname
       t13 = t13 + rs!cnt
@@ -1655,10 +1655,10 @@ excel_sheet.name = "Active_Leaf_Pest_Detail"
     excel_sheet.cells(3, 4) = ProperCase("TSHOWOG")
     excel_sheet.cells(3, 5) = ProperCase("FARMER NAME")
     MCOL = 6
-    For m = 1 To mygrid.rows - 1
-    If Len(mygrid.TextMatrix(m, 0)) = 0 Then Exit For
-    If Len(mygrid.TextMatrix(m, 1)) <> 0 Then
-    excel_sheet.cells(3, MCOL) = mygrid.TextMatrix(m, 0) & " % To " & mygrid.TextMatrix(m, 1) & " %"
+    For m = 1 To Mygrid.rows - 1
+    If Len(Mygrid.TextMatrix(m, 0)) = 0 Then Exit For
+    If Len(Mygrid.TextMatrix(m, 1)) <> 0 Then
+    excel_sheet.cells(3, MCOL) = Mygrid.TextMatrix(m, 0) & " % To " & Mygrid.TextMatrix(m, 1) & " %"
     If MCOL = 6 Or MCOL = 9 Or MCOL = 12 Then
     excel_sheet.Range(excel_sheet.cells(3, MCOL), _
                              excel_sheet.cells(3, MCOL + 2)).Select
@@ -1692,7 +1692,7 @@ excel_sheet.name = "Active_Leaf_Pest_Detail"
                                 .MergeCells = True
                             End With
                            
-                            excel_sheet.cells(3, MCOL) = ">= Then " & mygrid.TextMatrix(m, 0) & " %"
+                            excel_sheet.cells(3, MCOL) = ">= Then " & Mygrid.TextMatrix(m, 0) & " %"
       End If
     MCOL = MCOL + 3
     Next
@@ -1745,10 +1745,10 @@ rs.Open "select end, fdcode,(farmercode) as dgt,farmercode,sum(totaltrees) as to
 Do While mdgt = Mid(rs!dgt, 1, 9)
 FindFA rs!farmercode, "F"
     excel_sheet.cells(i, 5) = rs!farmercode & " " & FAName
-      excel_sheet.cells(i, 6) = "'" & rs!End
+      excel_sheet.cells(i, 6) = "'" & rs!end
       
     fcriteria = (rs!mfieldname / rs!totaltrees) * 100
-    If fcriteria >= Val(mygrid.TextMatrix(1, 0)) And fcriteria <= Val(mygrid.TextMatrix(1, 1)) Then
+    If fcriteria >= Val(Mygrid.TextMatrix(1, 0)) And fcriteria <= Val(Mygrid.TextMatrix(1, 1)) Then
     MCOL = 7
      t5 = t5 + rs!totaltrees
       t6 = t6 + rs!mfieldname
@@ -1756,7 +1756,7 @@ FindFA rs!farmercode, "F"
       If rs!cnt > 0 Then
         fdno = fdno + 1
    End If
-    ElseIf fcriteria >= Val(mygrid.TextMatrix(2, 0)) And fcriteria <= Val(mygrid.TextMatrix(2, 1)) Then
+    ElseIf fcriteria >= Val(Mygrid.TextMatrix(2, 0)) And fcriteria <= Val(Mygrid.TextMatrix(2, 1)) Then
      t8 = t8 + rs!totaltrees
       t9 = t9 + rs!mfieldname
       t10 = t10 + rs!cnt
@@ -1764,7 +1764,7 @@ FindFA rs!farmercode, "F"
         fdno = fdno + 1
    End If
     MCOL = 10
-    ElseIf fcriteria >= Val(mygrid.TextMatrix(3, 0)) And fcriteria <= Val(mygrid.TextMatrix(3, 1)) Then
+    ElseIf fcriteria >= Val(Mygrid.TextMatrix(3, 0)) And fcriteria <= Val(Mygrid.TextMatrix(3, 1)) Then
       t11 = t11 + rs!totaltrees
       t12 = t12 + rs!mfieldname
       t13 = t13 + rs!cnt
@@ -2175,7 +2175,7 @@ rs.Open "select end, fdcode,(farmercode) as dgt,farmercode,sum(totaltrees) as to
 Do While mdgt = Mid(rs!dgt, 1, 9)
 FindFA rs!farmercode, "F"
     excel_sheet.cells(i, 5) = rs!farmercode & " " & FAName
-      excel_sheet.cells(i, 6) = "'" & rs!End
+      excel_sheet.cells(i, 6) = "'" & rs!end
       
     fcriteria = (rs!mfieldname / rs!totaltrees) * 100
     If fcriteria >= Val(mygrid1.TextMatrix(1, 0)) And fcriteria <= Val(mygrid1.TextMatrix(1, 1)) Then
@@ -2603,7 +2603,7 @@ rs.Open "select end, fdcode,(farmercode) as dgt,farmercode,sum(totaltrees) as to
 Do While mdgt = Mid(rs!dgt, 1, 9)
 FindFA rs!farmercode, "F"
     excel_sheet.cells(i, 5) = rs!farmercode & " " & FAName
-      excel_sheet.cells(i, 6) = "'" & rs!End
+      excel_sheet.cells(i, 6) = "'" & rs!end
       
     fcriteria = (rs!mfieldname / rs!totaltrees) * 100
     If fcriteria >= Val(mygrid1.TextMatrix(1, 0)) And fcriteria <= Val(mygrid1.TextMatrix(1, 1)) Then
@@ -2993,7 +2993,7 @@ rs.Open SQLSTR, db
                 excel_sheet.cells(i, 1) = SLNO
                 excel_sheet.cells(i, 2) = "'" & rs!start
                 excel_sheet.cells(i, 3) = "'" & rs!tdate
-                excel_sheet.cells(i, 4) = "'" & rs!End
+                excel_sheet.cells(i, 4) = "'" & rs!end
                 excel_sheet.cells(i, 5) = ProperCase(ValidateLocationString(IIf(IsNull(rs!location_dcode), "", rs!location_dcode)))
                 excel_sheet.cells(i, 6) = ProperCase(ValidateLocationString(IIf(IsNull(rs!location_gcode), "", rs!location_gcode)))
                 excel_sheet.cells(i, 7) = ProperCase(ValidateLocationString(IIf(IsNull(rs!location), "", rs!location)))
@@ -3357,7 +3357,7 @@ sl = 1
 excel_sheet.cells(i, 1) = SLNO
 excel_sheet.cells(i, 2) = "'" & rs!start
 excel_sheet.cells(i, 3) = "'" & rs!tdate
-excel_sheet.cells(i, 4) = "'" & rs!End  'rs.Fields(Mindex)
+excel_sheet.cells(i, 4) = "'" & rs!end  'rs.Fields(Mindex)
 FindsTAFF rs!staffbarcode
 excel_sheet.cells(i, 5) = rs!staffbarcode & " " & sTAFF
 FindDZ Mid(rs!farmerbarcode, 1, 3)
@@ -3568,7 +3568,7 @@ Set rs = Nothing
           jtot = jtot + j
          
           mtot(i - 1) = mtot(i - 1) + j
-          excel_sheet.cells(jrow, 2) = "'" & rs!End
+          excel_sheet.cells(jrow, 2) = "'" & rs!end
           excel_sheet.cells(jrow, 3) = CInt(rs!FDCODE)
           excel_sheet.cells(jrow, i) = Val(j)
          pYear = rs!id
@@ -3786,7 +3786,7 @@ mchk = True
 excel_sheet.cells(i, 1) = SLNO
 excel_sheet.cells(i, 2) = "'" & rs!start
 excel_sheet.cells(i, 3) = "'" & rs!tdate
-excel_sheet.cells(i, 4) = "'" & rs!End
+excel_sheet.cells(i, 4) = "'" & rs!end
 FindsTAFF rs!staffbarcode
 excel_sheet.cells(i, 5) = rs!staffbarcode & " " & sTAFF
 
@@ -4080,7 +4080,7 @@ Set rs = Nothing
           jtot = jtot + j
          
           mtot(i - 1) = mtot(i - 1) + j
-          excel_sheet.cells(jrow, 2) = "'" & rs!End
+          excel_sheet.cells(jrow, 2) = "'" & rs!end
          
           
           'fdcnt = fdcnt + 1
@@ -4343,7 +4343,7 @@ rs.Open SQLSTR, db
   excel_sheet.cells(i, 1) = sl
   excel_sheet.cells(i, 2) = "'" & rs!start
   excel_sheet.cells(i, 3) = "'" & rs!tdate
-    excel_sheet.cells(i, 4) = "'" & rs!End
+    excel_sheet.cells(i, 4) = "'" & rs!end
     excel_sheet.cells(i, 5) = rs!staffbarcode
     FindsTAFF rs!staffbarcode
     excel_sheet.cells(i, 6) = sTAFF
@@ -5091,7 +5091,7 @@ SQLSTR = ""
     Do While rsodk.EOF <> True
     findtablename rsodk!odktable
     findfieldindes rsodk!odktable, odkTableName, "FARMERBARCODE"
-    updatefollowuplog 14, rsodk![_uri], odkTableName, "FARMERBARCODE", Now, rsodk!End, 0, rsodk!id, rsodk!farmercode, rsodk!fstype
+    updatefollowuplog 14, rsodk![_uri], odkTableName, "FARMERBARCODE", Now, rsodk!end, 0, rsodk!id, rsodk!farmercode, rsodk!fstype
     rsodk.MoveNext
    Loop
 
@@ -5193,14 +5193,14 @@ SQLSTR = ""
   rsF.Open "select * from tbltemp where var6='" & mfcode & "' and fdcode='" & rss!FDCODE & "'", db
   If rsF.EOF <> True Then
     
-  If rsF!var1 > rss!End Then
+  If rsF!var1 > rss!end Then
   db.Execute "update tbltemp set var1='" & Format(rsF!var1, "yyyy-MM-dd") & "' , var7='" & rss!totaltrees & "' where var6='" & mfcode & "' and fs='F' and fdcode='" & rss!FDCODE & "' "
   End If
     
     
   Else
   'db.Execute "update tbltemp set var1='" & RSS!End & "' , var7='" & RSS!totaltrees & "' where var6='" & mfcode & "' and fs='F' and fdcode='" & RSS!fdcode & "' "
-  db.Execute "insert into  tbltemp(var1,var2,var3,var4,var5,var6,var7,fs,fdcode)values('" & Format(rss!End, "yyyy-MM-dd") & "','99','99','99','99','" & mfcode & "','" & rss!totaltrees & "','F','" & rss!FDCODE & "') "
+  db.Execute "insert into  tbltemp(var1,var2,var3,var4,var5,var6,var7,fs,fdcode)values('" & Format(rss!end, "yyyy-MM-dd") & "','99','99','99','99','" & mfcode & "','" & rss!totaltrees & "','F','" & rss!FDCODE & "') "
   
   End If
   
@@ -5231,14 +5231,14 @@ SQLSTR = ""
   rsF.Open "select * from tbltemp where var6='" & mfcode & "'", db
   If rsF.EOF <> True Then
     
-  If rsF!var1 > rss!End Then
+  If rsF!var1 > rss!end Then
   db.Execute "update tbltemp set var1='" & Format(rsF!var1, "yyyy-MM-dd") & "' , var7='" & rss!totaltrees & "' where var6='" & mfcode & "' and fs='S' "
   End If
     
     
   Else
   'db.Execute "update tbltemp set var1='" & RSS!End & "' , var7='" & RSS!totaltrees & "' where var6='" & mfcode & "' and fs='S' "
-  db.Execute "insert into  tbltemp(var1,var2,var3,var4,var5,var6,var7,fs)values('" & Format(rss!End, "yyyy-MM-dd") & "','99','99','99','99','" & mfcode & "','" & rss!totaltrees & "','S') "
+  db.Execute "insert into  tbltemp(var1,var2,var3,var4,var5,var6,var7,fs)values('" & Format(rss!end, "yyyy-MM-dd") & "','99','99','99','99','" & mfcode & "','" & rss!totaltrees & "','S') "
   
   End If
   
@@ -5485,7 +5485,7 @@ rs.Open "select * from tbltable where tblid='8' ", db
 Open "abc.htm" For Output As #3 ' creates file "abc.htm"
 Print #3, rs.GetString(, 100, vbTab, "<br>", " "); 'prints selected records in the file
 Close #3 'closes the file
-webbrowser1.Navigate (App.Path + "abc.htm")
+WebBrowser1.Navigate (App.Path + "abc.htm")
 
 End Sub
 
@@ -5780,7 +5780,7 @@ Do While rs.EOF <> True
 Print #FileNum, " <Placemark>"
 Print #FileNum, "   <name> " & rs!farmercode & " </name>"
 Print #FileNum, "  <description><![CDATA["
-     Print #FileNum, "    DATE VISITED: " & Format(rs!End, "yyyy-MM-dd")
+     Print #FileNum, "    DATE VISITED: " & Format(rs!end, "yyyy-MM-dd")
      'FindsTAFF rs!staffbarcode
      'Print #FileNum, "    MONITOR: " & rs!staffbarcode & " " & sTAFF
      FindFA rs!farmercode, "F"
@@ -5921,7 +5921,7 @@ rs.Open SQLSTR, db
   excel_sheet.cells(i, 1) = SLNO
 excel_sheet.cells(i, 2) = "'" & rs!start
 excel_sheet.cells(i, 3) = "'" & rs!tdate
-excel_sheet.cells(i, 4) = "'" & rs!End
+excel_sheet.cells(i, 4) = "'" & rs!end
 excel_sheet.cells(i, 5) = "'" & rs!staffbarcode
 FindsTAFF rs!staffbarcode
 excel_sheet.cells(i, 6) = sTAFF
@@ -6124,7 +6124,7 @@ db.Execute "delete from tbltemp"
   
   
   
-  db.Execute "insert into  tbltemp(end,dcode,gcode,tcode,fcode,farmercode,totaltrees,fs,fdcode,deadmissing,slowgrowing,dor,activegrowing,id)values('" & Format(rss!End, "yyyy-MM-dd") & "','99','99','99','99','" & mfcode & "','" & rss!totaltrees & "','F','" & rss!FDCODE & "','" & rss!deadmissing & "','" & rss!slowgrowing & "','" & rss!dor & "','" & rss!activegrowing & "','" & rss!id & "') "
+  db.Execute "insert into  tbltemp(end,dcode,gcode,tcode,fcode,farmercode,totaltrees,fs,fdcode,deadmissing,slowgrowing,dor,activegrowing,id)values('" & Format(rss!end, "yyyy-MM-dd") & "','99','99','99','99','" & mfcode & "','" & rss!totaltrees & "','F','" & rss!FDCODE & "','" & rss!deadmissing & "','" & rss!slowgrowing & "','" & rss!dor & "','" & rss!activegrowing & "','" & rss!id & "') "
   
   
   
@@ -6152,7 +6152,7 @@ db.Execute "delete from tbltemp"
   
   Set rsF = Nothing
     
-  db.Execute "insert into  tbltemp(end,dcode,gcode,tcode,fcode,farmercode,totaltrees,fs,deadmissing,id)values('" & Format(rss!End, "yyyy-MM-dd") & "','99','99','99','99','" & mfcode & "','" & rss!totaltrees & "','S','" & rss!dtrees & "','" & rss!id & "') "
+  db.Execute "insert into  tbltemp(end,dcode,gcode,tcode,fcode,farmercode,totaltrees,fs,deadmissing,id)values('" & Format(rss!end, "yyyy-MM-dd") & "','99','99','99','99','" & mfcode & "','" & rss!totaltrees & "','S','" & rss!dtrees & "','" & rss!id & "') "
    
   rss.MoveNext
   Loop
@@ -6177,7 +6177,7 @@ db.Execute "delete from tbltemp"
   
   Set rsF = Nothing
     
-  db.Execute "insert into  tbltemp(end,dcode,gcode,tcode,fcode,farmercode,fs,fdcode,btree1,etree1,ptree1,id)values('" & Format(rss!End, "yyyy-MM-dd") & "'," _
+  db.Execute "insert into  tbltemp(end,dcode,gcode,tcode,fcode,farmercode,fs,fdcode,btree1,etree1,ptree1,id)values('" & Format(rss!end, "yyyy-MM-dd") & "'," _
             & " '99','99','99','99','" & mfcode & "','M','" & rss!FDCODE & "','" & rss!btree1 & "','" & rss!etree1 & "','" & rss!ptree1 & "','" & rss!id & "') "
    
   rss.MoveNext
@@ -6395,7 +6395,7 @@ i = 1
     
     
     
-     excel_sheet.cells(K, 17) = "'" & rss!End '"DATE VISITED"
+     excel_sheet.cells(K, 17) = "'" & rss!end '"DATE VISITED"
      excel_sheet.cells(K, 18) = rss!FDCODE
      excel_sheet.cells(K, 19) = rss!totaltrees '"TOTAL TREES"
      excel_sheet.cells(K, 20) = rss!deadmissing ' "dead missing"
@@ -6476,7 +6476,7 @@ i = 1
     
     
     
-     excel_sheet.cells(l, 22) = "'" & rss!End   '"DATE VISITED"
+     excel_sheet.cells(l, 22) = "'" & rss!end   '"DATE VISITED"
      excel_sheet.cells(l, 23) = rss!totaltrees  '"TOTAL TREES"
      excel_sheet.cells(l, 24) = rss!deadmissing ' "ACTIVE TREES"
      excel_sheet.cells(l, 24) = excel_sheet.cells(l, 19) - excel_sheet.cells(l, 20)
@@ -6547,7 +6547,7 @@ i = 1
     
     
     
-     excel_sheet.cells(m, 27) = "'" & rss!End ' "DATE"
+     excel_sheet.cells(m, 27) = "'" & rss!end ' "DATE"
      excel_sheet.cells(m, 28) = rss!FDCODE
     excel_sheet.cells(m, 29) = rss!btree1 '"E TYPE"
      '"E TYPE"
@@ -6800,14 +6800,14 @@ SQLSTR = ""
   rsF.Open "select * from tbltemp where var6='" & mfcode & "' and fdcode='" & rss!FDCODE & "'", db
   If rsF.EOF <> True Then
     
-  If rsF!var1 > rss!End Then
+  If rsF!var1 > rss!end Then
   db.Execute "update tbltemp set var1='" & Format(rsF!var1, "yyyy-MM-dd") & "' , var7='" & rss!totaltrees & "' where var6='" & mfcode & "' and fs='F' and fdcode='" & rss!FDCODE & "' "
   End If
     
     
   Else
   'db.Execute "update tbltemp set var1='" & RSS!End & "' , var7='" & RSS!totaltrees & "' where var6='" & mfcode & "' and fs='F' and fdcode='" & RSS!fdcode & "' "
-  db.Execute "insert into  tbltemp(var1,var2,var3,var4,var5,var6,var7,fs,fdcode)values('" & Format(rss!End, "yyyy-MM-dd") & "','99','99','99','99','" & mfcode & "','" & rss!totaltrees & "','F','" & rss!FDCODE & "') "
+  db.Execute "insert into  tbltemp(var1,var2,var3,var4,var5,var6,var7,fs,fdcode)values('" & Format(rss!end, "yyyy-MM-dd") & "','99','99','99','99','" & mfcode & "','" & rss!totaltrees & "','F','" & rss!FDCODE & "') "
   
   End If
   
@@ -6845,7 +6845,7 @@ SQLSTR = ""
     
   Else
   'db.Execute "update tbltemp set var1='" & RSS!End & "' , var7='" & RSS!totaltrees & "' where var6='" & mfcode & "' and fs='S' "
-  db.Execute "insert into  tbltemp(var1,var2,var3,var4,var5,var6,var7,fs)values('" & Format(rss!End, "yyyy-MM-dd") & "','" & mdcode & "','" & mgcode & "','" & mtcode & "','99','" & mfcode & "','" & rss!totaltrees & "','S') "
+  db.Execute "insert into  tbltemp(var1,var2,var3,var4,var5,var6,var7,fs)values('" & Format(rss!end, "yyyy-MM-dd") & "','" & mdcode & "','" & mgcode & "','" & mtcode & "','99','" & mfcode & "','" & rss!totaltrees & "','S') "
   
   End If
   
@@ -7016,7 +7016,7 @@ SQLSTR = ""
   
 
   'db.Execute "update tbltemp set var1='" & RSS!End & "' , var7='" & RSS!totaltrees & "' where var6='" & mfcode & "' and fs='F' and fdcode='" & RSS!fdcode & "' "
-  db.Execute "insert into  tbltemp(var1,var2,var3,var4,var5,var6,var7,fs,fdcode,id,sname,fname)values('" & Format(rss!End, "yyyy-MM-dd") & "','" & mdcode & "','" & mgcode & "','" & mtcode & "','" & rss!fcode & "','" & mfcode & "','" & rss!totaltrees & "','F','" & rss!FDCODE & "','" & rss!id & "','" & rss!sname & "','" & rss!fname & "') "
+  db.Execute "insert into  tbltemp(var1,var2,var3,var4,var5,var6,var7,fs,fdcode,id,sname,fname)values('" & Format(rss!end, "yyyy-MM-dd") & "','" & mdcode & "','" & mgcode & "','" & mtcode & "','" & rss!fcode & "','" & mfcode & "','" & rss!totaltrees & "','F','" & rss!FDCODE & "','" & rss!id & "','" & rss!sname & "','" & rss!fname & "') "
 
   
   rss.MoveNext
@@ -7043,7 +7043,7 @@ SQLSTR = ""
   
  
   'db.Execute "update tbltemp set var1='" & RSS!End & "' , var7='" & RSS!totaltrees & "' where var6='" & mfcode & "' and fs='S' "
-  db.Execute "insert into  tbltemp(var1,var2,var3,var4,var5,var6,var7,fs,id,sname,fname)values('" & Format(rss!End, "yyyy-MM-dd") & "','" & mdcode & "','" & mgcode & "','" & mtcode & "','" & rss!fcode & "','" & mfcode & "','" & rss!totaltrees & "','S','" & rss!id & "','" & rss!sname & "','" & rss!fname & "') "
+  db.Execute "insert into  tbltemp(var1,var2,var3,var4,var5,var6,var7,fs,id,sname,fname)values('" & Format(rss!end, "yyyy-MM-dd") & "','" & mdcode & "','" & mgcode & "','" & mtcode & "','" & rss!fcode & "','" & mfcode & "','" & rss!totaltrees & "','S','" & rss!id & "','" & rss!sname & "','" & rss!fname & "') "
   
   
   
