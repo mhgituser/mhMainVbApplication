@@ -1716,7 +1716,7 @@ mygrid.TextMatrix(i, 17) = Round((((Val(mygrid.TextMatrix(i, 10))) + Val(mygrid.
                 mygrid.TextMatrix(i, 20) = Round((((Val(mygrid.TextMatrix(i, 10))) + Val(mygrid.TextMatrix(i, 16))) * rs!dolomite), 2)
                 mygrid.TextMatrix(i, 21) = Round(Val(mygrid.TextMatrix(i, 17)) + Val(mygrid.TextMatrix(i, 18)) + Val(mygrid.TextMatrix(i, 19)) + Val(mygrid.TextMatrix(i, 20)), 0)
                 mygrid.TextMatrix(i, 22) = Round(Val(mygrid.TextMatrix(i, 17) * rs!sspperkg) + Val(mygrid.TextMatrix(i, 18) * rs!mopperkg) + Val(mygrid.TextMatrix(i, 19) * rs!ureaperkg) + Val(mygrid.TextMatrix(i, 20) * rs!dolomiteperkg), 0)
-                mygrid.TextMatrix(i, 23) = Round((((Val(mygrid.TextMatrix(i, 10))) + Val(mygrid.TextMatrix(i, 16))) * rs!kg), 0)
+                mygrid.TextMatrix(i, 23) = Round((((Val(mygrid.TextMatrix(i, 10))) + Val(mygrid.TextMatrix(i, 16))) * rs!kg) + 0.00000001, 0)
                 mygrid.TextMatrix(i, 24) = Round((mygrid.TextMatrix(i, 23) * rs!amountnu), 0)
              
 Else
