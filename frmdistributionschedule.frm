@@ -1551,7 +1551,7 @@ Dim schk As Integer
 Dim myloop As Integer
 Dim compareme As Double
 Dim mmod As Integer
-Dim modval As Double
+Dim modval, kk As Double
 Dim rs As New ADODB.Recordset
 Set rs = Nothing
 
@@ -1727,7 +1727,7 @@ Else
                 mygrid.TextMatrix(i, 20) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!dolomite), 2)
                 mygrid.TextMatrix(i, 21) = Round(Val(mygrid.TextMatrix(i, 17)) + Val(mygrid.TextMatrix(i, 18)) + Val(mygrid.TextMatrix(i, 19)) + Val(mygrid.TextMatrix(i, 20)), 0)
                 mygrid.TextMatrix(i, 22) = Round(Val(mygrid.TextMatrix(i, 17) * rs!sspperkg) + Val(mygrid.TextMatrix(i, 18) * rs!mopperkg) + Val(mygrid.TextMatrix(i, 19) * rs!ureaperkg) + Val(mygrid.TextMatrix(i, 20) * rs!dolomiteperkg), 0)
-                mygrid.TextMatrix(i, 23) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!kg), 0)
+                mygrid.TextMatrix(i, 23) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!kg) + 0.00000001, 0)
                 mygrid.TextMatrix(i, 24) = Round((mygrid.TextMatrix(i, 23) * rs!amountnu), 0)
              End If
                 If Val(mygrid.TextMatrix(i, 23)) < 0 Then
