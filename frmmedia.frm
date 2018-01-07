@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{D76D7128-4A96-11D3-BD95-D296DC2DD072}#1.0#0"; "VSFLEX7.OCX"
-Object = "{48E59290-9880-11CF-9754-00AA00C00908}#1.0#0"; "MSINET.OCX"
+Object = "{48E59290-9880-11CF-9754-00AA00C00908}#1.0#0"; "msinet.ocx"
 Begin VB.Form frmmedia 
    Caption         =   "Form1"
    ClientHeight    =   7050
@@ -11,6 +11,14 @@ Begin VB.Form frmmedia
    ScaleHeight     =   7050
    ScaleWidth      =   12195
    StartUpPosition =   3  'Windows Default
+   Begin VB.CommandButton Command42 
+      Caption         =   "Command42"
+      Height          =   375
+      Left            =   9120
+      TabIndex        =   43
+      Top             =   4440
+      Width           =   495
+   End
    Begin VB.CommandButton Command41 
       Caption         =   "zero"
       Height          =   495
@@ -3480,6 +3488,10 @@ MHVDB.Execute "delete from tblzerovisit where farmercode in(select idfarmer from
 MsgBox "comp"
 End Sub
 
+Private Sub Command42_Click()
+MsgBox Format(Now(), "ww", vbSunday, vbFirstFullWeek)
+End Sub
+
 Private Sub Command5_Click()
 Dim rs As New ADODB.Recordset
 Dim rs1 As New ADODB.Recordset
@@ -3759,7 +3771,7 @@ Dim chkyear As Integer
 Dim myear As Integer
 Dim oldtrnno As Integer
 Dim rs As New ADODB.Recordset
-mweek = Format(Now(), "ww", vbSunday, vbFirstFullWeek) 'DatePart("ww", Now())
+mweek = Format(Now(), "ww", vbSunday, vbFirstFullWeek) + 1 'DatePart("ww", Now())
 Set rs = Nothing
 rs.Open "select * from tblweek where status='1'", MHWEBDB
 If rs.EOF <> True Then
