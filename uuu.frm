@@ -626,7 +626,7 @@ Begin VB.Form frmCrateBatchTransaction
          _ExtentX        =   2355
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   129368065
+         Format          =   129826817
          CurrentDate     =   41479
       End
       Begin MSDataListLib.DataCombo cbostaff 
@@ -1566,7 +1566,7 @@ Dim dd As Variant
 Dim mm As Variant
 Dim bb As Variant
 Dim cnt As Integer
-Dim mMaxId As Integer
+Dim mMaxId As Long
 Dim crateStr As String
 Dim i As Integer
 If Len(cbotrnid.Text) = 0 Then
@@ -1703,7 +1703,7 @@ MHVDB.CommitTrans
 
 Exit Sub
 err:
-    'MHVDB.RollbackTrans
+MHVDB.RollbackTrans
 MsgBox err.Description
 End Sub
 Private Sub populatedno(Operation As String)
