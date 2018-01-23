@@ -561,10 +561,10 @@ Do While rs.EOF <> True
                         Set rsch = Nothing
                         rsch.Open "select * from tblfieldchoices where name='" & IIf(IsNull(rs1!Value), "", rs1!Value) & "' ", ODKDB
                         If rsch.EOF <> True Then
-                                If UCase(rsch!label) = UCase("description9") Then
+                                If UCase(rsch!Label) = UCase("description9") Then
                                 actstring = rs!other2
                                 Else
-                                actstring = IIf(IsNull(rsch!label), "", rsch!label) & " # " & actstring
+                                actstring = IIf(IsNull(rsch!Label), "", rsch!Label) & " # " & actstring
                                 End If
                         End If
                         
@@ -3808,12 +3808,12 @@ MHWEBDB.Execute "delete from tbldailymorningmeetingactionitem where length(actio
 MHWEBDB.Execute "delete from tblncdailymeettasktrn where length(taskdescription)=0"
 MHWEBDB.Execute "update tbldailymeettasktrn set completiondate='',reviseddate='' where isdailytask='Yes'"
 
-MHWEBDB.Execute "delete from tbldailymeettasktrn where   weekno='" & newweek & "' and myear='" & myear & "'"
-MHWEBDB.Execute "delete from tblncdailymeettasktrn where   weekno='" & newweek & "' and myear='" & myear & "'"
-MHWEBDB.Execute "delete from tbldailymorningmeetingissues where   weekno='" & newweek & "' and myear='" & myear & "'"
-MHWEBDB.Execute "delete from tbldailymorningmeetingactionitem where   weekno='" & newweek & "' and myear='" & myear & "'"
-MHWEBDB.Execute "delete from tbldailymorningmeetingadminactionitem where   weekno='" & newweek & "' and myear='" & myear & "'"
-MHWEBDB.Execute "delete from tblncattendance where   weekno='" & newweek & "' and myear='" & myear & "'"
+MHWEBDB.Execute "delete from tbldailymeettasktrn where   weekno>'" & newweek & "' and myear='" & myear & "'"
+MHWEBDB.Execute "delete from tblncdailymeettasktrn where   weekno>'" & newweek & "' and myear='" & myear & "'"
+MHWEBDB.Execute "delete from tbldailymorningmeetingissues where   weekno>'" & newweek & "' and myear='" & myear & "'"
+MHWEBDB.Execute "delete from tbldailymorningmeetingactionitem where   weekno>'" & newweek & "' and myear='" & myear & "'"
+MHWEBDB.Execute "delete from tbldailymorningmeetingadminactionitem where   weekno>'" & newweek & "' and myear='" & myear & "'"
+MHWEBDB.Execute "delete from tblncattendance where   weekno>'" & newweek & "' and myear='" & myear & "'"
 
 ' shifting daily task first lot
 Set rs = Nothing
@@ -4042,6 +4042,7 @@ MHWEBDB.Execute "update tblweek set status=1 where weekno='" & newweek & "' and 
 MHWEBDB.Execute "update tblweek set morder=0"
 MHWEBDB.Execute "update tblweek set morder=99 where  weekno='" & newweek & "' and myear='" & myear & "'"
 MHWEBDB.Execute "update tblweek set morder=98 where  weekno='" & newweek - 1 & "' and myear='" & myear & "'"
+MHWEBDB.Execute "update tblweek set morder=97 where  weekno='" & newweek + 1 & "' and myear='" & myear & "'"
 MHVDB.CommitTrans
 
 
