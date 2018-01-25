@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{D76D7128-4A96-11D3-BD95-D296DC2DD072}#1.0#0"; "VSFLEX7.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
 Begin VB.Form frmbacktonursery 
@@ -79,7 +79,7 @@ Begin VB.Form frmbacktonursery
          _ExtentX        =   2355
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   308740097
+         Format          =   103088129
          CurrentDate     =   41479
       End
       Begin MSDataListLib.DataCombo cbostaff 
@@ -761,7 +761,7 @@ End Sub
 Private Sub cbotrnid_LostFocus()
 If Len(cbotrnid.Text) = 0 Then Exit Sub
 cbotrnid.Enabled = False
-TB.Buttons(3).Enabled = True
+TB.buttons(3).Enabled = True
 txtyr.Text = Mid(cbotrnid.Text, Len(cbotrnid.Text) - 4, 5)
 txtyr.Text = Trim(txtyr.Text)
 cbotrnid.Text = cbotrnid.BoundText
@@ -838,12 +838,12 @@ mygrid.ColWidth(7) = 375
 If Len(cbotrnid.Text) = 0 Then Exit Sub
 
 totsendtofield = 0
-mygrid.Rows = 1
+mygrid.rows = 1
 Set rs = Nothing
 rs.Open "select * from tblqmsplanttransaction where transactiontype='4' and distributionno='" & cbotrnid.BoundText & "' and status='ON'", MHVDB
 
 Do While rs.EOF <> True
-mygrid.Rows = mygrid.Rows + 1
+mygrid.rows = mygrid.rows + 1
 findQmsBatchDetail rs!plantBatch
 mygrid.TextMatrix(i, 0) = i
 mygrid.TextMatrix(i, 1) = rs!plantBatch
@@ -884,7 +884,7 @@ Else
 rs.Open "select * from tblqmsplanttransaction where  distributionno='" & cbotrnid.BoundText & "' and status='ON'", MHVDB
 End If
 Do While rs.EOF <> True
-ItemGrd.Rows = ItemGrd.Rows + 1
+ItemGrd.rows = ItemGrd.rows + 1
 findQmsBatchDetail rs!plantBatch
 ItemGrd.TextMatrix(i, 1) = rs!plantBatch
 ItemGrd.TextMatrix(i, 2) = qmsplantbatch3
@@ -970,7 +970,7 @@ Private Sub CLEARCONTROLL()
 ItemGrd.Clear
 
 ItemGrd.FormatString = "       |^ Batch No.|^Variety |^Facility |^No. Of Crates|^ Crate #                 |Qty.      |"
-ItemGrd.Rows = 1
+ItemGrd.rows = 1
 txtentrydate.Value = Format(Now, "dd/MM/yyyy")
 cbotrnid.Text = ""
 txtbacktonurseryqty.Text = ""
@@ -1074,7 +1074,7 @@ Private Sub getsum()
 Dim i As Integer
 totbacktonursary = 0
 'totcrate = 0
-For i = 1 To ItemGrd.Rows - 1
+For i = 1 To ItemGrd.rows - 1
 If Len(ItemGrd.TextMatrix(i, 1)) = 0 Then Exit For
 totbacktonursary = totbacktonursary + Val(ItemGrd.TextMatrix(i, 6))
 'totcrate = totcrate + Val(ItemGrd.TextMatrix(i, 4))
@@ -1097,17 +1097,17 @@ Select Case Button.Key
        populatedno "ADD"
        CLEARCONTROLL
        cbotrnid.Enabled = True
-       TB.Buttons(3).Enabled = False
+       TB.buttons(3).Enabled = False
        Case "OPEN"
        Operation = "OPEN"
        populatedno "OPEN"
        CLEARCONTROLL
        cbotrnid.Enabled = True
-       TB.Buttons(3).Enabled = False
+       TB.buttons(3).Enabled = False
        
        Case "SAVE"
        MNU_SAVE
-        TB.Buttons(3).Enabled = False
+        TB.buttons(3).Enabled = False
         'FillGrid
        
        Case "DELETE"
@@ -1129,7 +1129,7 @@ Dim dd As Variant
 Dim mm As Variant
 Dim bb As Variant
 Dim cnt As Integer
-Dim mMaxId As Integer
+Dim mMaxId As Long
 Dim crateStr As String
 Dim i As Integer
 If Len(cbotrnid.Text) = 0 Then
@@ -1245,7 +1245,7 @@ MHVDB.Execute "delete from tblqmsplanttransaction where distributionno='" & cbot
 & "and verificationtype='2' and transactiontype='5'"
 
 
-For i = 1 To ItemGrd.Rows - 1
+For i = 1 To ItemGrd.rows - 1
 If Len(Trim(ItemGrd.TextMatrix(i, 1))) = 0 Then Exit For
 findQmsBatchDetail Trim(ItemGrd.TextMatrix(i, 1))
 getLocationFromFid Trim(ItemGrd.TextMatrix(i, 3))
