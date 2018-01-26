@@ -1411,6 +1411,13 @@ End If
 Dim mrnd As Integer
 Dim tmod As Integer
 mrnd = 0
+
+MHVDB.Execute "delete from mhv.tbldistpreparetion where substring(idfarmer,1,14) in( select substring(FARMER,1,14) from " _
+& " (select n.FARMER,n.START,n.PLANTFUTURE,round(datediff(CURDATE(),n.START),0) recordage,abs(round(datediff(n.START,END),0)) daydiff" _
+& " from odk_prodlocal.tblfuturefarmer_core n INNER JOIN (SELECT FARMER,MAX(START) lastEntry FROM odk_prodlocal.tblfuturefarmer_core" _
+& " where PLANTFUTURE IN('no') GROUP BY FARMER)x ON n.FARMER = x.FARMER AND n.START = x.lastEntry AND STATUS <> 'BAD' GROUP BY n.FARMER)" _
+& "mm )"
+
                             rs.Open SQLSTR, MHVDB
                             
                             i = 1
