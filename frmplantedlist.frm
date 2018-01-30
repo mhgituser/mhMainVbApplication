@@ -558,7 +558,7 @@ Begin VB.Form frmplantedlist
       _ExtentX        =   2355
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   102170625
+      Format          =   93716481
       CurrentDate     =   41516
    End
    Begin VB.TextBox txtmonth 
@@ -1919,7 +1919,7 @@ txtyear.Text = rs!Year
 txtmonth.Text = MonthName(rs!mnth, False)
 TXTMMONTH.Text = rs!mnth
 TXTPLANTED.Text = Format(rs!area, "###0.00")
-TXTTREES.Text = rs!totalplant
+txttrees.Text = rs!totalplant
 fillgridch
 End If
 FillGrid "N"
@@ -1990,7 +1990,7 @@ cbofarmerid.Text = rs!farmercode & " " & FAName
 txtchallanno.Text = IIf(rs!challanserial = "", "", rs!challanserial) & rs!challanno
 txtchallandate.Value = Format(IIf(IsNull(rs!challandate), "01/01/2013", rs!challandate), "dd/MM/yyyy")
 TXTPLANTED.Text = rs!acreplanted
-TXTTREES.Text = rs!nooftrees
+txttrees.Text = rs!nooftrees
 txtttot.Text = rs!challanqty
 txtfertamount.Text = rs!fertamount
 FindsTAFF rs!staffcode
@@ -2006,7 +2006,7 @@ cbofarmerid.Text = ""
 txtchallanno.Text = ""
 txtchallandate.Value = Format(Now, "dd/MM/yyyy")
 TXTPLANTED.Text = ""
-TXTTREES.Text = ""
+txttrees.Text = ""
 txtttot.Text = ""
 End If
 
@@ -2354,15 +2354,15 @@ On Error GoTo err
 Dim rs As New ADODB.Recordset
 Dim i As Integer
 Set rs = Nothing
-Mygrid.Clear
-Mygrid.rows = 1
-Mygrid.FormatString = "^TRN.NO.|^FARMER CODE|^FARMER NAME|^AREA|^TREES|^YEAR"
-Mygrid.ColWidth(0) = 900
-Mygrid.ColWidth(1) = 1800
-Mygrid.ColWidth(2) = 2250
-Mygrid.ColWidth(3) = 585
-Mygrid.ColWidth(4) = 753
-Mygrid.ColWidth(5) = 735
+mygrid.Clear
+mygrid.rows = 1
+mygrid.FormatString = "^TRN.NO.|^FARMER CODE|^FARMER NAME|^AREA|^TREES|^YEAR"
+mygrid.ColWidth(0) = 900
+mygrid.ColWidth(1) = 1800
+mygrid.ColWidth(2) = 2250
+mygrid.ColWidth(3) = 585
+mygrid.ColWidth(4) = 753
+mygrid.ColWidth(5) = 735
 TOTALNOOFTREES = 0
 TOTPLANTEDAREA = 0
 If ff = "A" Then
@@ -2374,33 +2374,33 @@ rs.Open "select * from tblplanted where farmercode='" & Mid(Trim(cbofarmerid.Bou
 End If
 i = 1
 Do While rs.EOF <> True
-Mygrid.rows = Mygrid.rows + 1
-Mygrid.TextMatrix(i, 0) = rs!trnid
+mygrid.rows = mygrid.rows + 1
+mygrid.TextMatrix(i, 0) = rs!trnid
 
-Mygrid.TextMatrix(i, 1) = rs!farmercode
+mygrid.TextMatrix(i, 1) = rs!farmercode
 FindFA rs!farmercode, "F"
-Mygrid.TextMatrix(i, 2) = FAName
-Mygrid.TextMatrix(i, 3) = Format(IIf(IsNull(rs!acreplanted), 0, rs!acreplanted), "####0.00")
+mygrid.TextMatrix(i, 2) = FAName
+mygrid.TextMatrix(i, 3) = Format(IIf(IsNull(rs!acreplanted), 0, rs!acreplanted), "####0.00")
 TOTPLANTEDAREA = TOTPLANTEDAREA + IIf(IsNull(rs!acreplanted), 0, rs!acreplanted)
-Mygrid.TextMatrix(i, 4) = IIf(IsNull(rs!challanqty), 0, rs!challanqty)
+mygrid.TextMatrix(i, 4) = IIf(IsNull(rs!challanqty), 0, rs!challanqty)
 TOTALNOOFTREES = TOTALNOOFTREES + IIf(IsNull(rs!challanqty), 0, rs!challanqty)
-Mygrid.TextMatrix(i, 5) = IIf(IsNull(rs!Year), "", rs!Year)
+mygrid.TextMatrix(i, 5) = IIf(IsNull(rs!Year), "", rs!Year)
 rs.MoveNext
 i = i + 1
 Loop
 
 rs.Close
 
-Mygrid.MergeCol(1) = True
-Mygrid.MergeCells = 1
-Mygrid.MergeCol(2) = True
-Mygrid.MergeCells = 2
+mygrid.MergeCol(1) = True
+mygrid.MergeCells = 1
+mygrid.MergeCol(2) = True
+mygrid.MergeCells = 2
 Exit Sub
 err:
-Mygrid.MergeCol(1) = True
-Mygrid.MergeCells = 1
-Mygrid.MergeCol(2) = True
-Mygrid.MergeCells = 2
+mygrid.MergeCol(1) = True
+mygrid.MergeCells = 1
+mygrid.MergeCol(2) = True
+mygrid.MergeCells = 2
 MsgBox err.Description
 
 End Sub
@@ -2629,7 +2629,7 @@ End Sub
 Private Sub findtot()
 Dim i As Integer
 mytot = 0
-For i = 1 To Mygrid.rows - 1
+For i = 1 To mygrid.rows - 1
 If Len(mygrid1.TextMatrix(i, 0)) = 0 Then Exit For
 mytot = mytot + Val(mygrid1.TextMatrix(i, 4))
 
@@ -2817,7 +2817,7 @@ MHVDB.Execute "insert into tblplanted(trnid,farmercode,fillins,year,nooftrees,ac
 & "'" & cbofarmerid.BoundText & "'," _
 & "''," _
 & "'" & Val(txtyear.Text) & "'," _
-& "'" & Val(TXTTREES.Text) & "'," _
+& "'" & Val(txttrees.Text) & "'," _
 & "'" & Val(TXTPLANTED.Text) & "'," _
 & "'" & Val(TXTMMONTH.Text) & "'," _
 & "'" & cbodeliveryno.BoundText & "'," _
@@ -2836,7 +2836,7 @@ ElseIf Operation = "OPEN" Then
 MHVDB.Execute "update tblplanted set " _
 & "farmercode='" & Mid(Trim(cbofarmerid.BoundText), 1, 14) & "'," _
 & "year='" & Val(txtyear.Text) & "'," _
-& "nooftrees='" & Val(TXTTREES.Text) & "'," _
+& "nooftrees='" & Val(txttrees.Text) & "'," _
 & "acreplanted='" & Val(TXTPLANTED.Text) & "'," _
 & "mnth='" & Val(TXTMMONTH.Text) & "'," _
 & "dno='" & cbodeliveryno.BoundText & "'," _
@@ -2896,6 +2896,7 @@ MHVDB.Execute "update tblplantdistributiondetail set challanentered='Y' WHERE di
 'MHVDB.Execute "UPDATE mhv.tblregistrationsettings SET updatetable ='Yes' WHERE tblid ='3'"
 'MHVDB.Execute "UPDATE mhv.tblregistrationsettings SET updatetable ='Yes' WHERE tblid ='4'"
 'MHVDB.Execute "UPDATE mhv.tblregistrationsettings SET updatetable ='Yes' WHERE tblid ='7'"
+MHVDB.Execute "UPDATE mhv.tblfarmer set category='ActivePoor' where idfarmer='" & Mid(Trim(cbofarmerid.BoundText), 1, 14) & "'"
 MHVDB.CommitTrans
 TB.buttons(3).Enabled = False
 FillGrid "N"
@@ -2920,10 +2921,10 @@ txtregarea.Text = ""
 txtplantedsofar.Text = ""
 txtfertamount.Text = ""
 TXTADDLAND.Text = ""
-TXTDZ.Text = ""
-TXTGE.Text = ""
-TXTTS.Text = ""
-TXTTREES.Text = ""
+txtdz.Text = ""
+txtge.Text = ""
+txtts.Text = ""
+txttrees.Text = ""
 'TXTYEAR.Value = year(Now)
 cbostaff.Text = ""
 txtchallandate = Format(Now, "dd/MM/yyyy")
