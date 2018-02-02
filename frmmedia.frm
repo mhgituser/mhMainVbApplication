@@ -4411,8 +4411,8 @@ rs.Open "SELECT * FROM tbldashboardworkplan where monthno='" & oldmonth & "' and
 & " monthno='" & oldmonth & "' and myear='" & oldyear & "' and deptcode='" & rsd!deptid & "' and  status in('G') and " _
 & " completiondate>'" & Format(Now, "yyyy-MM-dd") & "' ", MHWEBDB
     Do While rs.EOF <> True
-    MHWEBDB.Execute "insert into tbldashboardworkplan(monthno,myear,deptcode,taskdescription,personresponsible,completiondate,exportedtoweeklytask,status)" _
-    & " values('" & validmonth & "','" & validyear & "','" & rs!deptcode & "','" & rs!taskdescription & "','" & rs!personresponsible & "','" & Format(rs!completiondate, "yyyy-MM-dd") & "','" & rs!exportedtoweeklytask & "','" & rs!status & "') "
+    MHWEBDB.Execute "insert into tbldashboardworkplan(monthno,myear,deptcode,taskdescription,personresponsible,completiondate,exportedtoweeklytask,status,maintaskid)" _
+    & " values('" & validmonth & "','" & validyear & "','" & rs!deptcode & "','" & rs!taskdescription & "','" & rs!personresponsible & "','" & Format(rs!completiondate, "yyyy-MM-dd") & "','" & rs!exportedtoweeklytask & "','" & rs!status & "','" & rs!maintaskid & "') "
     rs.MoveNext
     Loop
     
