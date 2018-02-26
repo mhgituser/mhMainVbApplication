@@ -153,20 +153,20 @@ Screen.MousePointer = vbHourglass
     'excel_app.DisplayFullScreen = True
     excel_app.Visible = False
     '
-    excel_sheet.Cells(2, 2) = "Fertilizer Check List"
+    excel_sheet.cells(2, 2) = "Fertilizer Check List"
     
-    excel_sheet.Cells(3, 1) = "S/N"
-    excel_sheet.Cells(3, 2) = "DZONGKHAG"
-    excel_sheet.Cells(3, 3) = "GEWOG"
-    excel_sheet.Cells(3, 4) = "TSHOWOG"
-    excel_sheet.Cells(3, 5) = "FARMER"
-    excel_sheet.Cells(3, 6) = "LAND (ACRE)"
+    excel_sheet.cells(3, 1) = "S/N"
+    excel_sheet.cells(3, 2) = "DZONGKHAG"
+    excel_sheet.cells(3, 3) = "GEWOG"
+    excel_sheet.cells(3, 4) = "TSHOWOG"
+    excel_sheet.cells(3, 5) = "FARMER"
+    excel_sheet.cells(3, 6) = "LAND (ACRE)"
     'premix
-    excel_sheet.Cells(3, 7) = ("Total (Kg)")
+    excel_sheet.cells(3, 7) = ("Total (Kg)")
    ' rs!totalkg1
     ' dolomite
     'excel_sheet.Cells(3, 23) = UCase("Kg")
-    excel_sheet.Name = "Chemical Checklist"
+    excel_sheet.name = "Chemical Checklist"
     i = 4
     s = 4
     SQLSTR = "select * from tblplantdistributiondetail where subtotindicator<>'T' and trnid='" & cbotrnid.BoundText & "' order by sno"
@@ -181,14 +181,14 @@ Screen.MousePointer = vbHourglass
                             FindGE Mid(rs!farmercode, 1, 3), Mid(rs!farmercode, 4, 3)
                             FindTs Mid(rs!farmercode, 1, 3), Mid(rs!farmercode, 4, 3), Mid(rs!farmercode, 7, 3)
                              FindFA rs!farmercode, "F"
-                             excel_sheet.Cells(i, 2) = Mid(rs!farmercode, 1, 3) & " " & Dzname
-                             excel_sheet.Cells(i, 3) = Mid(rs!farmercode, 4, 3) & " " & GEname
-                             excel_sheet.Cells(i, 4) = Mid(rs!farmercode, 7, 3) & " " & TsName
-                             excel_sheet.Cells(i, 5) = rs!farmercode & "  " & FAName
-                             excel_sheet.Cells(i, 6) = rs!area '"LAND (ACRE)"
-                             excel_sheet.Cells(i, 7) = rs!totalkg1
+                             excel_sheet.cells(i, 2) = Mid(rs!farmercode, 1, 3) & " " & Dzname
+                             excel_sheet.cells(i, 3) = Mid(rs!farmercode, 4, 3) & " " & GEname
+                             excel_sheet.cells(i, 4) = Mid(rs!farmercode, 7, 3) & " " & TsName
+                             excel_sheet.cells(i, 5) = rs!farmercode & "  " & FAName
+                             excel_sheet.cells(i, 6) = rs!area '"LAND (ACRE)"
+                             excel_sheet.cells(i, 7) = rs!totalkg1
                              ' dolomite stores in column 70-- temp store
-                             excel_sheet.Cells(i, 70) = rs!kg
+                             excel_sheet.cells(i, 70) = rs!kg
                              
                              
                              
@@ -203,30 +203,30 @@ Screen.MousePointer = vbHourglass
                              
                             If rs!subtotindicator = "S" Then
                             
-                             excel_sheet.Range(excel_sheet.Cells(i, 2), _
-                             excel_sheet.Cells(i, 26)).Select
-                             excel_app.Selection.Interior.ColorIndex = 15
+                             excel_sheet.Range(excel_sheet.cells(i, 2), _
+                             excel_sheet.cells(i, 26)).Select
+                             excel_app.selection.Interior.ColorIndex = 15
                              
                                                        
-                             excel_sheet.Range(excel_sheet.Cells(s, 1), _
-                             excel_sheet.Cells(i - 1, 1)).Select
+                             excel_sheet.Range(excel_sheet.cells(s, 1), _
+                             excel_sheet.cells(i - 1, 1)).Select
                              
-                                excel_sheet.Cells(s, 1) = tdist
-                            With excel_app.Selection
+                                excel_sheet.cells(s, 1) = tdist
+                            With excel_app.selection
                                 .HorizontalAlignment = xlCenter
                                 .VerticalAlignment = xlCenter 'xlBottom
                                 .WrapText = False
                                 .Orientation = 0
                                 .AddIndent = False
                                 .IndentLevel = 0
-                                .ShrinkToFit = False
+                                .shrinkToFit = False
                                 .ReadingOrder = xlContext
                                 .MergeCells = True
                             End With
                             'Selection.Merge
                             
                             
-                             excel_sheet.Cells(i, 1) = ""
+                             excel_sheet.cells(i, 1) = ""
                             
                             
     
@@ -487,42 +487,43 @@ Dim col As Integer
 Dim bagcnt As Integer
 bagcnt = 0
  MCOL = 0
-lastrow = excel_sheet.UsedRange.Rows.Count
+lastrow = excel_sheet.UsedRange.rows.Count
 lastcolumn = excel_sheet.UsedRange.Columns.Count
-excel_sheet.Cells(3, 8) = "28 Kg Bag"
-excel_sheet.Cells(3, 9) = "Kg Left"
+excel_sheet.cells(2, 9) = "Premix"
+excel_sheet.cells(3, 8) = "28 Kg Bag"
+excel_sheet.cells(3, 9) = "Kg Left"
 For i = 4 To lastrow
-excel_sheet.Cells(i, 9) = excel_sheet.Cells(i, 7) Mod 28
-excel_sheet.Cells(i, 8) = (excel_sheet.Cells(i, 7) - excel_sheet.Cells(i, 9)) / 28
-    If Len(Trim(excel_sheet.Cells(i, 5).Value)) > 0 Then
+excel_sheet.cells(i, 9) = excel_sheet.cells(i, 7) Mod 28
+excel_sheet.cells(i, 8) = (excel_sheet.cells(i, 7) - excel_sheet.cells(i, 9)) / 28
+    If Len(Trim(excel_sheet.cells(i, 5).Value)) > 0 Then
        col = 10
       
-        For j = 1 To Val(excel_sheet.Cells(i, 8).Value)
+        For j = 1 To Val(excel_sheet.cells(i, 8).Value)
             bagcnt = bagcnt + 1
-            excel_sheet.Cells(i, col).Value = "28"
+            excel_sheet.cells(i, col).Value = "28"
                        
-            excel_sheet.Cells(3, col).Value = "Bag" & bagcnt
+            excel_sheet.cells(3, col).Value = "Bag" & bagcnt
             col = col + 1
-            excel_sheet.Cells(3, col).Value = "Nursery"
-            col = col + 1
-            excel_sheet.Cells(3, col).Value = "Monitor"
-           col = col + 1
+'            excel_sheet.cells(3, col).Value = "Nursery"
+'            col = col + 1
+'            excel_sheet.cells(3, col).Value = "Monitor"
+'            col = col + 1
             
             
            
             
             
         Next
-            If Val(excel_sheet.Cells(i, 9).Value) > 0 Then
+            If Val(excel_sheet.cells(i, 9).Value) > 0 Then
              bagcnt = bagcnt + 1
-             excel_sheet.Cells(i, col).Value = Val(excel_sheet.Cells(i, 9).Value)
+             excel_sheet.cells(i, col).Value = Val(excel_sheet.cells(i, 9).Value)
                        
-            excel_sheet.Cells(3, col).Value = "Bag" & bagcnt
+            excel_sheet.cells(3, col).Value = "Bag" & bagcnt
             col = col + 1
-            excel_sheet.Cells(3, col).Value = "Nursery"
-            col = col + 1
-            excel_sheet.Cells(3, col).Value = "Monitor"
-           col = col + 1
+'            excel_sheet.cells(3, col).Value = "Nursery"
+'            col = col + 1
+'            excel_sheet.cells(3, col).Value = "Monitor"
+'           col = col + 1
             
             
                
@@ -576,43 +577,44 @@ Dim col As Integer
 Dim bagcnt As Integer
 bagcnt = 0
 
-lastrow = excel_sheet.UsedRange.Rows.Count
+lastrow = excel_sheet.UsedRange.rows.Count
 lastcolumn = excel_sheet.UsedRange.Columns.Count
-excel_sheet.Cells(3, MCOL + 1) = "Kg"
-excel_sheet.Cells(3, MCOL + 1) = "48 Kg Bag"
-excel_sheet.Cells(3, MCOL + 2) = "Kg Left"
+excel_sheet.cells(2, MCOL + 1) = "Dolomite"
+excel_sheet.cells(3, MCOL + 0) = "Kg"
+excel_sheet.cells(3, MCOL + 1) = "48 Kg Bag"
+excel_sheet.cells(3, MCOL + 2) = "Kg Left"
 For i = 4 To lastrow
-excel_sheet.Cells(i, MCOL) = excel_sheet.Cells(i, 70)
-excel_sheet.Cells(i, MCOL + 2) = excel_sheet.Cells(i, MCOL) Mod 48
-excel_sheet.Cells(i, MCOL + 1) = (excel_sheet.Cells(i, MCOL) - excel_sheet.Cells(i, MCOL + 2)) / 48
-    If Len(Trim(excel_sheet.Cells(i, 5).Value)) > 0 Then
+excel_sheet.cells(i, MCOL) = excel_sheet.cells(i, 70)
+excel_sheet.cells(i, MCOL + 2) = excel_sheet.cells(i, MCOL) Mod 48
+excel_sheet.cells(i, MCOL + 1) = (excel_sheet.cells(i, MCOL) - excel_sheet.cells(i, MCOL + 2)) / 48
+    If Len(Trim(excel_sheet.cells(i, 5).Value)) > 0 Then
        col = MCOL + 3
         
-        For j = 1 To Val(excel_sheet.Cells(i, MCOL + 1).Value)
+        For j = 1 To Val(excel_sheet.cells(i, MCOL + 1).Value)
             bagcnt = bagcnt + 1
-            excel_sheet.Cells(i, col).Value = "48"
+            excel_sheet.cells(i, col).Value = "48"
                        
-            excel_sheet.Cells(3, col).Value = "Bag" & bagcnt
+            excel_sheet.cells(3, col).Value = "Bag" & bagcnt
             col = col + 1
-            excel_sheet.Cells(3, col).Value = "Nursery"
-            col = col + 1
-            excel_sheet.Cells(3, col).Value = "Monitor"
-           col = col + 1
+'            excel_sheet.cells(3, col).Value = "Nursery"
+'            col = col + 1
+'            excel_sheet.cells(3, col).Value = "Monitor"
+'           col = col + 1
             
             
            
             
             
         Next
-            If Val(excel_sheet.Cells(i, MCOL + 2).Value) > 0 Then
+            If Val(excel_sheet.cells(i, MCOL + 2).Value) > 0 Then
              bagcnt = bagcnt + 1
-             excel_sheet.Cells(i, col).Value = Val(excel_sheet.Cells(i, MCOL + 2).Value)
-            excel_sheet.Cells(3, col).Value = "Bag" & bagcnt
+             excel_sheet.cells(i, col).Value = Val(excel_sheet.cells(i, MCOL + 2).Value)
+            excel_sheet.cells(3, col).Value = "Bag" & bagcnt
             col = col + 1
-            excel_sheet.Cells(3, col).Value = "Nursery"
-            col = col + 1
-            excel_sheet.Cells(3, col).Value = "Monitor"
-           col = col + 1
+'            excel_sheet.cells(3, col).Value = "Nursery"
+'            col = col + 1
+'            excel_sheet.cells(3, col).Value = "Monitor"
+'           col = col + 1
             
             
                
@@ -638,13 +640,13 @@ Dim col As Integer
 Dim bagcnt As Integer
 bagcnt = 0
 
-lastrow = excel_sheet.UsedRange.Rows.Count
+lastrow = excel_sheet.UsedRange.rows.Count
 lastcolumn = excel_sheet.UsedRange.Columns.Count
 
 'Set excel_sheet = xlApp.ActiveSheet
 For i = 4 To lastrow
-    If Len(Trim(excel_sheet.Cells(i, 5).Value)) = 0 Then
-     excel_sheet.HPageBreaks.Add Before:=excel_sheet.Cells(i + 1, 3)
+    If Len(Trim(excel_sheet.cells(i, 5).Value)) = 0 Then
+     excel_sheet.HPageBreaks.Add Before:=excel_sheet.cells(i + 1, 3)
      
      End If
     Next
