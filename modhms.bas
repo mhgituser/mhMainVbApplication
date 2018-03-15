@@ -28,6 +28,8 @@ Public paramValue As Double
 Public emailMessageString As String
 Public acceptableThresholdValue As String
 Public errReportName As String
+Public incentivematerialname As String
+Public incentivematerialunit As String
 Public firstMondayOfTheMonth As Date
 Public qmsShimentNo As Integer
 Public fieldIndex As Integer
@@ -857,6 +859,24 @@ Set rs = Nothing
 rs.Open "select * from tblqmsplantvariety where varietyid='" & dd & "'", MHVDB, adOpenForwardOnly, adLockOptimistic
 If rs.EOF <> True Then
 qmsPlantVariety = rs!Description
+'chkred = False
+Else
+
+End If
+Exit Sub
+err:
+MsgBox err.Description
+End Sub
+Public Sub Findincentivematerialname(ddd As String)
+On Error GoTo err
+Dim rs As New ADODB.Recordset
+incentivematerialname = ""
+incentivematerialunit = ""
+Set rs = Nothing
+rs.Open "select * from tblincentivematlmaster where incentiveid='" & ddd & "'", MHVDB, adOpenForwardOnly, adLockOptimistic
+If rs.EOF <> True Then
+incentivematerialname = rs!incentivematerial
+incentivematerialunit = rs!unit
 'chkred = False
 Else
 

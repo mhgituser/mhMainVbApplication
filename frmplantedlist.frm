@@ -7,7 +7,7 @@ Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
 Begin VB.Form frmplantedlist 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "PLANTED"
-   ClientHeight    =   9330
+   ClientHeight    =   10590
    ClientLeft      =   3105
    ClientTop       =   495
    ClientWidth     =   14880
@@ -16,8 +16,53 @@ Begin VB.Form frmplantedlist
    MaxButton       =   0   'False
    MinButton       =   0   'False
    Moveable        =   0   'False
-   ScaleHeight     =   9330
+   ScaleHeight     =   10590
    ScaleWidth      =   14880
+   Begin VB.Frame Frame6 
+      Height          =   2055
+      Left            =   0
+      TabIndex        =   86
+      Top             =   8400
+      Visible         =   0   'False
+      Width           =   7215
+      Begin VB.TextBox txtincqty 
+         Appearance      =   0  'Flat
+         BorderStyle     =   0  'None
+         Height          =   255
+         Left            =   5400
+         TabIndex        =   89
+         Top             =   480
+         Visible         =   0   'False
+         Width           =   1095
+      End
+      Begin VB.TextBox materialid 
+         Appearance      =   0  'Flat
+         BorderStyle     =   0  'None
+         Height          =   375
+         Left            =   600
+         TabIndex        =   88
+         Top             =   960
+         Visible         =   0   'False
+         Width           =   855
+      End
+      Begin MSFlexGridLib.MSFlexGrid ItemGrd1 
+         Height          =   1695
+         Left            =   0
+         TabIndex        =   87
+         Top             =   120
+         Width           =   7095
+         _ExtentX        =   12515
+         _ExtentY        =   2990
+         _Version        =   393216
+         Rows            =   5
+         Cols            =   5
+         RowHeightMin    =   315
+         ForeColorFixed  =   -2147483635
+         BackColorBkg    =   16777215
+         Appearance      =   0
+         FormatString    =   $"frmplantedlist.frx":0E42
+      End
+   End
    Begin VB.Frame Frame5 
       Caption         =   "Select Land Reg. Trn. No. to sattle"
       Height          =   2055
@@ -38,7 +83,7 @@ Begin VB.Form frmplantedlist
          EndProperty
          Height          =   495
          Left            =   4800
-         Picture         =   "frmplantedlist.frx":0E42
+         Picture         =   "frmplantedlist.frx":0ED5
          Style           =   1  'Graphical
          TabIndex        =   83
          Top             =   1440
@@ -57,9 +102,9 @@ Begin VB.Form frmplantedlist
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1155
-         ItemData        =   "frmplantedlist.frx":11CC
+         ItemData        =   "frmplantedlist.frx":125F
          Left            =   240
-         List            =   "frmplantedlist.frx":11D3
+         List            =   "frmplantedlist.frx":1266
          Style           =   1  'Checkbox
          TabIndex        =   82
          Top             =   240
@@ -77,7 +122,7 @@ Begin VB.Form frmplantedlist
    Begin VB.CommandButton Command7 
       Height          =   375
       Left            =   6240
-      Picture         =   "frmplantedlist.frx":11DF
+      Picture         =   "frmplantedlist.frx":1272
       Style           =   1  'Graphical
       TabIndex        =   80
       ToolTipText     =   "Load all farmers."
@@ -121,7 +166,7 @@ Begin VB.Form frmplantedlist
          EndProperty
          Height          =   495
          Left            =   1200
-         Picture         =   "frmplantedlist.frx":1949
+         Picture         =   "frmplantedlist.frx":19DC
          Style           =   1  'Graphical
          TabIndex        =   77
          Top             =   720
@@ -216,7 +261,7 @@ Begin VB.Form frmplantedlist
          ColWidthMin     =   0
          ColWidthMax     =   0
          ExtendLastCol   =   0   'False
-         FormatString    =   $"frmplantedlist.frx":20F3
+         FormatString    =   $"frmplantedlist.frx":2186
          ScrollTrack     =   0   'False
          ScrollBars      =   3
          ScrollTips      =   0   'False
@@ -270,7 +315,7 @@ Begin VB.Form frmplantedlist
          EndProperty
          Height          =   495
          Left            =   1920
-         Picture         =   "frmplantedlist.frx":218A
+         Picture         =   "frmplantedlist.frx":221D
          Style           =   1  'Graphical
          TabIndex        =   72
          Top             =   3720
@@ -315,7 +360,7 @@ Begin VB.Form frmplantedlist
    Begin VB.CommandButton Command3 
       Height          =   375
       Left            =   6720
-      Picture         =   "frmplantedlist.frx":2514
+      Picture         =   "frmplantedlist.frx":25A7
       Style           =   1  'Graphical
       TabIndex        =   69
       Top             =   2040
@@ -370,7 +415,7 @@ Begin VB.Form frmplantedlist
          EndProperty
          Height          =   735
          Left            =   2640
-         Picture         =   "frmplantedlist.frx":2CBE
+         Picture         =   "frmplantedlist.frx":2D51
          Style           =   1  'Graphical
          TabIndex        =   75
          Top             =   3720
@@ -419,7 +464,7 @@ Begin VB.Form frmplantedlist
          EndProperty
          Height          =   735
          Left            =   1440
-         Picture         =   "frmplantedlist.frx":3588
+         Picture         =   "frmplantedlist.frx":361B
          Style           =   1  'Graphical
          TabIndex        =   46
          Top             =   3720
@@ -437,8 +482,8 @@ Begin VB.Form frmplantedlist
             Strikethrough   =   0   'False
          EndProperty
          Height          =   735
-         Left            =   120
-         Picture         =   "frmplantedlist.frx":4252
+         Left            =   240
+         Picture         =   "frmplantedlist.frx":42E5
          Style           =   1  'Graphical
          TabIndex        =   45
          Top             =   3720
@@ -456,9 +501,9 @@ Begin VB.Form frmplantedlist
             Strikethrough   =   0   'False
          EndProperty
          Height          =   2085
-         ItemData        =   "frmplantedlist.frx":45DC
+         ItemData        =   "frmplantedlist.frx":466F
          Left            =   120
-         List            =   "frmplantedlist.frx":45E3
+         List            =   "frmplantedlist.frx":4676
          Style           =   1  'Checkbox
          TabIndex        =   44
          Top             =   840
@@ -483,7 +528,7 @@ Begin VB.Form frmplantedlist
       Left            =   6000
       Locked          =   -1  'True
       TabIndex        =   63
-      Top             =   8760
+      Top             =   7920
       Width           =   1215
    End
    Begin VB.TextBox txtbacktonursery 
@@ -501,10 +546,10 @@ Begin VB.Form frmplantedlist
       EndProperty
       ForeColor       =   &H00C00000&
       Height          =   405
-      Left            =   2160
+      Left            =   2280
       Locked          =   -1  'True
       TabIndex        =   62
-      Top             =   8760
+      Top             =   7800
       Width           =   1215
    End
    Begin VB.TextBox txtsenttofield 
@@ -522,10 +567,10 @@ Begin VB.Form frmplantedlist
       EndProperty
       ForeColor       =   &H00C00000&
       Height          =   405
-      Left            =   2160
+      Left            =   2280
       Locked          =   -1  'True
       TabIndex        =   61
-      Top             =   8280
+      Top             =   7320
       Width           =   1215
    End
    Begin VB.TextBox txtchallanqty 
@@ -546,7 +591,7 @@ Begin VB.Form frmplantedlist
       Left            =   6000
       Locked          =   -1  'True
       TabIndex        =   60
-      Top             =   8280
+      Top             =   7440
       Width           =   1215
    End
    Begin MSComCtl2.DTPicker txtchallandate 
@@ -558,7 +603,7 @@ Begin VB.Form frmplantedlist
       _ExtentX        =   2355
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   93716481
+      Format          =   148832257
       CurrentDate     =   41516
    End
    Begin VB.TextBox txtmonth 
@@ -625,7 +670,7 @@ Begin VB.Form frmplantedlist
       Left            =   6000
       Locked          =   -1  'True
       TabIndex        =   34
-      Top             =   7800
+      Top             =   6960
       Width           =   1215
    End
    Begin VB.CheckBox CHKFILLIN 
@@ -1045,7 +1090,7 @@ Begin VB.Form frmplantedlist
       End
    End
    Begin MSDataListLib.DataCombo cbofarmerid 
-      Bindings        =   "frmplantedlist.frx":45EF
+      Bindings        =   "frmplantedlist.frx":4682
       DataField       =   "ItemCode"
       Height          =   360
       Left            =   1440
@@ -1085,27 +1130,27 @@ Begin VB.Form frmplantedlist
       BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
          NumListImages   =   6
          BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmplantedlist.frx":4604
+            Picture         =   "frmplantedlist.frx":4697
             Key             =   ""
          EndProperty
          BeginProperty ListImage2 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmplantedlist.frx":499E
+            Picture         =   "frmplantedlist.frx":4A31
             Key             =   ""
          EndProperty
          BeginProperty ListImage3 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmplantedlist.frx":4D38
+            Picture         =   "frmplantedlist.frx":4DCB
             Key             =   ""
          EndProperty
          BeginProperty ListImage4 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmplantedlist.frx":5A12
+            Picture         =   "frmplantedlist.frx":5AA5
             Key             =   ""
          EndProperty
          BeginProperty ListImage5 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmplantedlist.frx":5E64
+            Picture         =   "frmplantedlist.frx":5EF7
             Key             =   ""
          EndProperty
          BeginProperty ListImage6 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmplantedlist.frx":661E
+            Picture         =   "frmplantedlist.frx":66B1
             Key             =   ""
          EndProperty
       EndProperty
@@ -1226,7 +1271,7 @@ Begin VB.Form frmplantedlist
       ColWidthMin     =   0
       ColWidthMax     =   0
       ExtendLastCol   =   0   'False
-      FormatString    =   $"frmplantedlist.frx":69B8
+      FormatString    =   $"frmplantedlist.frx":6A4B
       ScrollTrack     =   0   'False
       ScrollBars      =   2
       ScrollTips      =   0   'False
@@ -1295,7 +1340,7 @@ Begin VB.Form frmplantedlist
       EndProperty
    End
    Begin VB.Frame Frame2 
-      Height          =   3945
+      Height          =   2985
       Left            =   -360
       TabIndex        =   37
       Top             =   3840
@@ -1320,7 +1365,7 @@ Begin VB.Form frmplantedlist
          Width           =   735
       End
       Begin MSDataListLib.DataCombo cbovariety 
-         Bindings        =   "frmplantedlist.frx":6A74
+         Bindings        =   "frmplantedlist.frx":6B07
          DataField       =   "ItemCode"
          Height          =   360
          Left            =   1440
@@ -1339,13 +1384,13 @@ Begin VB.Form frmplantedlist
          Text            =   ""
       End
       Begin MSFlexGridLib.MSFlexGrid ItemGrd 
-         Height          =   3660
+         Height          =   2700
          Left            =   360
          TabIndex        =   41
          Top             =   120
          Width           =   7215
          _ExtentX        =   12726
-         _ExtentY        =   6456
+         _ExtentY        =   4763
          _Version        =   393216
          Rows            =   210
          Cols            =   7
@@ -1418,7 +1463,7 @@ Begin VB.Form frmplantedlist
       EndProperty
    End
    Begin MSDataListLib.DataCombo cbostaff 
-      Bindings        =   "frmplantedlist.frx":6A89
+      Bindings        =   "frmplantedlist.frx":6B1C
       DataField       =   "ItemCode"
       Height          =   360
       Left            =   3360
@@ -1494,9 +1539,9 @@ Begin VB.Form frmplantedlist
          Strikethrough   =   0   'False
       EndProperty
       Height          =   195
-      Left            =   3600
+      Left            =   4080
       TabIndex        =   59
-      Top             =   8880
+      Top             =   8040
       Width           =   1380
    End
    Begin VB.Label Label24 
@@ -1512,9 +1557,9 @@ Begin VB.Form frmplantedlist
          Strikethrough   =   0   'False
       EndProperty
       Height          =   195
-      Left            =   120
+      Left            =   240
       TabIndex        =   58
-      Top             =   8880
+      Top             =   7920
       Width           =   1770
    End
    Begin VB.Label Label23 
@@ -1530,9 +1575,9 @@ Begin VB.Form frmplantedlist
          Strikethrough   =   0   'False
       EndProperty
       Height          =   195
-      Left            =   120
+      Left            =   240
       TabIndex        =   57
-      Top             =   8520
+      Top             =   7440
       Width           =   1470
    End
    Begin VB.Label Label17 
@@ -1548,9 +1593,9 @@ Begin VB.Form frmplantedlist
          Strikethrough   =   0   'False
       EndProperty
       Height          =   195
-      Left            =   3600
+      Left            =   3960
       TabIndex        =   56
-      Top             =   8400
+      Top             =   7560
       Width           =   1500
    End
    Begin VB.Label Label22 
@@ -1566,9 +1611,9 @@ Begin VB.Form frmplantedlist
          Strikethrough   =   0   'False
       EndProperty
       Height          =   195
-      Left            =   4440
+      Left            =   4200
       TabIndex        =   55
-      Top             =   7920
+      Top             =   7080
       Width           =   1350
    End
    Begin VB.Label Label21 
@@ -1806,6 +1851,7 @@ Dim trnid As String
 Dim chknocrates As Boolean
 
 
+
 Private Sub cbodeliveryno_LostFocus()
 Dim i As Integer
 'On Error GoTo err
@@ -1885,6 +1931,25 @@ i = i + 1
 rs.MoveNext
 Loop
 End Sub
+
+Private Sub filmaterials()
+
+If Operation = "OPEN" Then Exit Sub
+Dim i As Integer
+i = 1
+Dim rs As New ADODB.Recordset
+Set rs = Nothing
+rs.Open "select * from tblincentivematlmaster where status='Active' order by incentiveid asc", MHVDB
+Do While rs.EOF <> True
+ItemGrd1.TextMatrix(i, 2) = rs!incentivematerial
+ItemGrd1.TextMatrix(i, 3) = rs!unit
+ItemGrd1.TextMatrix(i, 1) = rs!incentiveid
+i = i + 1
+rs.MoveNext
+Loop
+End Sub
+
+
 Private Sub cbofarmerid_LostFocus()
 Dim rstrnid As New ADODB.Recordset
 
@@ -1923,6 +1988,9 @@ txttrees.Text = rs!totalplant
 fillgridch
 End If
 FillGrid "N"
+
+Frame6.Visible = True
+filmaterials
 End Sub
 Private Sub fillgridch()
 Dim rs As New ADODB.Recordset
@@ -2012,7 +2080,10 @@ End If
 
 fillvariety
 FillGrid "N"
-
+If Operation = "OPEN" Then
+Frame6.Visible = True
+fillincentivematerial
+End If
 End Sub
 Private Sub fillvariety()
 Dim i, j As Integer
@@ -2057,12 +2128,30 @@ ItemGrd.TextMatrix(i, 1) = rs!varietyId
 i = i + 1
 rs.MoveNext
 Loop
+End Sub
 
+Private Sub fillincentivematerial()
+Dim i As Integer
+Dim rs As New ADODB.Recordset
+Set rs = Nothing
+rs.Open "select * from tblincentivematltrn where headerid='" & cbotrnid.BoundText & "'", MHVDB
+If rs.EOF <> True Then
+i = 1
+Do While rs.EOF <> True
+ItemGrd1.TextMatrix(i, 1) = rs!incentiveid
+Findincentivematerialname rs!incentiveid
+ItemGrd1.TextMatrix(i, 2) = incentivematerialname
+ItemGrd1.TextMatrix(i, 3) = incentivematerialunit
+If (rs!incentiveqty) > 0 Then
+ItemGrd1.TextMatrix(i, 4) = rs!incentiveqty
+Else
+ItemGrd1.TextMatrix(i, 4) = ""
+End If
+i = i + 1
+rs.MoveNext
+Loop
 
-
-
-
-
+End If
 End Sub
 
 Private Sub CHKFILLIN_Click()
@@ -2465,6 +2554,8 @@ err:
 MsgBox err.Description
 End Sub
 
+
+
 Private Sub ItemGrd_Click()
 Dim mrow, MCOL As Integer
 If Not ValidRow And CurrRow <> ItemGrd.row Then
@@ -2547,6 +2638,46 @@ End If
 
             
             
+End Sub
+
+Private Sub ItemGrd1_Click()
+
+Dim mrow, MCOL As Integer
+If Not ValidRow And CurrRow <> ItemGrd1.row Then
+   ItemGrd1.row = CurrRow
+   Exit Sub
+End If
+mrow = ItemGrd1.row
+MCOL = ItemGrd1.col
+If mrow = 0 Then Exit Sub
+'If mrow > 1 And Len(ItemGrd.TextMatrix(mrow - 1, 4)) = 0 Then
+'   Beep
+'   Exit Sub
+'End If
+ItemGrd1.TextMatrix(CurrRow, 0) = CurrRow
+CurrRow = mrow
+ItemGrd1.TextMatrix(CurrRow, 0) = Chr(174)
+Select Case MCOL
+       
+       Case 1
+            materialid.Top = ItemGrd1.Top + ItemGrd1.CellTop
+            materialid = ItemGrd1.Text
+            materialid.Visible = True
+            materialid.SetFocus
+       Case 2
+
+       Case 3
+
+       Case 4
+              If Len(ItemGrd1.TextMatrix(mrow, 1)) > 0 Then
+               txtincqty.Top = ItemGrd1.Top + ItemGrd1.CellTop
+               txtincqty = ItemGrd1.Text
+               txtincqty.Visible = True
+               txtincqty.SetFocus
+              End If
+    End Select
+    'getsum
+
 End Sub
 
 Private Sub mygrid_DblClick()
@@ -2673,6 +2804,8 @@ Case "ADD"
          cbotrnid.Enabled = True
          
          TB.buttons(3).Enabled = True
+         
+
        'getDno ("OPEN")
        Case "SAVE"
       
@@ -2714,8 +2847,11 @@ End If
 End Sub
 Private Sub MNU_SAVE()
 Dim mTrnid As Long
-On Error GoTo err
-Dim rs As New ADODB.Recordset
+Dim isempty As Double
+Dim chkbox As String
+
+
+'Dim rs As New ADODB.Recordset
 Dim i, j As Integer
 If IsNumeric(Mid(txtchallanno.Text, 1, 1)) Then
 MsgBox "Please check the challan series"
@@ -2780,14 +2916,30 @@ MsgBox "Enter Crate details."
 Exit Sub
 End If
 
+Dim tt As Integer
+tt = 0
+For i = 1 To ItemGrd1.rows - 1
+tt = tt + Val(ItemGrd1.TextMatrix(i, 4))
+Next
 
 
+If tt = 0 Then
+chkbox = MsgBox("Save without incentive material?", vbYesNo, "Question")
+If chkbox = vbYes Then
+SaveCall
+Else
+Exit Sub
+End If
+Else
+SaveCall
+End If
 
-
-
+End Sub
+Private Sub SaveCall()
+Dim rs As New ADODB.Recordset
+On Error GoTo err
 MHVDB.BeginTrans
 If Operation = "ADD" Then
-
 
 Set rs = Nothing
 rs.Open "select * from tblplanted where concat(challanserial,challanno)='" & Trim(txtchallanno.Text) & "'", MHVDB
@@ -2809,8 +2961,6 @@ rs.Open "select (max(trnid)+1) as maxid from tblplanted", MHVDB
    End If
 
 
-
-
 MHVDB.Execute "insert into tblplanted(trnid,farmercode,fillins,year,nooftrees,acreplanted," _
 & "mnth,dno,challanno,challandate,challanqty,status,staffcode,fertamount,challanserial) values( " _
 & "'" & cbotrnid.Text & "'," _
@@ -2828,10 +2978,11 @@ MHVDB.Execute "insert into tblplanted(trnid,farmercode,fillins,year,nooftrees,ac
 & "'" & Mid(Trim(cbostaff.BoundText), 1, 5) & "','" & Val(txtfertamount.Text) & "','" & Mid(txtchallanno.Text, 1, 1) & "'" _
 & ")"
 
-
-
 ElseIf Operation = "OPEN" Then
 
+'If (isempty) = 0 Then
+'chkbox = MsgBox("Save without incentive material?", vbYesNo, "Question")
+'If chkbox = vbYes Then
 
 MHVDB.Execute "update tblplanted set " _
 & "farmercode='" & Mid(Trim(cbofarmerid.BoundText), 1, 14) & "'," _
@@ -2847,6 +2998,9 @@ MHVDB.Execute "update tblplanted set " _
 & "staffcode='" & Mid(Trim(cbostaff.BoundText), 1, 5) & "',fertamount='" & Val(txtfertamount.Text) & "'" _
 & " where trnid='" & cbotrnid.BoundText & "'"
 
+'End If
+'End If
+
 Else
 MsgBox "Invalid Selection of operation."
 MHVDB.RollbackTrans
@@ -2857,6 +3011,7 @@ MHVDB.Execute "delete from tblplanteddetail where trnid='" & (cbotrnid.Text) & "
 mTrnid = cbotrnid.Text
 ElseIf Operation = "OPEN" Then
 MHVDB.Execute "delete from tblplanteddetail where trnid='" & (cbotrnid.BoundText) & "'"
+MHVDB.Execute "delete from tblincentivematltrn where headerid='" & (cbotrnid.BoundText) & "'"
 mTrnid = cbotrnid.BoundText
 Else
 MsgBox "Not a valid operation"
@@ -2876,8 +3031,21 @@ MHVDB.Execute "insert into tblplanteddetail(trnid,year,mnth,varietyid,noofcrates
 & "'" & ItemGrd.TextMatrix(i, 4) & "'," _
 & "'" & Val(ItemGrd.TextMatrix(i, 5)) & "')"
 End If
+Next
 
 
+
+For i = 1 To ItemGrd1.rows - 1
+If Len(ItemGrd1.TextMatrix(i, 2)) = 0 Then Exit For
+If Val(ItemGrd1.TextMatrix(i, 1)) > 0 Then
+
+MHVDB.Execute "insert into tblincentivematltrn(headerid,farmercode,incentiveid,incentiveqty) values( " _
+& "'" & mTrnid & "'," _
+& "'" & cbofarmerid.BoundText & "'," _
+& "'" & Val(ItemGrd1.TextMatrix(i, 1)) & "'," _
+& "'" & Val(ItemGrd1.TextMatrix(i, 4)) & "')"
+End If
+'isempty = isempty + Val(ItemGrd1.TextMatrix(i, 4))
 Next
 
 'Set rs = Nothing
@@ -2946,8 +3114,8 @@ txtttot.Text = ""
 
 ItemGrd.Clear
 ItemGrd.FormatString = "       |^|^  Variety    |^No. Of Crates    |^                Crate #                                                   |Qty.     |"
-
-
+ItemGrd1.Clear
+ItemGrd1.FormatString = "      |^|^Material                                               |^ Uom                         |^ Qty                                         "
 
 End Sub
 
@@ -3047,6 +3215,23 @@ End If
 End If
 txtnoofcrates.Visible = False
 getsum
+End Sub
+
+Private Sub txtincqty_validate(Cancel As Boolean)
+If Len(ItemGrd1.TextMatrix(CurrRow, 2)) > 0 Then
+If Not IsNumeric(txtincqty) Then
+Beep
+MsgBox "Enter a valid No."
+ValidRow = False
+Cancel = True
+Exit Sub
+Else
+ItemGrd1.TextMatrix(CurrRow, 4) = Val(txtincqty.Text)
+ValidRow = True
+
+End If
+End If
+txtincqty.Visible = False
 End Sub
 
 Private Sub getsum()
