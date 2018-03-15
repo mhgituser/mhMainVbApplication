@@ -16,9 +16,9 @@ Begin VB.MDIForm frmMain
       Height          =   375
       Left            =   0
       TabIndex        =   0
-      Top             =   10275
-      Width           =   20250
-      _ExtentX        =   35719
+      Top             =   7605
+      Width           =   11280
+      _ExtentX        =   19897
       _ExtentY        =   661
       SimpleText      =   ""
       _Version        =   327682
@@ -766,7 +766,7 @@ Mcaretaker = ""
 If UCase(MUSER) <> "ADMIN" Then
 LoadModule UserId
 End If
-
+ 
 
 
    
