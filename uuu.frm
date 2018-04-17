@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{D76D7128-4A96-11D3-BD95-D296DC2DD072}#1.0#0"; "VSFLEX7.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
 Begin VB.Form frmCrateBatchTransaction 
@@ -626,7 +626,7 @@ Begin VB.Form frmCrateBatchTransaction
          _ExtentX        =   2355
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   129826817
+         Format          =   148307969
          CurrentDate     =   41479
       End
       Begin MSDataListLib.DataCombo cbostaff 
@@ -1086,23 +1086,23 @@ Dim j As Integer
 j = 0
 i = 1
 totdsheet = 0
-mygrid.Clear
-mygrid.FormatString = "^SL.NO.|^PLANT VARIETY|^QTY.|"
-mygrid.ColWidth(0) = 750
-mygrid.ColWidth(1) = 1665
-mygrid.ColWidth(2) = 840
-mygrid.ColWidth(3) = 555
+Mygrid.Clear
+Mygrid.FormatString = "^SL.NO.|^PLANT VARIETY|^QTY.|"
+Mygrid.ColWidth(0) = 750
+Mygrid.ColWidth(1) = 1665
+Mygrid.ColWidth(2) = 840
+Mygrid.ColWidth(3) = 555
 
 If Len(cbotrnid.Text) = 0 Then Exit Sub
 
 
-mygrid.rows = 1
+Mygrid.rows = 1
 Set rs = Nothing
 rs.Open "Select * from tblqmsplantvariety where status<>'C' and varietyid in (1,2,4,7,12)", MHVDB
 Do While rs.EOF <> True
-mygrid.rows = mygrid.rows + 1
-mygrid.TextMatrix(i, 0) = i
-mygrid.TextMatrix(i, 1) = "V" & i
+Mygrid.rows = Mygrid.rows + 1
+Mygrid.TextMatrix(i, 0) = i
+Mygrid.TextMatrix(i, 1) = "V" & i
 i = i + 1
 rs.MoveNext
 Loop
@@ -1119,16 +1119,16 @@ Set rs = Nothing
 'End Select
 rs.Open "SELECT SUM( bcrate*bcratefactor ) AS V1, SUM( ecrate*ecratefactor ) AS V2, SUM( bno*bnofactor ) AS V3, SUM( plno *plnofactor) AS P1, SUM( crate*cratefactor) AS V4 FROM  `tblplantdistributiondetail` WHERE  distno='" & cbotrnid.BoundText & "' and year='" & Val(txtyr.Text) & "' and subtotindicator='' and status not in ('C','F') and distno>0 and trnid in (select trnid from tblplantdistributionheader where status='ON') GROUP BY distno", MHVDB
 
-For i = 1 To mygrid.rows - 1
-If Len(mygrid.TextMatrix(i, 1)) = 0 Then Exit For
+For i = 1 To Mygrid.rows - 1
+If Len(Mygrid.TextMatrix(i, 1)) = 0 Then Exit For
 For j = 0 To 4
 
-If Trim(mygrid.TextMatrix(i, 1)) = rs.Fields(j).name Then
+If Trim(Mygrid.TextMatrix(i, 1)) = rs.Fields(j).name Then
 'Mygrid.Rows = Mygrid.Rows + 1
 If rs.EOF <> True Then
-mygrid.TextMatrix(i, 1) = rs.Fields(j).name
-mygrid.TextMatrix(i, 2) = IIf(IsNull(rs.Fields(j).Value), "", rs.Fields(j).Value)
-mygrid.ColAlignment(2) = flexAlignRightTop
+Mygrid.TextMatrix(i, 1) = rs.Fields(j).name
+Mygrid.TextMatrix(i, 2) = IIf(IsNull(rs.Fields(j).Value), "", rs.Fields(j).Value)
+Mygrid.ColAlignment(2) = flexAlignRightTop
 totdsheet = totdsheet + rs.Fields(j).Value
 Else
  TB.buttons(3).Enabled = False
@@ -1506,7 +1506,7 @@ If ItemGrd.col = 5 And Val(ItemGrd.TextMatrix(CurrRow, 4)) > 0 And Len(ItemGrd.T
    End If
    
    
-  If ItemGrd.col = 6 And Len(ItemGrd.TextMatrix(ItemGrd.row, 4)) > 0 And (ItemGrd.TextMatrix(ItemGrd.row, 2) = "P1" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "P" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "N" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "B" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "E" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "L") Then
+  If ItemGrd.col = 6 And Len(ItemGrd.TextMatrix(ItemGrd.row, 4)) > 0 And (ItemGrd.TextMatrix(ItemGrd.row, 2) = "P1" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "P" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "N" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "B" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "E" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "L" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "A") Then
 
 
 
