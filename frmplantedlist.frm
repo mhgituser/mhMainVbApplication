@@ -603,7 +603,7 @@ Begin VB.Form frmplantedlist
       _ExtentX        =   2355
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   148766721
+      Format          =   148242433
       CurrentDate     =   41516
    End
    Begin VB.TextBox txtmonth 
@@ -2621,7 +2621,7 @@ If ItemGrd.col = 4 And Val(ItemGrd.TextMatrix(CurrRow, 3)) > 0 And Len(ItemGrd.T
             
             
   
-  If ItemGrd.col = 5 And Len(ItemGrd.TextMatrix(ItemGrd.row, 4)) > 0 And (ItemGrd.TextMatrix(ItemGrd.row, 2) = "P1" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "P" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "N" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "B" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "E" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "L") Then
+  If ItemGrd.col = 5 And Len(ItemGrd.TextMatrix(ItemGrd.row, 4)) > 0 And (ItemGrd.TextMatrix(ItemGrd.row, 2) = "P1" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "P" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "N" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "B" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "E" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "A" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "L1") Then
   
 
 
