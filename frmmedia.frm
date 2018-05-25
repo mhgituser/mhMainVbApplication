@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{D76D7128-4A96-11D3-BD95-D296DC2DD072}#1.0#0"; "VSFLEX7.OCX"
-Object = "{48E59290-9880-11CF-9754-00AA00C00908}#1.0#0"; "msinet.ocx"
+Object = "{48E59290-9880-11CF-9754-00AA00C00908}#1.0#0"; "MSINET.OCX"
 Begin VB.Form frmmedia 
    Caption         =   "Form1"
    ClientHeight    =   7050
@@ -3902,7 +3902,7 @@ MHWEBDB.Execute "insert into tblncdailymeettasktrn " _
 & " '" & ValidateString(rs!cmon) & "','" & ValidateString(rs!ctue) & "','" & ValidateString(rs!cwed) & "','" & ValidateString(rs!cthu) & "','" & ValidateString(rs!cfri) & "','" & ValidateString(rs!csat) & "','" & ValidateString(rs!csun) & "')"
 
 
-MHWEBDB.Execute "update tblncdailymeettasktrn set istaskshifted='1' where trnid='" & rs!trnid & "'"
+MHWEBDB.Execute "update tbldailymeettasktrn set personresponseble=personresponseble1"
 rs.MoveNext
 Loop
 
