@@ -561,10 +561,10 @@ Do While rs.EOF <> True
                         Set rsch = Nothing
                         rsch.Open "select * from tblfieldchoices where name='" & IIf(IsNull(rs1!Value), "", rs1!Value) & "' ", ODKDB
                         If rsch.EOF <> True Then
-                                If UCase(rsch!Label) = UCase("description9") Then
+                                If UCase(rsch!label) = UCase("description9") Then
                                 actstring = rs!other2
                                 Else
-                                actstring = IIf(IsNull(rsch!Label), "", rsch!Label) & " # " & actstring
+                                actstring = IIf(IsNull(rsch!label), "", rsch!label) & " # " & actstring
                                 End If
                         End If
                         
@@ -3902,7 +3902,7 @@ MHWEBDB.Execute "insert into tblncdailymeettasktrn " _
 & " '" & ValidateString(rs!cmon) & "','" & ValidateString(rs!ctue) & "','" & ValidateString(rs!cwed) & "','" & ValidateString(rs!cthu) & "','" & ValidateString(rs!cfri) & "','" & ValidateString(rs!csat) & "','" & ValidateString(rs!csun) & "')"
 
 
-MHWEBDB.Execute "update tbldailymeettasktrn set personresponseble=personresponseble1"
+MHWEBDB.Execute "update tbldailymeettasktrn set personresponsible1=personresponsible"
 rs.MoveNext
 Loop
 
