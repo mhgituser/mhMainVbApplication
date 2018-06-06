@@ -603,7 +603,7 @@ Begin VB.Form frmplantedlist
       _ExtentX        =   2355
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   147259393
+      Format          =   115081217
       CurrentDate     =   41516
    End
    Begin VB.TextBox txtmonth 
@@ -2977,6 +2977,7 @@ MHVDB.Execute "insert into tblplanted(trnid,farmercode,fillins,year,nooftrees,ac
 & "'ON'," _
 & "'" & Mid(Trim(cbostaff.BoundText), 1, 5) & "','" & Val(txtfertamount.Text) & "','" & Mid(txtchallanno.Text, 1, 1) & "'" _
 & ")"
+MHVDB.Execute "update tblfarmer set category='ActivePoor' where IDFARMER='" & cbofarmerid.BoundText & "' "
 
 ElseIf Operation = "OPEN" Then
 
