@@ -626,7 +626,7 @@ Begin VB.Form frmCrateBatchTransaction
          _ExtentX        =   2355
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   148045825
+         Format          =   115671041
          CurrentDate     =   41479
       End
       Begin MSDataListLib.DataCombo cbostaff 
@@ -1566,7 +1566,7 @@ Dim dd As Variant
 Dim mm As Variant
 Dim bb As Variant
 Dim cnt As Integer
-Dim mMaxId As Long
+Dim mMaxId As Double
 Dim crateStr As String
 Dim i As Integer
 If Len(cbotrnid.Text) = 0 Then
