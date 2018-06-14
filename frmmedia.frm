@@ -561,10 +561,10 @@ Do While rs.EOF <> True
                         Set rsch = Nothing
                         rsch.Open "select * from tblfieldchoices where name='" & IIf(IsNull(rs1!Value), "", rs1!Value) & "' ", ODKDB
                         If rsch.EOF <> True Then
-                                If UCase(rsch!label) = UCase("description9") Then
+                                If UCase(rsch!Label) = UCase("description9") Then
                                 actstring = rs!other2
                                 Else
-                                actstring = IIf(IsNull(rsch!label), "", rsch!label) & " # " & actstring
+                                actstring = IIf(IsNull(rsch!Label), "", rsch!Label) & " # " & actstring
                                 End If
                         End If
                         
@@ -2752,7 +2752,8 @@ MsgBox "Done"
 End Sub
 
 Private Sub Command34_Click()
-createnewdashboardworkspace
+Exit Sub
+'createnewdashboardworkspace
 End Sub
 
 Private Sub Command35_Click()
