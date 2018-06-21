@@ -1131,6 +1131,8 @@ Exit Sub
 err:
     MHVDB.RollbackTrans
     MsgBox err.Description
+    
+MHVDB.Execute "update refillinheader set status='OK' where id='" & cbotrnid.Text & "'"
 End Sub
 
 Private Sub Command1_Click()
