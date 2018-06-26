@@ -318,6 +318,8 @@ Screen.MousePointer = vbHourglass
     excel_sheet.cells(3, 32) = UCase("Agro Net")
     excel_sheet.cells(3, 33) = UCase("Urea")
     excel_sheet.cells(3, 34) = UCase("Note")
+    excel_sheet.cells(3, 35) = UCase("Prodcution")
+    excel_sheet.cells(3, 36) = UCase("Pollinizer")
    
     
     i = 4
@@ -345,7 +347,7 @@ Screen.MousePointer = vbHourglass
                               Set rs1 = Nothing
                               rs1.Open "select * from tblfarmer where idfarmer='" & rs!farmercode & "'", MHVDB
                               If rs1.EOF <> True Then
-                             excel_sheet.cells(i, 6) = rs1!FARMERNAME
+                             excel_sheet.cells(i, 6) = rs1!farmername
                              
                                  myphone = IIf(IsNull(rs1!phone1), "", rs1!phone1) & "," & IIf(IsNull(rs1!phone2), "", rs1!phone2)
                                  If Len(myphone) > 0 Then
@@ -426,6 +428,8 @@ Screen.MousePointer = vbHourglass
                                     excel_sheet.cells(i, 33) = 0
                             End If
                             excel_sheet.cells(i, 34) = rs!note
+                            excel_sheet.cells(i, 35) = rs!production
+                            excel_sheet.cells(i, 36) = rs!pollinizer
  '' end
                              
                              
