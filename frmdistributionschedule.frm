@@ -910,7 +910,7 @@ j = 0
 
 
 mygrid.Clear
-mygrid.FormatString = "S/N|^D\N|Dzongkhag|^Gewog       |^Tshowog    |^Farmer Code               |^Farmer Name |^ Contact# |^Village|^Land(Acre)|^Total Plants|^Crates #|^B(Crate)|^E (Crate)|^Refillin |^N(Crt.)|^N (Nos.) |^SSP(Kg.)|^MOP (Kg.)|^Urea(Kg.)|^Dolomite (Kg.)|^Total(Kg.)|^Amount(Nu.)|^Kg.|^Amount(Nu.)|^Total Amount(Nu.)|^Schedule Date,Vehicle & Team Captency|^ |^|^|^|^|^|^ Production |^ pollenizer|"
+mygrid.FormatString = "S/N|^D\N|Dzongkhag|^Gewog       |^Tshowog    |^Farmer Code               |^Farmer Name |^ Contact# |^Village|^Land(Acre)|^Total Plants|^Crates #|^B(Crate)|^E (Crate)|^Refillin |^N(Crt.)|^N (Nos.) |^SSP(Kg.)|^MOP (Kg.)|^Urea(Kg.)|^Dolomite (Kg.)|^Total(Kg.)|^Amount(Nu.)|^Kg.|^Amount(Nu.)|^Total Amount(Nu.)|^Schedule Date,Vehicle & Team Captency|^ |^|^|^|^|^|^ Production |^ pollenizer|^refillB|^refillE"
 
 SQLSTR = "SELECT * from tblplantdistributionheader where trnid='" & cbotrnid.BoundText & "' and mnth='" & cbomnth.ListIndex + 1 & "' and year='" & cboyear.Text & "'"
 rs.Open SQLSTR, MHVDB
@@ -1006,6 +1006,8 @@ If rs.EOF <> True Then
                             mygrid.TextMatrix(i, 32) = rs!refilltrnno
                             mygrid.TextMatrix(i, 33) = rs!production
                             mygrid.TextMatrix(i, 34) = rs!pollinizer
+                            mygrid.TextMatrix(i, 35) = rs!refillB
+                            mygrid.TextMatrix(i, 36) = rs!refillE
                             If mygrid.TextMatrix(i, 28) = "S" Then
                             formatsubtot1 (i)
                             End If
@@ -1067,7 +1069,7 @@ SQLSTR = "insert into tblplantdistributiondetail(trnid,year,mnth,sno,distno," _
              & "farmercode,area,totalplant,crateno,bcrate,ecrate,bno,plno,crate,ssp," _
              & "mop,urea,dolomite,totalkg1,amountnu1,kg,amountnu2,totalamount," _
              & "schedule,serialmatch,subtotindicator,newold,oldonly,ferttranno," _
-             & " refilltrnno,fname,dz,ge,ts,staffid,bcratefactor,ecratefactor,bnofactor,plnofactor,cratefactor,production,pollinizer) " _
+             & " refilltrnno,fname,dz,ge,ts,staffid,bcratefactor,ecratefactor,bnofactor,plnofactor,cratefactor,production,pollinizer,refillB,refillE) " _
              & " values('" & cbotrnid.Text & "','" & cboyear.Text & "','" & cbomnth.ListIndex + 1 & "'," _
              & "'" & mygrid.TextMatrix(i, 0) & "','" & mygrid.TextMatrix(i, 1) & "', " _
              & "'" & mygrid.TextMatrix(i, 5) & "','" & mygrid.TextMatrix(i, 9) & "'," _
@@ -1081,7 +1083,7 @@ SQLSTR = "insert into tblplantdistributiondetail(trnid,year,mnth,sno,distno," _
              & "'" & mygrid.TextMatrix(i, 24) & "','" & mygrid.TextMatrix(i, 25) & "'," _
              & "'" & mygrid.TextMatrix(i, 26) & "','" & mygrid.TextMatrix(i, 27) & "'," _
              & "'" & mygrid.TextMatrix(i, 28) & "','" & mygrid.TextMatrix(i, 29) & "','" & mygrid.TextMatrix(i, 30) & "','" & mygrid.TextMatrix(i, 31) & "','" & mygrid.TextMatrix(i, 32) & "', " _
-             & "'" & mygrid.TextMatrix(i, 5) & " " & mygrid.TextMatrix(i, 6) & "','" & mygrid.TextMatrix(i, 2) & "','" & mygrid.TextMatrix(i, 3) & "','" & mygrid.TextMatrix(i, 4) & "','" & monitorFromFarmer & "','35','35','35','35','1','" & mygrid.TextMatrix(i, 33) & "','" & mygrid.TextMatrix(i, 34) & "')"
+             & "'" & mygrid.TextMatrix(i, 5) & " " & mygrid.TextMatrix(i, 6) & "','" & mygrid.TextMatrix(i, 2) & "','" & mygrid.TextMatrix(i, 3) & "','" & mygrid.TextMatrix(i, 4) & "','" & monitorFromFarmer & "','35','35','35','35','1','" & mygrid.TextMatrix(i, 33) & "','" & mygrid.TextMatrix(i, 34) & "','" & mygrid.TextMatrix(i, 35) & "','" & mygrid.TextMatrix(i, 36) & "')"
              
              MHVDB.Execute SQLSTR
              
@@ -1102,7 +1104,7 @@ MHVDB.Execute "delete from tblplantdistributiondetail where trnid='" & cbotrnid.
 SQLSTR = "insert into tblplantdistributiondetail(trnid,year,mnth,sno,distno," _
              & "farmercode,area,totalplant,crateno,bcrate,ecrate,bno,plno,crate,ssp," _
              & "mop,urea,dolomite,totalkg1,amountnu1,kg,amountnu2,totalamount," _
-             & "schedule,serialmatch,subtotindicator,newold,ferttranno,refilltrnno,oldonly,fname,dz,ge,ts,staffid,production,pollinizer) " _
+             & "schedule,serialmatch,subtotindicator,newold,ferttranno,refilltrnno,oldonly,fname,dz,ge,ts,staffid,production,pollinizer,refillB,refillE) " _
              & " values('" & cbotrnid.Text & "','" & cboyear.Text & "','" & cbomnth.ListIndex + 1 & "'," _
              & "'" & mygrid.TextMatrix(i, 0) & "','" & mygrid.TextMatrix(i, 1) & "', " _
              & "'" & mygrid.TextMatrix(i, 5) & "','" & mygrid.TextMatrix(i, 9) & "'," _
@@ -1117,7 +1119,7 @@ SQLSTR = "insert into tblplantdistributiondetail(trnid,year,mnth,sno,distno," _
              & "'" & mygrid.TextMatrix(i, 26) & "','" & mygrid.TextMatrix(i, 27) & "'," _
              & "'" & mygrid.TextMatrix(i, 28) & "','" & mygrid.TextMatrix(i, 29) & "'," _
              & "'" & mygrid.TextMatrix(i, 31) & "','" & mygrid.TextMatrix(i, 32) & "','" & mygrid.TextMatrix(i, 30) & "'," _
-             & "'" & mygrid.TextMatrix(i, 5) & " " & mygrid.TextMatrix(i, 6) & "','" & mygrid.TextMatrix(i, 2) & "','" & mygrid.TextMatrix(i, 3) & "','" & mygrid.TextMatrix(i, 4) & "','" & monitorFromFarmer & "','" & mygrid.TextMatrix(i, 33) & "','" & mygrid.TextMatrix(i, 34) & "')"
+             & "'" & mygrid.TextMatrix(i, 5) & " " & mygrid.TextMatrix(i, 6) & "','" & mygrid.TextMatrix(i, 2) & "','" & mygrid.TextMatrix(i, 3) & "','" & mygrid.TextMatrix(i, 4) & "','" & monitorFromFarmer & "','" & mygrid.TextMatrix(i, 33) & "','" & mygrid.TextMatrix(i, 34) & "','" & mygrid.TextMatrix(i, 35) & "','" & mygrid.TextMatrix(i, 36) & "')"
              
              MHVDB.Execute SQLSTR
 Next
@@ -1208,7 +1210,7 @@ Set rs1 = Nothing
 
 morderstr = ""
 mygrid.Clear
-mygrid.FormatString = "S/N|^D\N|Dzongkhag|^Gewog       |^Tshowog    |^Farmer Code               |^Farmer Name |^ Contact# |^Village|^Land(Acre)|^Total Plants|^Crates #|^B(Crate)|^E (Crate)|^Refillin |^P1 (Nos.)|^N (Nos.) |^SSP(Kg.)|^MOP (Kg.)|^Urea(Kg.)|^Dolomite (Kg.)|^Total(Kg.)|^Amount(Nu.)|^Kg.|^Amount(Nu.)|^Total Amount(Nu.)|^Schedule Date,Vehicle & Team Captency|^ |^|^|^ Production |^ pollenizer|"
+mygrid.FormatString = "S/N|^D\N|Dzongkhag|^Gewog       |^Tshowog    |^Farmer Code               |^Farmer Name |^ Contact# |^Village|^Land(Acre)|^Total Plants|^Crates #|^B(Crate)|^E (Crate)|^Refillin |^P1 (Nos.)|^N (Nos.) |^SSP(Kg.)|^MOP (Kg.)|^Urea(Kg.)|^Dolomite (Kg.)|^Total(Kg.)|^Amount(Nu.)|^Kg.|^Amount(Nu.)|^Total Amount(Nu.)|^Schedule Date,Vehicle & Team Captency|^ |^|^|^ Production |^ pollenizer|^refillB|^refillE|"
 etype = 0
 ptype = 0
 SQLSTR = ""
@@ -1300,7 +1302,7 @@ End If
 
 mygrid.Clear
 'mygrid.FormatString = "S/N|^D\N|Dzongkhag|^Gewog       |^Tshowog    |^Farmer Code               |^Farmer Name |^ Contact# |^Village|^Land(Acre)|^Total Plants|^Crates #|^B(Crate)|^E (Crate)|^P    |^P1 (Nos.)|^N (Nos.) |^SSP(Kg.)|^MOP (Kg.)|^Urea(Kg.)|^Dolomite (Kg.)|^Total(Kg.)|^Amount(Nu.)|^Kg.|^Amount(Nu.)|^Total Amount(Nu.)|^Schedule Date,Vehicle & Team Captency|^ |^|^"
-mygrid.FormatString = "S/N|^D\N|Dzongkhag|^Gewog       |^Tshowog    |^Farmer Code               |^Farmer Name |^ Contact# |^Village|^Land(Acre)|^Total Plants|^Crates #|^B(Crate)|^E (Crate)|^Refillin|^N (Crt.)|^N (Nos.) |^SSP(Kg.)|^MOP (Kg.)|^Urea(Kg.)|^Dolomite (Kg.)|^Total(Kg.)|^Amount(Nu.)|^Kg.|^Amount(Nu.)|^Total Amount(Nu.)|^Schedule Date,Vehicle & Team Captency|^ |^|^|^|^|^|^Production|^pollenizer|"
+mygrid.FormatString = "S/N|^D\N|Dzongkhag|^Gewog       |^Tshowog    |^Farmer Code               |^Farmer Name |^ Contact# |^Village|^Land(Acre)|^Total Plants|^Crates #|^B(Crate)|^E (Crate)|^Refillin|^N (Crt.)|^N (Nos.) |^SSP(Kg.)|^MOP (Kg.)|^Urea(Kg.)|^Dolomite (Kg.)|^Total(Kg.)|^Amount(Nu.)|^Kg.|^Amount(Nu.)|^Total Amount(Nu.)|^Schedule Date,Vehicle & Team Captency|^ |^|^|^|^|^|^Production|^pollenizer|^refillB|^refillE"
 
 
 
@@ -1383,7 +1385,7 @@ MHVDB.Execute "delete from  tbldistpreparetion"
 MHVDB.Execute SQLSTR
 
  SQLSTR = "SELECT * from tbldistpreparetion group by idfarmer order by  FIELD(SUBSTRING(IDFARMER,1,9), " & morderstr & ") "
- 'SQLSTR = "SELECT * from tbldistpreparetion where IDFARMER in ('D10G01T01F0004','D10G01T01F0012','D10G01T03F0015') group by idfarmer "
+ 'SQLSTR = "SELECT * from tbldistpreparetion where IDFARMER in ('D10G01T01F0021') group by idfarmer "
 
 End If
         
@@ -1482,7 +1484,7 @@ End If
                                                         mygrid.TextMatrix(i, 31) = mygrid.TextMatrix(i, 12)
                                                     End If
                                          Set rs1 = Nothing
-                                        rs1.Open "select group_concat(a.id) refilltrnno,sum(b) as b,sum(e) as e,sum(p1) as p1, sum(n) as n from refillin a, refillinheader b where a.headerid=b.id and farmercode='" & rs!idfarmer & "' and  isfinalized='Yes' and status='ON'   group by farmercode", MHVDB
+                                        rs1.Open "select group_concat(a.id) refilltrnno,sum(b) as b,sum(e) as e,sum(p1) as p1, sum(n) as n,refillB,refillE from refillin a, refillinheader b where a.headerid=b.id and farmercode='" & rs!idfarmer & "' and  isfinalized='Yes' and status='ON'   group by farmercode", MHVDB
                                          'rs1.Open "select sum(regland)*(420*.1*.5) as b,sum(regland)*(420*.1*.5) as e,sum(regland)*(420*.06) as p1, sum(regland)*(420*.1) as n from tbllandreg where farmerid='" & rs!idfarmer & "' group by farmerid ", MHVDB
                                          
                                          
@@ -1522,7 +1524,8 @@ End If
                                                     '   mygrid.TextMatrix(i, 10) = Round(btype + rs1!p1 + rs1!n, mrnd)
                                                     '   mygrid.TextMatrix(i, 11) = (Val(mygrid.TextMatrix(i, 10)) - (Val(mygrid.TextMatrix(i, 10)) Mod 35)) / RS2!crateno '- rs1!p1 - rs1!n 'Round(btype + Val(mygrid.TextMatrix(i, 13)) / RS2!crateno, mrnd)
                                                         
-                                                        mygrid.TextMatrix(i, 10) = Round(((Val(mygrid.TextMatrix(i, 9)) * RS2!totalplant)), 0) + rs1!p1 + rs1!b
+                                                        'mygrid.TextMatrix(i, 10) = Round(((Val(mygrid.TextMatrix(i, 9)) * RS2!totalplant)), 0) + rs1!p1 + rs1!b
+                                                        mygrid.TextMatrix(i, 10) = Round(((Val(mygrid.TextMatrix(i, 9)) * RS2!totalplant)), 0)
                                                         mygrid.TextMatrix(i, 11) = mygrid.TextMatrix(i, 10) 'Round((Val(mygrid.TextMatrix(i, 10)) - Val(mygrid.TextMatrix(i, 15)) - Val(mygrid.TextMatrix(i, 16))), 0) ' Val(mygrid.TextMatrix(i, 11)) + Round((Val(mygrid.TextMatrix(i, 10)) - Val(mygrid.TextMatrix(i, 15)) - Val(mygrid.TextMatrix(i, 16))) / rs!crateno, 0)
                                                         modval = mygrid.TextMatrix(i, 11)
                                                         mmod = modval Mod RS2!crateno
@@ -1534,10 +1537,17 @@ End If
                                                         mygrid.TextMatrix(i, 12) = Round((Val(mygrid.TextMatrix(i, 11)) * RS2!crateno * RS2!bcrate), 0) 'Round((Val(mygrid.TextMatrix(i, 11)) * rs!crateno * rs!bcrate) / rs!crateno, 0)
                                                         modval = mygrid.TextMatrix(i, 12)
                                                         mmod = modval Mod RS2!crateno
+                                                        If (Val(mygrid.TextMatrix(i, 9)) <> 0) Then
                                                         If (mmod > 17) Then
+                                                        
                                                         mygrid.TextMatrix(i, 12) = ((modval - mmod) / RS2!crateno) + 1
                                                         Else
                                                         mygrid.TextMatrix(i, 12) = ((modval - mmod) / RS2!crateno)
+                                                        End If
+                                                        Else
+                                                        mygrid.TextMatrix(i, 11) = 0
+                                                        mygrid.TextMatrix(i, 12) = 0
+                                                        mygrid.TextMatrix(i, 13) = 0
                                                         End If
                                                        
                                                         
@@ -1592,8 +1602,8 @@ End If
                                                 mygrid.TextMatrix(i, 32) = rs1!refilltrnno
                                                 mygrid.TextMatrix(i, 33) = Round(rs1!b, mrnd)
                                                 mygrid.TextMatrix(i, 34) = Round(rs1!p1, mrnd)
-                                                
-                                                 
+                                                mygrid.TextMatrix(i, 35) = Round(rs1!refillB, mrnd)
+                                                mygrid.TextMatrix(i, 36) = Round(rs1!refillE, mrnd)
                                          End If
                                          i = i + 1
                                          rs.MoveNext
@@ -1661,12 +1671,9 @@ If Operation = "ADD" Then
 mygrid.TextMatrix(i, 10) = Round(((Val(mygrid.TextMatrix(i, 9)) * rs!totalplant)), 0) + Val(mygrid.TextMatrix(i, 14))
 mygrid.TextMatrix(i, 15) = Round(((Val(mygrid.TextMatrix(i, 9)) * rs!totalplant) * rs!ncrate), 0)
 If chkPolinizer.Value = 0 Then
-mygrid.TextMatrix(i, 11) = mygrid.TextMatrix(i, 10) 'Round((Val(mygrid.TextMatrix(i, 10)) - Val(mygrid.TextMatrix(i, 15)) - Val(mygrid.TextMatrix(i, 16))), 0) ' Val(mygrid.TextMatrix(i, 11)) + Round((Val(mygrid.TextMatrix(i, 10)) - Val(mygrid.TextMatrix(i, 15)) - Val(mygrid.TextMatrix(i, 16))) / rs!crateno, 0)
-
+mygrid.TextMatrix(i, 11) = mygrid.TextMatrix(i, 10) - Val(mygrid.TextMatrix(i, 14)) 'Round((Val(mygrid.TextMatrix(i, 10)) - Val(mygrid.TextMatrix(i, 15)) - Val(mygrid.TextMatrix(i, 16))), 0) ' Val(mygrid.TextMatrix(i, 11)) + Round((Val(mygrid.TextMatrix(i, 10)) - Val(mygrid.TextMatrix(i, 15)) - Val(mygrid.TextMatrix(i, 16))) / rs!crateno, 0)
 modval = mygrid.TextMatrix(i, 11)
 mmod = modval Mod rs!crateno
-
-
 If (mmod > 17) Then
 mygrid.TextMatrix(i, 11) = ((modval - mmod) / rs!crateno) + 1
 Else
@@ -1797,13 +1804,19 @@ mygrid.TextMatrix(i, 17) = Round((((Val(mygrid.TextMatrix(i, 10))) + Val(mygrid.
              
 Else
                 
-                mygrid.TextMatrix(i, 17) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!ssp), 2)
-                mygrid.TextMatrix(i, 18) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!mop), 2)
-                mygrid.TextMatrix(i, 19) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!urea), 2)
-                mygrid.TextMatrix(i, 20) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!dolomite), 2)
+'                mygrid.TextMatrix(i, 17) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!ssp), 2)
+'                mygrid.TextMatrix(i, 18) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!mop), 2)
+'                mygrid.TextMatrix(i, 19) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!urea), 2)
+'                mygrid.TextMatrix(i, 20) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!dolomite), 2)
+                mygrid.TextMatrix(i, 17) = Round((Val(mygrid.TextMatrix(i, 10)) * rs!ssp), 2)
+                mygrid.TextMatrix(i, 18) = Round((Val(mygrid.TextMatrix(i, 10)) * rs!mop), 2)
+                mygrid.TextMatrix(i, 19) = Round((Val(mygrid.TextMatrix(i, 10)) * rs!urea), 2)
+                mygrid.TextMatrix(i, 20) = Round((Val(mygrid.TextMatrix(i, 10)) * rs!dolomite), 2)
+                
                 mygrid.TextMatrix(i, 21) = Val(mygrid.TextMatrix(i, 17)) + Val(mygrid.TextMatrix(i, 18)) + Val(mygrid.TextMatrix(i, 19)) + Val(mygrid.TextMatrix(i, 20))
                 mygrid.TextMatrix(i, 22) = Round(Val(mygrid.TextMatrix(i, 17) * rs!sspperkg) + Val(mygrid.TextMatrix(i, 18) * rs!mopperkg) + Val(mygrid.TextMatrix(i, 19) * rs!ureaperkg) + Val(mygrid.TextMatrix(i, 20) * rs!dolomiteperkg), 0)
-                mygrid.TextMatrix(i, 23) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!kg) + 0.00000001, 0)
+                mygrid.TextMatrix(i, 23) = Round((Val(mygrid.TextMatrix(i, 10)) * rs!kg) + 0.00000001, 0)
+               ' mygrid.TextMatrix(i, 23) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!kg) + 0.00000001, 0)
                 mygrid.TextMatrix(i, 24) = Round((mygrid.TextMatrix(i, 23) * rs!amountnu), 0)
              End If
                 If Val(mygrid.TextMatrix(i, 23)) < 0 Then
@@ -1908,7 +1921,7 @@ mygrid.MergeCol(26) = True
 txtindecator.Text = "S"
 End Sub
 Private Sub formatsubtot(i As Integer)
-
+Dim refilcrate As Integer
                 mygrid.TextMatrix(i, 9) = subtot
                 mygrid.col = 9
                 mygrid.row = i
@@ -1922,19 +1935,6 @@ Private Sub formatsubtot(i As Integer)
                 mygrid.CellBackColor = vbRed
                 mygrid.CellFontBold = True
 
-If (chkrefill.Value = 1) Then
-mygrid.TextMatrix(i, 11) = Int(subtotplant / 35) + 1
-                mygrid.col = 11
-                mygrid.row = i
-                mygrid.CellBackColor = vbRed
-                mygrid.CellFontBold = True
-Else
-                mygrid.TextMatrix(i, 11) = subtotcrateno
-                mygrid.col = 11
-                mygrid.row = i
-                mygrid.CellBackColor = vbRed
-                mygrid.CellFontBold = True
-End If
 
                 mygrid.TextMatrix(i, 12) = subtotbcrate
                 mygrid.col = 12
@@ -1956,6 +1956,30 @@ End If
                 mygrid.CellBackColor = vbRed
                 mygrid.CellFontBold = True
                 
+                
+                modval = mygrid.TextMatrix(i, 14)
+                mmod = modval Mod 35
+                If (mmod > 1) Then
+                refilcrate = Int(subtotbno / 35) + 1
+                Else
+                refilcrate = Int(subtotbno / 35)
+                End If
+                
+                
+If (chkrefill.Value = 1) Then
+                mygrid.TextMatrix(i, 11) = Int(subtotplant / 35) + 1
+                mygrid.col = 11
+                mygrid.row = i
+                mygrid.CellBackColor = vbRed
+                mygrid.CellFontBold = True
+Else
+                mygrid.TextMatrix(i, 11) = subtotcrateno + refilcrate
+                mygrid.col = 11
+                mygrid.row = i
+                mygrid.CellBackColor = vbRed
+                mygrid.CellFontBold = True
+End If
+                
                 mygrid.TextMatrix(i, 15) = subtotplno
                  mygrid.col = 15
                 mygrid.row = i
@@ -1969,7 +1993,7 @@ End If
                 mygrid.CellFontBold = True
 
 
-                 mygrid.TextMatrix(i, 17) = Round(subtotssp, 0)
+                mygrid.TextMatrix(i, 17) = Round(subtotssp, 0)
                 mygrid.col = 17
                 mygrid.row = i
                 mygrid.CellBackColor = vbRed

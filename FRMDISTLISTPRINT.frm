@@ -319,7 +319,9 @@ Screen.MousePointer = vbHourglass
     excel_sheet.cells(3, 33) = UCase("Urea")
     excel_sheet.cells(3, 34) = UCase("Note")
     excel_sheet.cells(3, 35) = UCase("Prodcution")
-    excel_sheet.cells(3, 36) = UCase("Pollinizer")
+    excel_sheet.cells(3, 36) = UCase("Refill B")
+    excel_sheet.cells(3, 37) = UCase("Refill E")
+    excel_sheet.cells(3, 38) = UCase("Pollinizer")
    
     
     i = 4
@@ -429,7 +431,9 @@ Screen.MousePointer = vbHourglass
                             End If
                             excel_sheet.cells(i, 34) = rs!note
                             excel_sheet.cells(i, 35) = rs!production
-                            excel_sheet.cells(i, 36) = rs!pollinizer
+                            excel_sheet.cells(i, 36) = rs!refillB
+                            excel_sheet.cells(i, 37) = rs!refillE
+                            excel_sheet.cells(i, 38) = rs!pollinizer
  '' end
                              
                              
