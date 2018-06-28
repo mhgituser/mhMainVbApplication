@@ -2682,68 +2682,95 @@ SQLSTR = SQLSTR & " union  SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(ID
                                                 Set RS2 = Nothing
                                                 RS2.Open "select * from tbldistformula where fid='" & mygrid.TextMatrix(i, 31) & "'", MHVDB
                                                 If RS2.EOF <> True Then
-                                                mygrid.TextMatrix(i, 10) = Round(rs1!p1 + rs1!n + btype + etype, mrnd)
+'                                                mygrid.TextMatrix(i, 10) = Round(rs1!p1 + rs1!n + btype + etype, mrnd)
 
-
-                                                       mygrid.TextMatrix(i, 13) = etype
-                                                       mygrid.TextMatrix(i, 10) = Round(btype + Val(mygrid.TextMatrix(i, 13)) + rs1!p1 + rs1!n, mrnd)
-                                                       mygrid.TextMatrix(i, 11) = (Val(mygrid.TextMatrix(i, 10)) - (Val(mygrid.TextMatrix(i, 10)) Mod 35)) / RS2!crateno '- rs1!p1 - rs1!n 'Round(btype + Val(mygrid.TextMatrix(i, 13)) / RS2!crateno, mrnd)
-                                                       mygrid.TextMatrix(i, 12) = Round(btype, mrnd)
-                                                       mygrid.TextMatrix(i, 13) = Round(Val(mygrid.TextMatrix(i, 13)), mrnd)
+'
+'                                                       mygrid.TextMatrix(i, 13) = etype
+'                                                       mygrid.TextMatrix(i, 10) = Round(btype + Val(mygrid.TextMatrix(i, 13)) + rs1!p1 + rs1!n, mrnd)
+'                                                       mygrid.TextMatrix(i, 11) = (Val(mygrid.TextMatrix(i, 10)) - (Val(mygrid.TextMatrix(i, 10)) Mod 35)) / RS2!crateno '- rs1!p1 - rs1!n 'Round(btype + Val(mygrid.TextMatrix(i, 13)) / RS2!crateno, mrnd)
+'                                                       mygrid.TextMatrix(i, 12) = Round(btype, mrnd)
+'                                                       mygrid.TextMatrix(i, 13) = Round(Val(mygrid.TextMatrix(i, 13)), mrnd)
+                                                        mygrid.TextMatrix(i, 14) = rs1!p1 + rs1!b
+                                                        mygrid.TextMatrix(i, 10) = Round(((Val(mygrid.TextMatrix(i, 9)) * RS2!totalplant)), 0) + Val(mygrid.TextMatrix(i, 14))
+                                                        mygrid.TextMatrix(i, 11) = mygrid.TextMatrix(i, 10) 'Round((Val(mygrid.TextMatrix(i, 10)) - Val(mygrid.TextMatrix(i, 15)) - Val(mygrid.TextMatrix(i, 16))), 0) ' Val(mygrid.TextMatrix(i, 11)) + Round((Val(mygrid.TextMatrix(i, 10)) - Val(mygrid.TextMatrix(i, 15)) - Val(mygrid.TextMatrix(i, 16))) / rs!crateno, 0)
+                                                        modval = mygrid.TextMatrix(i, 11)
+                                                        mmod = modval Mod RS2!crateno
+                                                        If (mmod > 17) Then
+                                                        mygrid.TextMatrix(i, 11) = ((modval - mmod) / RS2!crateno) + 1
+                                                        Else
+                                                        mygrid.TextMatrix(i, 11) = ((modval - mmod) / RS2!crateno)
+                                                        End If
+                                                        mygrid.TextMatrix(i, 12) = Round((Val(mygrid.TextMatrix(i, 11)) * RS2!crateno * RS2!bcrate), 0) 'Round((Val(mygrid.TextMatrix(i, 11)) * rs!crateno * rs!bcrate) / rs!crateno, 0)
+                                                        modval = mygrid.TextMatrix(i, 12)
+                                                        mmod = modval Mod RS2!crateno
+                                                        If (Val(mygrid.TextMatrix(i, 9)) <> 0) Then
+                                                        If (mmod > 17) Then
+                                                        
+                                                        mygrid.TextMatrix(i, 12) = ((modval - mmod) / RS2!crateno) + 1
+                                                        Else
+                                                        mygrid.TextMatrix(i, 12) = ((modval - mmod) / RS2!crateno)
+                                                        End If
+                                                        Else
+                                                        mygrid.TextMatrix(i, 11) = 0
+                                                        mygrid.TextMatrix(i, 12) = 0
+                                                        mygrid.TextMatrix(i, 13) = 0
+                                                        End If
+                                                        
                                                                                          
                                                 End If
                                                 mygrid.TextMatrix(i, 15) = Round(rs1!p1, mrnd) '
                                                 mygrid.TextMatrix(i, 16) = Round(rs1!n, 0) 'Round(rs1!n / RS2!crateno, 0)
                                                 polycont = polycont + Round(rs1!p1, mrnd) + Round(rs1!n, mrnd)
                                                 mygrid.TextMatrix(i, 29) = "O"
+                                                
                                              
                                                  
                                          End If
                                          
                                          
-                                                Set rs = Nothing
-                                                rs.Open "select * from tbldistformula where fid='" & mygrid.TextMatrix(i, 31) & "'", MHVDB
-                                                If rs.EOF <> True Then ' if 1
-                                                    mygrid.TextMatrix(i, 10) = Val(mygrid.TextMatrix(i, 10)) + Round(((Val(mygrid.TextMatrix(i, 9)) * rs!totalplant)), 0)
-                                                    mygrid.TextMatrix(i, 15) = Round(((Val(mygrid.TextMatrix(i, 9)) * rs!totalplant) * rs!ncrate), 0)
-                                                    mygrid.TextMatrix(i, 11) = mygrid.TextMatrix(i, 10) 'Round((Val(mygrid.TextMatrix(i, 10)) - Val(mygrid.TextMatrix(i, 15)) - Val(mygrid.TextMatrix(i, 16))), 0) ' Val(mygrid.TextMatrix(i, 11)) + Round((Val(mygrid.TextMatrix(i, 10)) - Val(mygrid.TextMatrix(i, 15)) - Val(mygrid.TextMatrix(i, 16))) / rs!crateno, 0)
-                                                    modval = mygrid.TextMatrix(i, 11)
-                                                    mmod = modval Mod rs!crateno
-                                                    If (mmod > 17) Then
-                                                        mygrid.TextMatrix(i, 11) = ((modval - mmod) / rs!crateno) + 1
-                                                    Else
-                                                        mygrid.TextMatrix(i, 11) = ((modval - mmod) / rs!crateno)
-                                                    End If
-                                                    mygrid.TextMatrix(i, 15) = Round(Val(mygrid.TextMatrix(i, 15)) / rs!crateno, 0)
-                                                    
-                                                    If mygrid.TextMatrix(i, 29) <> "O" Then
-                                                    
-                                                    mygrid.TextMatrix(i, 12) = Round((Val(mygrid.TextMatrix(i, 11)) * rs!crateno * rs!bcrate), 0) 'Round((Val(mygrid.TextMatrix(i, 11)) * rs!crateno * rs!bcrate) / rs!crateno, 0)
-modval = mygrid.TextMatrix(i, 12)
-mmod = modval Mod rs!crateno
-If (mmod > 17) Then
-mygrid.TextMatrix(i, 12) = ((modval - mmod) / rs!crateno) + 1
-Else
-mygrid.TextMatrix(i, 12) = ((modval - mmod) / rs!crateno)
-End If
-Else
-If Val(mygrid.TextMatrix(i, 9)) = 0 Then
-mygrid.TextMatrix(i, 12) = Round(((Val(mygrid.TextMatrix(i, 12)))) / rs!crateno, 0) 'Round(((Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 30))) * rs!bcrate), 0)
-Else
-mygrid.TextMatrix(i, 12) = mygrid.TextMatrix(i, 12) + Round(((Val(mygrid.TextMatrix(i, 9)) * rs!totalplant) * rs!bcrate), 0) 'Round(((Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 30))) * rs!bcrate), 0)
-
-modval = mygrid.TextMatrix(i, 12)
-mmod = modval Mod rs!crateno
-If (mmod > 17) Then
-mygrid.TextMatrix(i, 12) = ((modval - mmod) / rs!crateno) + 1
-Else
-mygrid.TextMatrix(i, 12) = ((modval - mmod) / rs!crateno)
-End If
-
-End If
-
-
-End If
+'                                                Set rs = Nothing
+'                                                rs.Open "select * from tbldistformula where fid='" & mygrid.TextMatrix(i, 31) & "'", MHVDB
+'                                                If rs.EOF <> True Then ' if 1
+'                                                    mygrid.TextMatrix(i, 10) = Val(mygrid.TextMatrix(i, 10)) + Round(((Val(mygrid.TextMatrix(i, 9)) * rs!totalplant)), 0)
+'                                                    mygrid.TextMatrix(i, 15) = Round(((Val(mygrid.TextMatrix(i, 9)) * rs!totalplant) * rs!ncrate), 0)
+'                                                    mygrid.TextMatrix(i, 11) = mygrid.TextMatrix(i, 10) 'Round((Val(mygrid.TextMatrix(i, 10)) - Val(mygrid.TextMatrix(i, 15)) - Val(mygrid.TextMatrix(i, 16))), 0) ' Val(mygrid.TextMatrix(i, 11)) + Round((Val(mygrid.TextMatrix(i, 10)) - Val(mygrid.TextMatrix(i, 15)) - Val(mygrid.TextMatrix(i, 16))) / rs!crateno, 0)
+'                                                    modval = mygrid.TextMatrix(i, 11)
+'                                                    mmod = modval Mod rs!crateno
+'                                                    If (mmod > 17) Then
+'                                                        mygrid.TextMatrix(i, 11) = ((modval - mmod) / rs!crateno) + 1
+'                                                    Else
+'                                                        mygrid.TextMatrix(i, 11) = ((modval - mmod) / rs!crateno)
+'                                                    End If
+'                                                    mygrid.TextMatrix(i, 15) = Round(Val(mygrid.TextMatrix(i, 15)) / rs!crateno, 0)
+'
+'                                                    If mygrid.TextMatrix(i, 29) <> "O" Then
+'
+'                                                    mygrid.TextMatrix(i, 12) = Round((Val(mygrid.TextMatrix(i, 11)) * rs!crateno * rs!bcrate), 0) 'Round((Val(mygrid.TextMatrix(i, 11)) * rs!crateno * rs!bcrate) / rs!crateno, 0)
+'modval = mygrid.TextMatrix(i, 12)
+'mmod = modval Mod rs!crateno
+'If (mmod > 17) Then
+'mygrid.TextMatrix(i, 12) = ((modval - mmod) / rs!crateno) + 1
+'Else
+'mygrid.TextMatrix(i, 12) = ((modval - mmod) / rs!crateno)
+'End If
+'Else
+'If Val(mygrid.TextMatrix(i, 9)) = 0 Then
+'mygrid.TextMatrix(i, 12) = Round(((Val(mygrid.TextMatrix(i, 12)))) / rs!crateno, 0) 'Round(((Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 30))) * rs!bcrate), 0)
+'Else
+'mygrid.TextMatrix(i, 12) = mygrid.TextMatrix(i, 12) + Round(((Val(mygrid.TextMatrix(i, 9)) * rs!totalplant) * rs!bcrate), 0) 'Round(((Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 30))) * rs!bcrate), 0)
+'
+'modval = mygrid.TextMatrix(i, 12)
+'mmod = modval Mod rs!crateno
+'If (mmod > 17) Then
+'mygrid.TextMatrix(i, 12) = ((modval - mmod) / rs!crateno) + 1
+'Else
+'mygrid.TextMatrix(i, 12) = ((modval - mmod) / rs!crateno)
+'End If
+'
+'End If
+'
+'
+'End If
 
 '-------
 If Mid(mygrid.TextMatrix(i, 5), 10, 1) <> "G" Or Mid(mygrid.TextMatrix(i, 5), 10, 1) <> "C" Then
@@ -2751,7 +2778,7 @@ If Mid(mygrid.TextMatrix(i, 5), 10, 1) <> "G" Or Mid(mygrid.TextMatrix(i, 5), 10
             mygrid.TextMatrix(i, 13) = mygrid.TextMatrix(i, 11) - mygrid.TextMatrix(i, 12) - mygrid.TextMatrix(i, 15)  ' Round((mygrid.TextMatrix(i, 11) * rs!ecrate), 0)  'Val(mygrid.TextMatrix(i, 11)) * rs!crateno - rs!crateno - Val(mygrid.TextMatrix(i, 12) * rs!crateno)Round((mygrid.TextMatrix(i, 11) * rs!crateno * rs!ecrate) / rs!crateno, 0) 'Val(mygrid.TextMatrix(i, 11)) * rs!crateno - rs!crateno - Val(mygrid.TextMatrix(i, 12) * rs!crateno)
       Else
 If Val(mygrid.TextMatrix(i, 9)) = 0 Then
-mygrid.TextMatrix(i, 13) = Round(((Val(mygrid.TextMatrix(i, 13)))), 0) / rs!crateno 'Round(((Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 30))) * rs!bcrate), 0)
+mygrid.TextMatrix(i, 13) = Round(((Val(mygrid.TextMatrix(i, 13)))), 0) / RS2!crateno 'Round(((Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 30))) * rs!bcrate), 0)
 Else
 mygrid.TextMatrix(i, 13) = mygrid.TextMatrix(i, 11) - mygrid.TextMatrix(i, 12) - mygrid.TextMatrix(i, 15) 'mygrid.TextMatrix(i, 13) + Round(((Val(mygrid.TextMatrix(i, 9)) * rs!totalplant) * rs!ecrate), 0) 'Round(((Val(mygrid.TextMatrix(i, 11)) - Val(mygrid.TextMatrix(i, 30))) * rs!bcrate), 0)
 
@@ -2774,16 +2801,20 @@ End If
 '=====
 
 
-                                                    
-                                                    
-                                                       mygrid.TextMatrix(i, 17) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!ssp), 2)
-                                                       mygrid.TextMatrix(i, 18) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!mop), 2)
-                                                       mygrid.TextMatrix(i, 19) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!urea), 2)
-                                                       mygrid.TextMatrix(i, 20) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!dolomite), 2)
+                                                        mygrid.TextMatrix(i, 17) = Round((Val(mygrid.TextMatrix(i, 10)) * RS2!ssp), 2)
+                                                        mygrid.TextMatrix(i, 18) = Round((Val(mygrid.TextMatrix(i, 10)) * RS2!mop), 2)
+                                                        mygrid.TextMatrix(i, 19) = Round((Val(mygrid.TextMatrix(i, 10)) * RS2!urea), 2)
+                                                        mygrid.TextMatrix(i, 20) = Round((Val(mygrid.TextMatrix(i, 10)) * RS2!dolomite), 2)
+                                                       
+'                                                       mygrid.TextMatrix(i, 17) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!ssp), 2)
+'                                                       mygrid.TextMatrix(i, 18) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!mop), 2)
+'                                                       mygrid.TextMatrix(i, 19) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!urea), 2)
+'                                                       mygrid.TextMatrix(i, 20) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!dolomite), 2)
                                                        mygrid.TextMatrix(i, 21) = Round(Val(mygrid.TextMatrix(i, 17)) + Val(mygrid.TextMatrix(i, 18)) + Val(mygrid.TextMatrix(i, 19)) + Val(mygrid.TextMatrix(i, 20)), 0)
-                                                       mygrid.TextMatrix(i, 22) = Round(Val(mygrid.TextMatrix(i, 17) * rs!sspperkg) + Val(mygrid.TextMatrix(i, 18) * rs!mopperkg) + Val(mygrid.TextMatrix(i, 19) * rs!ureaperkg) + Val(mygrid.TextMatrix(i, 20) * rs!dolomiteperkg), 0)
-                                                       mygrid.TextMatrix(i, 23) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!kg), 0)
-                                                       mygrid.TextMatrix(i, 24) = Round((mygrid.TextMatrix(i, 23) * rs!amountnu), 0)
+                                                       mygrid.TextMatrix(i, 22) = Round(Val(mygrid.TextMatrix(i, 17) * RS2!sspperkg) + Val(mygrid.TextMatrix(i, 18) * RS2!mopperkg) + Val(mygrid.TextMatrix(i, 19) * RS2!ureaperkg) + Val(mygrid.TextMatrix(i, 20) * RS2!dolomiteperkg), 0)
+'                                                       mygrid.TextMatrix(i, 23) = Round((((Val(mygrid.TextMatrix(i, 11)) * 35) + Val(mygrid.TextMatrix(i, 16))) * rs!kg), 0)
+                                                       mygrid.TextMatrix(i, 23) = Round((Val(mygrid.TextMatrix(i, 10)) * RS2!kg) + 0.00000001, 0)
+                                                       mygrid.TextMatrix(i, 24) = Round((mygrid.TextMatrix(i, 23) * RS2!amountnu), 0)
                                                        If Val(mygrid.TextMatrix(i, 23)) < 0 Then
                                                        mygrid.TextMatrix(i, 23) = 0
                                                        mygrid.TextMatrix(i, 24) = 0
@@ -2805,7 +2836,7 @@ Else
 
 End If
 'InsertRow Mygrid, Mygrid.row
-End If
+'End If
 
 
 

@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{D76D7128-4A96-11D3-BD95-D296DC2DD072}#1.0#0"; "VSFLEX7.OCX"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Begin VB.Form frmmanageland 
    BorderStyle     =   1  'Fixed Single
@@ -695,11 +695,11 @@ Select Case Button.Key
        Operation = "ADD"
        CLEARCONTROLL
        cbodzongkhag.Enabled = True
-       TB.Buttons(3).Enabled = True
+       TB.buttons(3).Enabled = True
        Case "OPEN"
        Operation = "OPEN"
        CLEARCONTROLL
-             TB.Buttons(3).Enabled = False
+             TB.buttons(3).Enabled = False
        Case "SAVE"
        MNU_SAVE
         
@@ -723,7 +723,7 @@ Dim rs As New ADODB.Recordset
 
 MHVDB.BeginTrans
 
-For i = 1 To mygrid.Rows - 1
+For i = 1 To mygrid.rows - 1
 If Len(Trim(mygrid.TextMatrix(i, 1))) = 0 Then Exit For
 MHVDB.Execute "update tbllandreg set plantedstatus='" & Mid(Trim(mygrid.TextMatrix(i, 5)), 1, 1) & "' where farmerid='" & Mid(Trim(mygrid.TextMatrix(i, 2)), 1, 14) & "' and trnid='" & Val(mygrid.TextMatrix(i, 1)) & "'"
 Next
@@ -738,7 +738,7 @@ cbogewog.Text = ""
 lstts.Clear
 
 mygrid.Clear
-mygrid.Rows = 1
+mygrid.rows = 1
 mygrid.FormatString = "^Sl.No.|^Trn. Id|^Farmer|^Reg. Date|^Acre|^Planted Status|^"
 mygrid.ColWidth(0) = 660
 mygrid.ColWidth(1) = 960
@@ -781,7 +781,7 @@ If Len(Dzstr) > 0 Then
 Else
   ' MsgBox "Tshewog not selected !!!"
             mygrid.Clear
-            mygrid.Rows = 1
+            mygrid.rows = 1
 mygrid.FormatString = "^Sl.No.|^Trn. Id|^Farmer|^Reg. Date|^Acre|^Planted Status|^"
 mygrid.ColWidth(0) = 660
 mygrid.ColWidth(1) = 960
@@ -797,13 +797,13 @@ End If
 
 SQLSTR = "select * from tbllandreg where status not in('D','R','C') and " _
 & " substring(farmerid,1,3)='" & cbodzongkhag.BoundText & "' and " _
-& " substring(farmerid,4,3) ='" & cbogewog.BoundText & "'  and substring(farmerid,7,3) in " & Dzstr & "" _
+& " substring(farmerid,4,3) ='" & cbogewog.BoundText & "'  and substring(farmerid,7,3) in " & Dzstr & " and plantedstatus='N'" _
 & " order by regdate desc"
 
 
 
 mygrid.Clear
-mygrid.Rows = 1
+mygrid.rows = 1
 misscnt = 0
 mygrid.FormatString = "^Sl.No.|^Trn. Id|^Farmer|^Reg. Date|^Acre|^Planted Status|^"
 mygrid.ColWidth(0) = 660
@@ -818,7 +818,7 @@ Set rs = Nothing
 rs.Open SQLSTR, MHVDB
 i = 1
 Do While rs.EOF <> True
-mygrid.Rows = mygrid.Rows + 1
+mygrid.rows = mygrid.rows + 1
 mygrid.TextMatrix(i, 0) = i
 mygrid.TextMatrix(i, 1) = rs!trnid
 FindFA rs!farmerid, "F"
