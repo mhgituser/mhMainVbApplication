@@ -2654,12 +2654,17 @@ If MsgBox("Do you want update the land", vbQuestion + vbYesNo) = vbYes Then
 & " tblfarmer A,tbllandregdetail B WHERE A.status not in('D','R','C') and plantedstatus='N'  " _
 & " and A.IDFARMER=B.farmercode  and substring(idfarmer,10,1)='F' and IDFARMER='" & mdgt & "' group by idfarmer "
               
-        SQLSTR = "SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE,SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,sum(REGLAND) AS REGLAND,village,phone1 FROM tblfarmer A,tbllandreg B WHERE A.status not in('D','R','C')and B.status not in('D','R','C') and plantedstatus='N'  and A.IDFARMER=B.FARMERID and IDFARMER ='" & mdgt & "'"
-        SQLSTR = SQLSTR & "  " & "group by idfarmer "
-SQLSTR = SQLSTR & " union  SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE, " _
+'        SQLSTR = "SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE,SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,sum(REGLAND) AS REGLAND,village,phone1 FROM tblfarmer A,tbllandreg B WHERE A.status not in('D','R','C')and B.status not in('D','R','C') and plantedstatus='N'  and A.IDFARMER=B.FARMERID and IDFARMER ='" & mdgt & "'"
+'        SQLSTR = SQLSTR & "  " & "group by idfarmer "
+'SQLSTR = SQLSTR & " union  SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE, " _
+'& " SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,sum(acre) AS REGLAND,village,phone1 FROM " _
+'& " tblfarmer A,tbllandregdetail B WHERE A.status not in('D','R','C') and plantedstatus='N'  " _
+'& " and A.IDFARMER=B.farmercode  and  IDFARMER='" & mdgt & "' group by idfarmer "
+
+SQLSTR = "SELECT SUBSTRING(IDFARMER,1,3) AS DZCODE,SUBSTRING(IDFARMER,4,3) AS GECODE, " _
 & " SUBSTRING(IDFARMER,7,3) AS TSCODE,IDFARMER,FARMERNAME,sum(acre) AS REGLAND,village,phone1 FROM " _
 & " tblfarmer A,tbllandregdetail B WHERE A.status not in('D','R','C') and plantedstatus='N'  " _
-& " and A.IDFARMER=B.farmercode  and  IDFARMER='" & mdgt & "' group by idfarmer "
+& " and A.IDFARMER=B.farmercode  and  IDFARMER='" & mdgt & "' group by idfarmer"
                                         
                                  Set rsland = Nothing
                                         

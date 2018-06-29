@@ -626,7 +626,7 @@ Begin VB.Form frmCrateBatchTransaction
          _ExtentX        =   2355
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   115671041
+         Format          =   115343361
          CurrentDate     =   41479
       End
       Begin MSDataListLib.DataCombo cbostaff 
@@ -1506,7 +1506,7 @@ If ItemGrd.col = 5 And Val(ItemGrd.TextMatrix(CurrRow, 4)) > 0 And Len(ItemGrd.T
    End If
    
    
-  If ItemGrd.col = 6 And Len(ItemGrd.TextMatrix(ItemGrd.row, 4)) > 0 And (ItemGrd.TextMatrix(ItemGrd.row, 2) = "P1" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "P" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "N" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "B" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "E" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "L" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "A" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "L1") Then
+  If ItemGrd.col = 6 And Len(ItemGrd.TextMatrix(ItemGrd.row, 4)) > 0 And (ItemGrd.TextMatrix(ItemGrd.row, 2) = "P1" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "P" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "N" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "B" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "E" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "L" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "A" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "L1" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "D1" Or ItemGrd.TextMatrix(ItemGrd.row, 2) = "TDG") Then
 
 
 
