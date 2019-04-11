@@ -1,2 +1,16 @@
-Line 166: Class VSFlex7Ctl.VSFlexGrid of control fgrid was not a loaded control class.
-Line 1176: Class VSFlex7Ctl.VSFlexGrid of control Mygrid was not a loaded control class.
+Line 1120: Class MSComctlLib.ImageList of control IMG was not a loaded control class.
+Line 1158: Class MSComctlLib.Toolbar of control TB was not a loaded control class.
+Line 1123: The property name _ExtentX in IMG is invalid.
+Line 1124: The property name _ExtentY in IMG is invalid.
+Line 1126: The property name ImageWidth in IMG is invalid.
+Line 1127: The property name ImageHeight in IMG is invalid.
+Line 1128: The property name MaskColor in IMG is invalid.
+Line 1129: The property name _Version in IMG is invalid.
+Line 1156: The property name Images in IMG is invalid.
+Line 1165: The property name _ExtentX in TB is invalid.
+Line 1166: The property name _ExtentY in TB is invalid.
+Line 1167: The property name ButtonWidth in TB is invalid.
+Line 1168: The property name ButtonHeight in TB is invalid.
+Line 1170: The property name ImageList in TB is invalid.
+Line 1171: The property name _Version in TB is invalid.
+Line 1217: The property name Buttons in TB is invalid.

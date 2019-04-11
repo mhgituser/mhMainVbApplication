@@ -1,17 +1,2 @@
-Line 198: Class MSDataListLib.DataCombo of control CBOLEADSTAFF was not a loaded control class.
-Line 225: Class MSDataListLib.DataCombo of control CBOSUPPORT1 was not a loaded control class.
-Line 252: Class MSDataListLib.DataCombo of control CBOSUPPORT2 was not a loaded control class.
-Line 279: Class MSDataListLib.DataCombo of control CBOSUPPORT3 was not a loaded control class.
-Line 306: Class MSDataListLib.DataCombo of control CBOSUPPORT4 was not a loaded control class.
-Line 333: Class MSDataListLib.DataCombo of control CBOSUPPORT5 was not a loaded control class.
-Line 574: Class MSDataListLib.DataCombo of control cboindividual was not a loaded control class.
-Line 619: Class MSDataListLib.DataCombo of control CBOMONITOR was not a loaded control class.
-Line 646: Class MSDataListLib.DataCombo of control CBOOUTREACH was not a loaded control class.
-Line 727: Class MSDataListLib.DataCombo of control cbocgid was not a loaded control class.
-Line 754: Class MSDataListLib.DataCombo of control cbomhvstaff was not a loaded control class.
-Line 889: Class MSDataListLib.DataCombo of control cbofarmerid was not a loaded control class.
-Line 917: Class MSComCtl2.DTPicker of control txtregdate was not a loaded control class.
-Line 938: Class MSDataListLib.DataCombo of control cbotrnid was not a loaded control class.
-Line 965: Class MSDataListLib.DataCombo of control cbosessionid was not a loaded control class.
 Line 1442: Class MSComctlLib.ImageList of control IMG was not a loaded control class.
 Line 1480: Class MSComctlLib.Toolbar of control TB was not a loaded control class.

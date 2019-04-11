@@ -1,2 +1,3 @@
-Line 130: Class VSFlex7Ctl.VSFlexGrid of control mygrid1 was not a loaded control class.
-Line 472: Class VSFlex7Ctl.VSFlexGrid of control Mygrid was not a loaded control class.
+Line 314: Class MSComctlLib.ImageList of control IMG was not a loaded control class.
+Line 352: Class MSComctlLib.ImageList of control ImageList1 was not a loaded control class.
+Line 390: Class MSComctlLib.Toolbar of control TB was not a loaded control class.
