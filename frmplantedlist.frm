@@ -1,6 +1,7 @@
 VERSION 5.00
 Object = "{D76D7128-4A96-11D3-BD95-D296DC2DD072}#1.0#0"; "VSFLEX7.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
 Begin VB.Form frmplantedlist 
@@ -602,7 +603,7 @@ Begin VB.Form frmplantedlist
       _ExtentX        =   2355
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   96927745
+      Format          =   113967105
       CurrentDate     =   41516
    End
    Begin VB.TextBox txtmonth 
@@ -1116,26 +1117,106 @@ Begin VB.Form frmplantedlist
          Strikethrough   =   0   'False
       EndProperty
    End
-   Begin VB.PictureBox IMG 
-      BackColor       =   &H80000005&
-      Height          =   480
+   Begin MSComctlLib.ImageList IMG 
       Left            =   4920
-      ScaleHeight     =   420
-      ScaleWidth      =   1140
-      TabIndex        =   90
       Top             =   120
-      Width           =   1200
+      _ExtentX        =   1005
+      _ExtentY        =   1005
+      BackColor       =   -2147483643
+      ImageWidth      =   16
+      ImageHeight     =   16
+      MaskColor       =   12632256
+      _Version        =   393216
+      BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
+         NumListImages   =   6
+         BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "frmplantedlist.frx":4697
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage2 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "frmplantedlist.frx":4A31
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage3 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "frmplantedlist.frx":4DCB
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage4 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "frmplantedlist.frx":5AA5
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage5 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "frmplantedlist.frx":5EF7
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage6 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "frmplantedlist.frx":66B1
+            Key             =   ""
+         EndProperty
+      EndProperty
    End
-   Begin VB.PictureBox TB 
+   Begin MSComctlLib.Toolbar TB 
       Align           =   1  'Align Top
       Height          =   660
       Left            =   0
-      MousePointer    =   3  'I-Beam
-      ScaleHeight     =   600
-      ScaleWidth      =   14820
       TabIndex        =   2
       Top             =   0
       Width           =   14880
+      _ExtentX        =   26247
+      _ExtentY        =   1164
+      ButtonWidth     =   1217
+      ButtonHeight    =   1005
+      Appearance      =   1
+      ImageList       =   "IMG"
+      _Version        =   393216
+      BeginProperty Buttons {66833FE8-8583-11D1-B16A-00C0F0283628} 
+         NumButtons      =   5
+         BeginProperty Button1 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Caption         =   "ADD"
+            Key             =   "ADD"
+            Object.ToolTipText     =   "ADDS NEW RECORD"
+            ImageIndex      =   1
+            BeginProperty ButtonMenus {66833FEC-8583-11D1-B16A-00C0F0283628} 
+               NumButtonMenus  =   2
+               BeginProperty ButtonMenu1 {66833FEE-8583-11D1-B16A-00C0F0283628} 
+                  Key             =   "New"
+                  Text            =   "New"
+               EndProperty
+               BeginProperty ButtonMenu2 {66833FEE-8583-11D1-B16A-00C0F0283628} 
+                  Key             =   "Open"
+                  Text            =   "Open"
+               EndProperty
+            EndProperty
+         EndProperty
+         BeginProperty Button2 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Caption         =   "OPEN"
+            Key             =   "OPEN"
+            Object.ToolTipText     =   "OPEN/EDIT EXISTING RECORD"
+            ImageIndex      =   4
+         EndProperty
+         BeginProperty Button3 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Enabled         =   0   'False
+            Caption         =   "SAVE"
+            Key             =   "SAVE"
+            Object.ToolTipText     =   "SAVES RECORD"
+            ImageIndex      =   5
+         EndProperty
+         BeginProperty Button4 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Enabled         =   0   'False
+            Caption         =   "DELETE"
+            Key             =   "DELETE"
+            Object.ToolTipText     =   "DELETE THE RECORD"
+            ImageIndex      =   2
+         EndProperty
+         BeginProperty Button5 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Caption         =   "EXIT"
+            Key             =   "EXIT"
+            Object.ToolTipText     =   "EXIT FROM THE FORM"
+            ImageIndex      =   3
+         EndProperty
+      EndProperty
+      BorderStyle     =   1
+      MousePointer    =   3
    End
    Begin VSFlex7Ctl.VSFlexGrid Mygrid 
       Height          =   3015
@@ -1190,7 +1271,7 @@ Begin VB.Form frmplantedlist
       ColWidthMin     =   0
       ColWidthMax     =   0
       ExtendLastCol   =   0   'False
-      FormatString    =   $"frmplantedlist.frx":4697
+      FormatString    =   $"frmplantedlist.frx":6A4B
       ScrollTrack     =   0   'False
       ScrollBars      =   2
       ScrollTips      =   0   'False
@@ -1284,7 +1365,7 @@ Begin VB.Form frmplantedlist
          Width           =   735
       End
       Begin MSDataListLib.DataCombo cbovariety 
-         Bindings        =   "frmplantedlist.frx":4753
+         Bindings        =   "frmplantedlist.frx":6B07
          DataField       =   "ItemCode"
          Height          =   360
          Left            =   1440
@@ -1382,7 +1463,7 @@ Begin VB.Form frmplantedlist
       EndProperty
    End
    Begin MSDataListLib.DataCombo cbostaff 
-      Bindings        =   "frmplantedlist.frx":4768
+      Bindings        =   "frmplantedlist.frx":6B1C
       DataField       =   "ItemCode"
       Height          =   360
       Left            =   3360
@@ -1763,7 +1844,7 @@ Dim ValidRow As Boolean
 Dim CurrRow As Long
 Dim mytot As Integer
 Dim datechk As Boolean
-Dim DZstr As String
+Dim Dzstr As String
 Dim chqty As Long
 Dim mcratecnt As Integer
 Dim trnid As String
@@ -1822,15 +1903,15 @@ MsgBox "Please check the challan series"
 Exit Sub
 End If
 
-CBOSTAFF.Text = ""
+cbostaff.Text = ""
 Dim rs As New ADODB.Recordset
 Set rs = Nothing
 rs.Open "SELECT * FROM `tblchallanchecklist` WHERE alphabetseries ='" & Mid(txtchallanno.Text, 1, 1) & "' and ('" & Val(Mid(txtchallanno.Text, 2, 10)) & "' -`challannofrom`) between 0 and 50", MHVDB
 If rs.EOF <> True Then
 FindsTAFF rs!staffcode
-CBOSTAFF.Text = rs!staffcode & "  " & sTAFF
+cbostaff.Text = rs!staffcode & "  " & sTAFF
 Else
-CBOSTAFF.Text = ""
+cbostaff.Text = ""
 MsgBox "Please check challan book!"
 Exit Sub
 End If
@@ -1845,7 +1926,7 @@ Set rs = Nothing
 rs.Open "select * from tblqmsplantvariety where status='ON' order by challanorder asc", MHVDB
 Do While rs.EOF <> True
 ItemGrd.TextMatrix(i, 2) = rs!Description
-ItemGrd.TextMatrix(i, 1) = rs!varietyid
+ItemGrd.TextMatrix(i, 1) = rs!varietyId
 i = i + 1
 rs.MoveNext
 Loop
@@ -1902,7 +1983,7 @@ If rs.EOF <> True Then
 txtyear.Text = rs!Year
 txtmonth.Text = MonthName(rs!mnth, False)
 TXTMMONTH.Text = rs!mnth
-TXTPLANTED.Text = Format(rs!Area, "###0.00")
+TXTPLANTED.Text = Format(rs!area, "###0.00")
 txttrees.Text = rs!totalplant
 fillgridch
 End If
@@ -1981,7 +2062,7 @@ txttrees.Text = rs!nooftrees
 txtttot.Text = rs!challanqty
 txtfertamount.Text = rs!fertamount
 FindsTAFF rs!staffcode
-CBOSTAFF.Text = rs!staffcode & " " & sTAFF
+cbostaff.Text = rs!staffcode & " " & sTAFF
 Else
 
 cbodeliveryno.Text = ""
@@ -2014,8 +2095,8 @@ If rs.EOF <> True Then
 i = 1
 mvariety = ""
 Do While rs.EOF <> True
-ItemGrd.TextMatrix(i, 1) = rs!varietyid
-FindqmsPlantVariety rs!varietyid
+ItemGrd.TextMatrix(i, 1) = rs!varietyId
+FindqmsPlantVariety rs!varietyId
 ItemGrd.TextMatrix(i, 2) = qmsPlantVariety
 mvariety = mvariety + "'" + qmsPlantVariety + "',"
 ItemGrd.TextMatrix(i, 3) = rs!noofcrates
@@ -2043,7 +2124,7 @@ rs.Open "select * from tblqmsplantvariety where status='ON' and description not 
 End If
 Do While rs.EOF <> True
 ItemGrd.TextMatrix(i, 2) = rs!Description
-ItemGrd.TextMatrix(i, 1) = rs!varietyid
+ItemGrd.TextMatrix(i, 1) = rs!varietyId
 i = i + 1
 rs.MoveNext
 Loop
@@ -2096,16 +2177,16 @@ End Sub
 
 Private Sub Command2_Click()
 Dim i As Integer
-DZstr = ""
+Dzstr = ""
 For i = 0 To DZLIST.ListCount - 1
     If DZLIST.Selected(i) Then
-       DZstr = DZstr + Trim(DZLIST.List(i)) + ","
+       Dzstr = Dzstr + Trim(DZLIST.List(i)) + ","
          End If
     Next
-If Len(DZstr) > 0 Then
-   DZstr = Left(DZstr, Len(DZstr) - 1)
+If Len(Dzstr) > 0 Then
+   Dzstr = Left(Dzstr, Len(Dzstr) - 1)
    ItemGrd.TextMatrix(CurrRow, 4) = ""
- ItemGrd.TextMatrix(CurrRow, 4) = DZstr
+ ItemGrd.TextMatrix(CurrRow, 4) = Dzstr
  Frame3.Visible = False
  ItemGrd.Enabled = True
 Else
@@ -2238,9 +2319,9 @@ cbodeliveryno.BoundColumn = "distno"
 
 If Srs.State = adStateOpen Then Srs.Close
 Srs.Open "select concat(STAFFCODE , ' ', STAFFNAME) as STAFFNAME,STAFFCODE  from tblmhvstaff where moniter='1' or advocate='1' order by STAFFCODE", db
-Set CBOSTAFF.RowSource = Srs
-CBOSTAFF.ListField = "STAFFNAME"
-CBOSTAFF.BoundColumn = "STAFFCODE"
+Set cbostaff.RowSource = Srs
+cbostaff.ListField = "STAFFNAME"
+cbostaff.BoundColumn = "STAFFCODE"
 
 
 'TXTYEAR.Value = 2013
@@ -2362,15 +2443,15 @@ On Error GoTo err
 Dim rs As New ADODB.Recordset
 Dim i As Integer
 Set rs = Nothing
-myGrid.Clear
-myGrid.rows = 1
-myGrid.FormatString = "^TRN.NO.|^FARMER CODE|^FARMER NAME|^AREA|^TREES|^YEAR"
-myGrid.ColWidth(0) = 900
-myGrid.ColWidth(1) = 1800
-myGrid.ColWidth(2) = 2250
-myGrid.ColWidth(3) = 585
-myGrid.ColWidth(4) = 753
-myGrid.ColWidth(5) = 735
+mygrid.Clear
+mygrid.rows = 1
+mygrid.FormatString = "^TRN.NO.|^FARMER CODE|^FARMER NAME|^AREA|^TREES|^YEAR"
+mygrid.ColWidth(0) = 900
+mygrid.ColWidth(1) = 1800
+mygrid.ColWidth(2) = 2250
+mygrid.ColWidth(3) = 585
+mygrid.ColWidth(4) = 753
+mygrid.ColWidth(5) = 735
 TOTALNOOFTREES = 0
 TOTPLANTEDAREA = 0
 If ff = "A" Then
@@ -2382,33 +2463,33 @@ rs.Open "select * from tblplanted where farmercode='" & Mid(Trim(cbofarmerid.Bou
 End If
 i = 1
 Do While rs.EOF <> True
-myGrid.rows = myGrid.rows + 1
-myGrid.TextMatrix(i, 0) = rs!trnid
+mygrid.rows = mygrid.rows + 1
+mygrid.TextMatrix(i, 0) = rs!trnid
 
-myGrid.TextMatrix(i, 1) = rs!farmercode
+mygrid.TextMatrix(i, 1) = rs!farmercode
 FindFA rs!farmercode, "F"
-myGrid.TextMatrix(i, 2) = FAName
-myGrid.TextMatrix(i, 3) = Format(IIf(IsNull(rs!acreplanted), 0, rs!acreplanted), "####0.00")
+mygrid.TextMatrix(i, 2) = FAName
+mygrid.TextMatrix(i, 3) = Format(IIf(IsNull(rs!acreplanted), 0, rs!acreplanted), "####0.00")
 TOTPLANTEDAREA = TOTPLANTEDAREA + IIf(IsNull(rs!acreplanted), 0, rs!acreplanted)
-myGrid.TextMatrix(i, 4) = IIf(IsNull(rs!challanqty), 0, rs!challanqty)
+mygrid.TextMatrix(i, 4) = IIf(IsNull(rs!challanqty), 0, rs!challanqty)
 TOTALNOOFTREES = TOTALNOOFTREES + IIf(IsNull(rs!challanqty), 0, rs!challanqty)
-myGrid.TextMatrix(i, 5) = IIf(IsNull(rs!Year), "", rs!Year)
+mygrid.TextMatrix(i, 5) = IIf(IsNull(rs!Year), "", rs!Year)
 rs.MoveNext
 i = i + 1
 Loop
 
 rs.Close
 
-myGrid.MergeCol(1) = True
-myGrid.MergeCells = 1
-myGrid.MergeCol(2) = True
-myGrid.MergeCells = 2
+mygrid.MergeCol(1) = True
+mygrid.MergeCells = 1
+mygrid.MergeCol(2) = True
+mygrid.MergeCells = 2
 Exit Sub
 err:
-myGrid.MergeCol(1) = True
-myGrid.MergeCells = 1
-myGrid.MergeCol(2) = True
-myGrid.MergeCells = 2
+mygrid.MergeCol(1) = True
+mygrid.MergeCells = 1
+mygrid.MergeCol(2) = True
+mygrid.MergeCells = 2
 MsgBox err.Description
 
 End Sub
@@ -2601,7 +2682,7 @@ Select Case MCOL
 
 End Sub
 
-Private Sub Mygrid_DblClick()
+Private Sub mygrid_DblClick()
 'On Error GoTo ERR
 'Dim rs As New ADODB.Recordset
 'Dim rs1 As New ADODB.Recordset
@@ -2681,7 +2762,7 @@ End Sub
 Private Sub findtot()
 Dim i As Integer
 mytot = 0
-For i = 1 To myGrid.rows - 1
+For i = 1 To mygrid.rows - 1
 If Len(mygrid1.TextMatrix(i, 0)) = 0 Then Exit For
 mytot = mytot + Val(mygrid1.TextMatrix(i, 4))
 
@@ -2806,7 +2887,7 @@ End If
 End If
 
 
-If Len(Trim(CBOSTAFF.Text)) = 0 Then
+If Len(Trim(cbostaff.Text)) = 0 Then
 MsgBox "Select Monitor for this Delivery No."
 Exit Sub
 End If
@@ -2896,7 +2977,7 @@ MHVDB.Execute "insert into tblplanted(trnid,farmercode,fillins,year,nooftrees,ac
 & "'" & Format(txtchallandate.Value, "yyyy-MM-dd") & "'," _
 & "'" & Val(txtttot.Text) & "'," _
 & "'ON'," _
-& "'" & Mid(Trim(CBOSTAFF.BoundText), 1, 5) & "','" & Val(txtfertamount.Text) & "','" & Mid(txtchallanno.Text, 1, 1) & "'" _
+& "'" & Mid(Trim(cbostaff.BoundText), 1, 5) & "','" & Val(txtfertamount.Text) & "','" & Mid(txtchallanno.Text, 1, 1) & "'" _
 & ")"
 MHVDB.Execute "update tblfarmer set category='ActivePoor' where IDFARMER='" & cbofarmerid.BoundText & "' "
 
@@ -2917,7 +2998,7 @@ MHVDB.Execute "update tblplanted set " _
 & "challanserial='" & Mid(txtchallanno.Text, 1, 1) & "'," _
 & "challandate='" & Format(txtchallandate.Value, "yyyy-MM-dd") & "'," _
 & "challanqty='" & Val(txtttot.Text) & "'," _
-& "staffcode='" & Mid(Trim(CBOSTAFF.BoundText), 1, 5) & "',fertamount='" & Val(txtfertamount.Text) & "'" _
+& "staffcode='" & Mid(Trim(cbostaff.BoundText), 1, 5) & "',fertamount='" & Val(txtfertamount.Text) & "'" _
 & " where trnid='" & cbotrnid.BoundText & "'"
 
 'End If
@@ -3016,7 +3097,7 @@ txtge.Text = ""
 txtts.Text = ""
 txttrees.Text = ""
 'TXTYEAR.Value = year(Now)
-CBOSTAFF.Text = ""
+cbostaff.Text = ""
 txtchallandate = Format(Now, "dd/MM/yyyy")
 txtchallanno.Text = ""
 cbodeliveryno.Text = ""
@@ -3077,15 +3158,15 @@ MsgBox "Please check the challan series"
 Exit Sub
 End If
 
-CBOSTAFF.Text = ""
+cbostaff.Text = ""
 Dim rs As New ADODB.Recordset
 Set rs = Nothing
 rs.Open "SELECT * FROM `tblchallanchecklist` WHERE alphabetseries ='" & Mid(txtchallanno.Text, 1, 1) & "' and ('" & Val(Mid(txtchallanno.Text, 2, 10)) & "' -`challannofrom`) between 0 and noofpages-1", MHVDB
 If rs.EOF <> True Then
 FindsTAFF rs!staffcode
-CBOSTAFF.Text = rs!staffcode & "  " & sTAFF
+cbostaff.Text = rs!staffcode & "  " & sTAFF
 Else
-CBOSTAFF.Text = ""
+cbostaff.Text = ""
 MsgBox "Please check challan book!"
 Exit Sub
 End If
@@ -3285,6 +3366,5 @@ Frame5.Visible = True
 End If
 End If
 End If
-
 End Sub
 

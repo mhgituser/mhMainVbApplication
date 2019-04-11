@@ -1,6 +1,5 @@
 VERSION 5.00
 Object = "{D76D7128-4A96-11D3-BD95-D296DC2DD072}#1.0#0"; "VSFLEX7.OCX"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "MSDATLST.OCX"
 Begin VB.Form frmgewog 
    BorderStyle     =   1  'Fixed Single
@@ -110,107 +109,6 @@ Begin VB.Form frmgewog
       ForeColorFrozen =   0
       WallPaperAlignment=   9
    End
-   Begin MSComctlLib.ImageList IMG 
-      Left            =   1560
-      Top             =   3480
-      _ExtentX        =   1005
-      _ExtentY        =   1005
-      BackColor       =   -2147483643
-      ImageWidth      =   16
-      ImageHeight     =   16
-      MaskColor       =   12632256
-      _Version        =   393216
-      BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
-         NumListImages   =   6
-         BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmgewog.frx":0EE9
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage2 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmgewog.frx":1283
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage3 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmgewog.frx":161D
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage4 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmgewog.frx":22F7
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage5 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmgewog.frx":2749
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage6 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmgewog.frx":2F03
-            Key             =   ""
-         EndProperty
-      EndProperty
-   End
-   Begin MSComctlLib.Toolbar TB 
-      Align           =   1  'Align Top
-      Height          =   660
-      Left            =   0
-      TabIndex        =   8
-      Top             =   0
-      Width           =   9735
-      _ExtentX        =   17171
-      _ExtentY        =   1164
-      ButtonWidth     =   1217
-      ButtonHeight    =   1005
-      Appearance      =   1
-      ImageList       =   "IMG"
-      _Version        =   393216
-      BeginProperty Buttons {66833FE8-8583-11D1-B16A-00C0F0283628} 
-         NumButtons      =   5
-         BeginProperty Button1 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Caption         =   "ADD"
-            Key             =   "ADD"
-            Object.ToolTipText     =   "ADDS NEW RECORD"
-            ImageIndex      =   1
-            BeginProperty ButtonMenus {66833FEC-8583-11D1-B16A-00C0F0283628} 
-               NumButtonMenus  =   2
-               BeginProperty ButtonMenu1 {66833FEE-8583-11D1-B16A-00C0F0283628} 
-                  Key             =   "New"
-                  Text            =   "New"
-               EndProperty
-               BeginProperty ButtonMenu2 {66833FEE-8583-11D1-B16A-00C0F0283628} 
-                  Key             =   "Open"
-                  Text            =   "Open"
-               EndProperty
-            EndProperty
-         EndProperty
-         BeginProperty Button2 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Caption         =   "OPEN"
-            Key             =   "OPEN"
-            Object.ToolTipText     =   "OPEN/EDIT EXISTING RECORD"
-            ImageIndex      =   4
-         EndProperty
-         BeginProperty Button3 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Enabled         =   0   'False
-            Caption         =   "SAVE"
-            Key             =   "SAVE"
-            Object.ToolTipText     =   "SAVES RECORD"
-            ImageIndex      =   5
-         EndProperty
-         BeginProperty Button4 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Enabled         =   0   'False
-            Caption         =   "DELETE"
-            Key             =   "DELETE"
-            Object.ToolTipText     =   "DELETE THE RECORD"
-            ImageIndex      =   2
-         EndProperty
-         BeginProperty Button5 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Caption         =   "EXIT"
-            Key             =   "EXIT"
-            Object.ToolTipText     =   "EXIT FROM THE FORM"
-            ImageIndex      =   3
-         EndProperty
-      EndProperty
-      BorderStyle     =   1
-      MousePointer    =   3
-   End
    Begin VB.Frame itemcode 
       Caption         =   "DZONGKHAG INFORMATION"
       BeginProperty Font 
@@ -263,7 +161,7 @@ Begin VB.Form frmgewog
          Width           =   6735
       End
       Begin MSDataListLib.DataCombo cboDzongkhag 
-         Bindings        =   "frmgewog.frx":329D
+         Bindings        =   "frmgewog.frx":0EE9
          DataField       =   "ItemCode"
          Height          =   315
          Left            =   2520
@@ -291,7 +189,7 @@ Begin VB.Form frmgewog
          EndProperty
       End
       Begin MSDataListLib.DataCombo cbogewog 
-         Bindings        =   "frmgewog.frx":32B2
+         Bindings        =   "frmgewog.frx":0EFE
          DataField       =   "ItemCode"
          Height          =   315
          Left            =   2520
@@ -319,11 +217,11 @@ Begin VB.Form frmgewog
          EndProperty
       End
       Begin MSDataListLib.DataCombo cbodemkhong 
-         Bindings        =   "frmgewog.frx":32C7
+         Bindings        =   "frmgewog.frx":0F13
          DataField       =   "ItemCode"
          Height          =   315
          Left            =   2520
-         TabIndex        =   13
+         TabIndex        =   8
          Top             =   960
          Width           =   4815
          _ExtentX        =   8493
@@ -466,23 +364,23 @@ Dim rsDem As New ADODB.Recordset
 Dim rsGe As New ADODB.Recordset
 
 Private Sub cboDzongkhag_GotFocus()
-cboDzongkhag.BackColor = vbYellow
+cbodzongkhag.BackColor = vbYellow
 End Sub
 
 Private Sub cbodzongkhag_LostFocus()
 On Error GoTo err
-cboDzongkhag.BackColor = vbWhite
-If Len(cboDzongkhag.Text) = 0 Then
+cbodzongkhag.BackColor = vbWhite
+If Len(cbodzongkhag.Text) = 0 Then
 MsgBox "Please Select The Proper Dzongkhag First."
-cboDzongkhag.SetFocus
+cbodzongkhag.SetFocus
 Exit Sub
 End If
-cboDzongkhag.Enabled = False
+cbodzongkhag.Enabled = False
 If Operation = "ADD" Then
 cbogewog.Enabled = False
 Dim rs As New ADODB.Recordset
        Set rs = Nothing
-       rs.Open "SELECT MAX(SUBSTRING(gewogid,2,2))+1 AS MaxID from tblgewog where dzongkhagid='" & cboDzongkhag.BoundText & "'", MHVDB, adOpenForwardOnly, adLockOptimistic
+       rs.Open "SELECT MAX(SUBSTRING(gewogid,2,2))+1 AS MaxID from tblgewog where dzongkhagid='" & cbodzongkhag.BoundText & "'", MHVDB, adOpenForwardOnly, adLockOptimistic
        If rs.EOF <> True Then
        If Len(rs!MaxId) = 1 Then
        cbogewog.Text = "G0" & rs!MaxId
@@ -499,13 +397,13 @@ db.CursorLocation = adUseClient
 db.Open CnnString
 cbogewog = ""
 If rsDem.State = adStateOpen Then rsDem.Close
-rsDem.Open "select concat(demkhongid , ' ', demkhongname) as demkhongname,demkhongid  from tbldemkhong where dzongkhag='" & cboDzongkhag.BoundText & "' order by demkhongid", db
+rsDem.Open "select concat(demkhongid , ' ', demkhongname) as demkhongname,demkhongid  from tbldemkhong where dzongkhag='" & cbodzongkhag.BoundText & "' order by demkhongid", db
 Set cbodemkhong.RowSource = rsDem
 cbodemkhong.ListField = "demkhongname"
 cbodemkhong.BoundColumn = "demkhongid"
 
 If rsGe.State = adStateOpen Then rsGe.Close
-rsGe.Open "select concat(gewogid , ' ', gewogname) as gewogname,gewogid  from tblgewog where dzongkhagid='" & cboDzongkhag.BoundText & "' order by gewogid", db
+rsGe.Open "select concat(gewogid , ' ', gewogname) as gewogname,gewogid  from tblgewog where dzongkhagid='" & cbodzongkhag.BoundText & "' order by gewogid", db
 Set cbogewog.RowSource = rsGe
 cbogewog.ListField = "gewogname"
 cbogewog.BoundColumn = "gewogid"
@@ -520,10 +418,10 @@ MsgBox err.Description
 End Sub
 
 Private Sub cbogewog_GotFocus()
-If Len(cboDzongkhag.Text) = 0 Then
+If Len(cbodzongkhag.Text) = 0 Then
 MsgBox "Please Select The Dzongkhag FIrst."
-cboDzongkhag.Enabled = True
-cboDzongkhag.SetFocus
+cbodzongkhag.Enabled = True
+cbodzongkhag.SetFocus
 Exit Sub
 End If
 cbogewog.BackColor = vbYellow
@@ -535,7 +433,7 @@ Dim rs As New ADODB.Recordset
 cbogewog.BackColor = vbWhite
 
 Set rs = Nothing
-rs.Open "select * from tblgewog where dzongkhagid='" & cboDzongkhag.BoundText & "' and gewogid='" & cbogewog.BoundText & "'", MHVDB, adOpenForwardOnly, adLockOptimistic
+rs.Open "select * from tblgewog where dzongkhagid='" & cbodzongkhag.BoundText & "' and gewogid='" & cbogewog.BoundText & "'", MHVDB, adOpenForwardOnly, adLockOptimistic
 
 If rs.EOF <> True Then
 txtgewogname.Text = rs!gewogname
@@ -570,9 +468,9 @@ Set rsDz = Nothing
 
 If rsDz.State = adStateOpen Then rsDz.Close
 rsDz.Open "select concat(dzongkhagcode , ' ', dzongkhagname) as dzongkhagname,dzongkhagcode  from tbldzongkhag order by dzongkhagcode", db
-Set cboDzongkhag.RowSource = rsDz
-cboDzongkhag.ListField = "dzongkhagname"
-cboDzongkhag.BoundColumn = "dzongkhagcode"
+Set cbodzongkhag.RowSource = rsDz
+cbodzongkhag.ListField = "dzongkhagname"
+cbodzongkhag.BoundColumn = "dzongkhagcode"
 
 If rsDem.State = adStateOpen Then rsDem.Close
 rsDem.Open "select concat(demkhongid , ' ', demkhongname) as demkhongname,demkhongid  from tbldemkhong order by demkhongid", db
@@ -597,33 +495,33 @@ On Error GoTo err
 Dim rs As New ADODB.Recordset
 Dim i As Integer
 Set rs = Nothing
-Mygrid.Clear
-Mygrid.rows = 1
-Mygrid.FormatString = "^SL.NO.|^DZONGKHAG ID|^GEWOG ID|^GEWOG NAME|^REMARKS"
-Mygrid.ColWidth(0) = 750
-Mygrid.ColWidth(1) = 2760
-Mygrid.ColWidth(2) = 1050
-Mygrid.ColWidth(3) = 1980
-Mygrid.ColWidth(4) = 2895
+mygrid.Clear
+mygrid.rows = 1
+mygrid.FormatString = "^SL.NO.|^DZONGKHAG ID|^GEWOG ID|^GEWOG NAME|^REMARKS"
+mygrid.ColWidth(0) = 750
+mygrid.ColWidth(1) = 2760
+mygrid.ColWidth(2) = 1050
+mygrid.ColWidth(3) = 1980
+mygrid.ColWidth(4) = 2895
 
 rs.Open "select * from tblgewog order by dzongkhagid,gewogid", MHVDB, adOpenForwardOnly, adLockOptimistic
 i = 1
 Do While rs.EOF <> True
-Mygrid.rows = Mygrid.rows + 1
-Mygrid.TextMatrix(i, 0) = i
+mygrid.rows = mygrid.rows + 1
+mygrid.TextMatrix(i, 0) = i
 FindDZ (rs!dzongkhagid)
-Mygrid.TextMatrix(i, 1) = Dzname
-Mygrid.TextMatrix(i, 2) = rs!gewogid
+mygrid.TextMatrix(i, 1) = Dzname
+mygrid.TextMatrix(i, 2) = rs!gewogid
 
-Mygrid.TextMatrix(i, 3) = rs!gewogname
-Mygrid.TextMatrix(i, 4) = rs!remarks
+mygrid.TextMatrix(i, 3) = rs!gewogname
+mygrid.TextMatrix(i, 4) = rs!remarks
 rs.MoveNext
 i = i + 1
 Loop
 
 rs.Close
-Mygrid.MergeCol(1) = True
-Mygrid.MergeCells = 1
+mygrid.MergeCol(1) = True
+mygrid.MergeCells = 1
   
 Exit Sub
 err:
@@ -654,17 +552,18 @@ End Sub
 Private Sub TB_ButtonClick(ByVal Button As MSComctlLib.Button)
 Select Case Button.Key
 Case "ADD"
-       cboDzongkhag.Enabled = False
+
+       cbodzongkhag.Enabled = False
         TB.buttons(3).Enabled = True
        Operation = "ADD"
        CLEARCONTROLL
-       cboDzongkhag.Enabled = True
+       cbodzongkhag.Enabled = True
        
        
        Case "OPEN"
        Operation = "OPEN"
        CLEARCONTROLL
-       cboDzongkhag.Enabled = True
+       cbodzongkhag.Enabled = True
        cbodemkhong.Enabled = True
        cbogewog.Enabled = True
       TB.buttons(3).Enabled = True
@@ -683,7 +582,7 @@ Case "ADD"
 End Select
 End Sub
 Private Sub CLEARCONTROLL()
-cboDzongkhag.Text = ""
+cbodzongkhag.Text = ""
 cbodemkhong.Text = ""
 cbogewog.Text = ""
 txtgewogname.Text = ""
@@ -695,10 +594,10 @@ On Error GoTo err
 
 MHVDB.BeginTrans
 If Operation = "ADD" Then
-MHVDB.Execute "INSERT INTO tblgewog (gewogid,gewogname,DZONGKHAGid,REMARKS,mainid) VALUEs('" & cbogewog.Text & "','" & txtgewogname.Text & "','" & cboDzongkhag.BoundText & "','" & txtremarks.Text & "','" & cboDzongkhag.BoundText & cbogewog.Text & "')"
+MHVDB.Execute "INSERT INTO tblgewog (gewogid,gewogname,DZONGKHAGid,REMARKS,mainid) VALUEs('" & cbogewog.Text & "','" & txtgewogname.Text & "','" & cbodzongkhag.BoundText & "','" & txtremarks.Text & "','" & cbodzongkhag.BoundText & cbogewog.Text & "')"
 
 ElseIf Operation = "OPEN" Then
-MHVDB.Execute "update tblgewog set gewogname='" & txtgewogname.Text & "',remarks='" & txtremarks.Text & "',mainid='" & cboDzongkhag.BoundText & cbogewog.BoundText & "', demkhongid='" & cbodemkhong.BoundText & "' where gewogid='" & cbogewog.BoundText & "' and dzongkhagid='" & cboDzongkhag.BoundText & "'"
+MHVDB.Execute "update tblgewog set gewogname='" & txtgewogname.Text & "',remarks='" & txtremarks.Text & "',mainid='" & cbodzongkhag.BoundText & cbogewog.BoundText & "', demkhongid='" & cbodemkhong.BoundText & "' where gewogid='" & cbogewog.BoundText & "' and dzongkhagid='" & cbodzongkhag.BoundText & "'"
 Else
 MsgBox "OPERATION NOT SELECTED."
 End If
